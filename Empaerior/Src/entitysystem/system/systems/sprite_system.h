@@ -16,7 +16,7 @@ public:
 
 	//adds a new sprite to the entity
 	//doesn't need to be efficient
-	//it return the indexof the sprite just in case
+	//it return the index of the sprite just in case
 	size_t add_sprite(Empaerior::ECS& ecs,const uint64_t& id,Empaerior::Sprite& sprite)
 	{
 		#define SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).sprites
@@ -47,7 +47,7 @@ public:
 	}
 
 
-
+	 
 
 
 	//renders all sprites

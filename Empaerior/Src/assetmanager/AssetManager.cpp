@@ -66,7 +66,7 @@ namespace Empaerior::Asset_Loading
 		{
 
 			//if found 
-			return std::move(tex->second);
+			return tex->second;
 
 		}
 

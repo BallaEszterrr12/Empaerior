@@ -232,7 +232,7 @@ namespace Empaerior::Asset_Loading
 		{
 
 			i->second.reset();
-			Textures.erase(i);
+			i = Textures.erase(i);
 			if (Textures.empty()) return;
 		}
 

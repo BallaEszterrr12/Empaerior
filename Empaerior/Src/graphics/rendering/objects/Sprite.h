@@ -97,6 +97,10 @@ namespace Empaerior {
 		}
 
 
+		void set_texture(const std::string& tex_path)
+		{
+			texture = Asset_Loading::load_texture(tex_path);
+		}
 
 
 		void draw(const Camera& camera);

@@ -33,7 +33,7 @@ namespace Empaerior {
 				if (typetosystem.find(system_type) != typetosystem.end())
 				{
 
-					throw E_runtime_exception("Unable to register system: system is already registered.", __FILE__, __LINE__);
+					throw E_runtime_exception("Unable to register system: system is already registered.", __FILE__, __LINE__, __FUNCTION__);
 
 				}
 				std::shared_ptr<T> system = std::make_shared<T>();
@@ -62,7 +62,7 @@ namespace Empaerior {
 				//if the system is not found  //throw
 				if (typetosystem.find(system_type) == typetosystem.end())
 				{
-					throw E_runtime_exception("Unable to set the signature: system does not exist.", __FILE__, __LINE__);
+					throw E_runtime_exception("Unable to set the signature: system does not exist.", __FILE__, __LINE__, __FUNCTION__);
 				}
 				
 				typetosignature[system_type] = std::move(signature);
@@ -86,7 +86,7 @@ namespace Empaerior {
 				//if the system is not found  //throw
 				if (typetosystem.find(system_type) == typetosystem.end())
 				{
-					throw E_runtime_exception("Unable to fetch the signature: system does not exist.", __FILE__, __LINE__);
+					throw E_runtime_exception("Unable to fetch the signature: system does not exist.", __FILE__, __LINE__, __FUNCTION__);
 				}
 
 				return typetosignature[system_type];

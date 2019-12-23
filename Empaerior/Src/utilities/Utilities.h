@@ -22,7 +22,7 @@ namespace Empaerior
 		{
 			if (SDL_SetClipboardText(text) < 0)
 			{
-				throw E_runtime_exception("Cannot copy text to clipboard", __FILE__, __LINE__);
+				throw E_runtime_exception("Cannot copy text to clipboard", __FILE__, __LINE__, __FUNCTION__);
 			}
 		}
 		catch (E_runtime_exception & e) {

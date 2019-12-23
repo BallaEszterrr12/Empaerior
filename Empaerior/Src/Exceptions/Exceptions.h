@@ -12,9 +12,9 @@ public:
 	
 
 
-	E_runtime_exception(const std::string& what, const std::string& file, const int& line)
+	E_runtime_exception(const std::string& what, const std::string& file, const int& line, const std::string& func)
 	{
-		message = "Exception: " + what + " in " + file + " at line " + std::to_string(line);
+		message = "Exception: " + what + " in " + file +  " function :" + func + " at line " + std::to_string(line);
 	}
 	
 	void print_message()

@@ -38,13 +38,13 @@ namespace Empaerior
 			{
 				if (id > lowest_unallocatedid )
 				{
-					throw E_runtime_exception("Invalid id for deletion : id doesn't exist", __FILE__, __LINE__);
+					throw E_runtime_exception("Invalid id for deletion : id doesn't exist", __FILE__, __LINE__, __FUNCTION__);
 
 				} 
 				//if the id appears in the delted entities
 				else if(std::binary_search(freed_id.begin(),freed_id.end(),id))
 				{
-					throw E_runtime_exception("Invalid id deletion : id is not a valid entity", __FILE__, __LINE__);
+					throw E_runtime_exception("Invalid id deletion : id is not a valid entity", __FILE__, __LINE__, __FUNCTION__);
 				
 				}
 
@@ -74,13 +74,13 @@ namespace Empaerior
 			{
 				if (id > lowest_unallocatedid)
 				{
-					throw E_runtime_exception("Cannot set id signature  : id doesn't exist", __FILE__, __LINE__);
+					throw E_runtime_exception("Cannot set id signature  : id doesn't exist", __FILE__, __LINE__, __FUNCTION__);
 
 				}
 				//if the id appears in the delted entities
 				else if (std::binary_search(freed_id.begin(), freed_id.end(), id))
 				{
-					throw E_runtime_exception("Cannot set id signature : id is not a valid entity", __FILE__, __LINE__);
+					throw E_runtime_exception("Cannot set id signature : id is not a valid entity", __FILE__, __LINE__, __FUNCTION__);
 
 				}
 			}
@@ -100,13 +100,13 @@ namespace Empaerior
 			{
 				if (id > lowest_unallocatedid)
 				{
-					throw E_runtime_exception("Cannot fetch entity signature : id doesn't exist", __FILE__, __LINE__);
+					throw E_runtime_exception("Cannot fetch entity signature : id doesn't exist", __FILE__, __LINE__,__FUNCTION__);
 
 				}
 				//if the id appears in the delted entities
 				else if (std::binary_search(freed_id.begin(), freed_id.end(), id))
 				{
-					throw E_runtime_exception("Cannot fetch entity signature : id is not a valid entity", __FILE__, __LINE__);
+					throw E_runtime_exception("Cannot fetch entity signature : id is not a valid entity", __FILE__, __LINE__, __FUNCTION__);
 
 				}
 			}

@@ -36,7 +36,7 @@ public:
 		{
 			
 			if (index < SPRITES.size()) { SPRITES.erase(SPRITES.begin() + index); return; }
-			throw E_runtime_exception("Cannot remove sprite: invalid index", __FILE__, __LINE__);
+			throw E_runtime_exception("Cannot remove sprite: invalid index", __FILE__, __LINE__, __FUNCTION__);
 
 		}
 		catch (E_runtime_exception& e)

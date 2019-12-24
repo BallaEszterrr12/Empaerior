@@ -18,7 +18,7 @@ class State
 {
 public:
 	State();
-	void Update(const unsigned int& dt);
+	void Update(const uint64_t& dt);
 	void Render();//renders the state
 	void set_camera(const SDL_Rect& rect);//sets the camera to the specified sdl rect
 	void handleevents(const SDL_Event& event);

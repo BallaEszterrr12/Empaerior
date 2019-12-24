@@ -64,8 +64,10 @@ namespace Empaerior {
 	class Sprite : public Graphic_element
 	{
 	public:
+		// the size of the rect is only for one frame of the sprite
+	    // so the length of the texture should be frames * tex_rect.w
 		Sprite(const SDL_Rect& rect, const SDL_Rect& tex_rect, const std::string& tex_path, const unsigned int& frames)
-			:Graphic_element(rect), tex_rect(tex_rect), anim_x(tex_rect.x), anim_y(tex_rect.y)
+			:Graphic_element(rect), tex_rect(tex_rect), anim_x(tex_rect.x), anim_y(tex_rect.y),frames(frames)
 
 		{
 
@@ -79,8 +81,35 @@ namespace Empaerior {
 
 		}
 
+	
+		void set_texture(const std::string& tex_path)
+		{
+			texture = Asset_Loading::load_texture(tex_path);
+		}
+
+
+		void draw(const Camera& camera);
+
+		void update(const uint64_t& dt)
+		{
+			 
+			time += dt; // add the time passed
+			
+			while (time >= holdTime)// check if the necesarry time passed
+			{
+				time -= holdTime;
+				next_frame(); // advance
+			}
+
+
+		}
+
+
+
+	private:
 		void next_frame()// goes to the next frame in the animation 
 		{
+			
 			// get next frame in animation
 			if (cur_frame >= frames - 1)
 			{
@@ -93,38 +122,15 @@ namespace Empaerior {
 			//set the frame
 			tex_rect.x = anim_x + cur_frame * tex_rect.w;
 			tex_rect.y = anim_y + cur_frame * tex_rect.h;
-
+			
 		}
 
 
-		void set_texture(const std::string& tex_path)
-		{
-			texture = Asset_Loading::load_texture(tex_path);
-		}
 
-
-		void draw(const Camera& camera);
-
-		void update(const Uint32& dt)
-		{
-
-			time += dt; // add the time passed
-
-			while (time >= holdTime)// check if the necesarry time passed
-			{
-				time -= holdTime;
-				next_frame(); // advance
-			}
-
-
-		}
-
-
-	private:
 		SDL_Rect tex_rect;// the portion of the texture the sprite represents
 		unsigned int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
 		std::shared_ptr<SDL_Texture> texture;
-		Uint32 time = 0;
+		uint64_t time = 0;
 		static constexpr Uint32 holdTime = 250; //time between animations currently 0.25 seconds
 
 		unsigned int frames = 1; //each animation must have at least one frame
@@ -139,8 +145,7 @@ namespace Empaerior {
 		Text_Sprite(const SDL_Rect& rect, const std::string& font_path, const unsigned int& size, const std::string& message, SDL_Color& color);
 
 
-		// the size of the rect is only for one frame of the sprite
-	   // so the length of the texture should be frames * tex_rect.w
+		
 		// load the font and load the texture
 
 		~Text_Sprite()
@@ -155,12 +160,8 @@ namespace Empaerior {
 
 		}
 		void draw(const Camera& camera);
-		void update(const Uint32& dt)
-		{
+	
 
-
-
-		}
 
 	public:
 		std::vector<glyph> glyphs; // texts have glyphs instead of texture (the same thing but not 

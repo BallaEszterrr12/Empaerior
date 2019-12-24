@@ -157,7 +157,7 @@ int main(int argc, char** argv)
 			}
 		
 			Empaerior::Asset_Loading::clean_textures();
-			Instrumentor::Get().EndSession();
+		
 		}
 
 	

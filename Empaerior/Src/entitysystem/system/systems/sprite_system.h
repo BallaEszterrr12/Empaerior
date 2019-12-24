@@ -46,8 +46,16 @@ public:
 		#undef SPRITES
 	}
 
-
-	 
+	void update(Empaerior::ECS& ecs,const uint64_t& dt)
+	{
+		for (auto& e : entities_id)
+		{
+			for (auto& sprs : ecs.get_component<Empaerior::Sprite_Component>(e).sprites)
+			{
+				sprs.update(dt);
+			}
+		}
+	}
 
 
 	//renders all sprites

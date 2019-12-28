@@ -52,8 +52,7 @@ State::State()
 	ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
 
 	ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
-	Empaerior::Sprite norge({ 0,0,960,800 }, { 0,0,1000,1000 }, "assets/img.png", 2);
-	spr_system->add_sprite(ecs, morge.id, norge);
+	
 
 
 

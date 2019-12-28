@@ -164,7 +164,7 @@ namespace Empaerior {
 
 
 	public:
-		std::vector<glyph> glyphs; // texts have glyphs instead of texture (the same thing but not 
+		std::vector<glyph> glyphs; // texts have glyphs instead of texture (the same thing but not )
 		std::vector<int> text_values;
 
 	};

@@ -23,6 +23,7 @@ struct glyph {
 		
 	}
 
+	
 	std::unique_ptr<SDL_Texture> image;
 	int w, h;
 };

@@ -150,7 +150,7 @@ namespace Empaerior {
 
 		~Text_Sprite()
 		{
-			//destroyer the glyphs, becuase unlike 6the normal sprite, the texture  is unique for all texts and alocatted bu the assetmanager
+			//destroy the glyphs, becuase unlike 6the normal sprite, the texture  is unique for all texts and alocatted bu the assetmanager
 			unsigned int i;
 			for (i = 0; i < glyphs.size(); i++)
 			{

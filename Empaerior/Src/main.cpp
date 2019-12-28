@@ -105,9 +105,7 @@ int main(int argc, char** argv)
 
 			
 
-			SDL_Color coly = { 255, 0, 0, 0 };
-			Empaerior::Text_Sprite* borge = new Empaerior::Text_Sprite({0,0,25,25}, "assets/font.ttf", 32, "merge morge taralala", coly);
-		
+			
 		
 			//not a permanent solution to handle events
 			while (SDL_PollEvent(&event)) {
@@ -118,6 +116,8 @@ int main(int argc, char** argv)
 			if (!Empaerior::Game::is_paused)
 			{
 				
+				SDL_Color coly = { 255, 0, 0, 0 };
+				Empaerior::Text_Sprite* borge = new Empaerior::Text_Sprite({ 0,0,25,25 }, "assets/font.ttf", 32, "merge morge taralala", coly);
 
 				framestart = SDL_GetTicks();
 				frametime = framestart - currentime;

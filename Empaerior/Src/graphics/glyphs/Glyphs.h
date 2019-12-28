@@ -15,8 +15,9 @@ enum class LETTERS {
 	RIGHT_SQUARE, LESS_THAN, GREATER_THAN, DIVIDE, PLUS, MINUS, EQUAL, MULTIPLY, SPACE, RETURN, NEW_LINE, TAB
 };
 
-
+//glyphs must be deallocated 
 struct glyph {
+
 	void clean()
 	{
 		 SDL_DestroyTexture(&*image);
@@ -24,7 +25,7 @@ struct glyph {
 	}
 
 	
-	std::unique_ptr<SDL_Texture> image;
+	SDL_Texture* image;
 	int w, h;
 };
 

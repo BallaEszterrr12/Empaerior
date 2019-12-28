@@ -16,7 +16,7 @@ int createGlyphs(std::vector <glyph>& glyphs, const std::string& path ,const uns
 	for (int cnt = 0; cnt < 86; cnt++) {
 		shortString[0] = fontChar[cnt];
 		tempSurface = TTF_RenderText_Solid(font, shortString,color);
-		temp.image = std::unique_ptr<SDL_Texture>(SDL_CreateTextureFromSurface(renderer, tempSurface));
+		temp.image = SDL_CreateTextureFromSurface(renderer, tempSurface);
 		SDL_QueryTexture(&(*temp.image), NULL, NULL, &w, &h);
 		temp.h = h; temp.w = w;
 		glyphs.push_back(std::move(temp));

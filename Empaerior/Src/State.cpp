@@ -28,7 +28,7 @@ State::State()
 	ecs.register_component<Empaerior::Camera_Component>();
 	ecs.register_component<Empaerior::Sprite_Component>();
 	ecs.register_component<Empaerior::Event_Listener_Component>();
-
+	ecs.register_component<Empaerior::Event_Listener_Component>();
 
 	printy = ecs.register_system<Print_System>();
 	spr_system = ecs.register_system <Sprite_System>();

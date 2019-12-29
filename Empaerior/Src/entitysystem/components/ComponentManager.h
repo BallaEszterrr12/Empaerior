@@ -34,7 +34,7 @@ namespace Empaerior
 				//if the entity does have this type of component throw exception
 				if (componenttoentity.find(entity_id) != componenttoentity.end())
 				{
-					throw E_runtime_exception("Cannot add component: the entity already has this type of component",__FILE__,__LINE__, __FUNCTION__);
+					throw E_runtime_exception("Cannot add component: the entity already has this type of component: " + std::string(typeid(T).name()),__FILE__,__LINE__, __FUNCTION__);
 				}
 
 
@@ -74,7 +74,7 @@ namespace Empaerior
 			{
 				if (entitytocomponent.find(entity_id) == entitytocomponent.end())
 				{
-					throw E_runtime_exception("Cannot get component : entity doesn't own the specified type of component ", __FILE__, __LINE__, __FUNCTION__);
+					throw E_runtime_exception("Cannot get component : entity doesn't own the specified type of component: " + std::string(typeid(T).name()), __FILE__, __LINE__, __FUNCTION__);
 				}
 				
 				
@@ -101,7 +101,7 @@ namespace Empaerior
 				if (componenttoentity.find(entity_id) == componenttoentity.end())
 				{
 					//I don't know why it's giving a warning, oly here
-					E_runtime_exception("Cannot delete component: the entity doesn't have this type of component", __FILE__, __LINE__, __FUNCTION__);
+					E_runtime_exception("Cannot delete component: the entity doesn't have this type of component : " + std::string(typeid(T).name()), __FILE__, __LINE__, __FUNCTION__);
 				}
 				
 				//get the index of the removed entity
@@ -183,7 +183,7 @@ namespace Empaerior
 				}
 				else
 				{
-					throw E_runtime_exception("Component already registered", __FILE__, __LINE__, __FUNCTION__);
+					throw E_runtime_exception("Component " +std::string(componentid) + " already registered", __FILE__, __LINE__, __FUNCTION__);
 				}
 			}
 			catch (E_runtime_exception & e)
@@ -224,7 +224,7 @@ namespace Empaerior
 			{
 				if (component_type.find(component_name) == component_type.end())
 				{
-					throw E_runtime_exception("Cannot fetch component id : invalid component", __FILE__, __LINE__, __FUNCTION__);
+					throw E_runtime_exception("Cannot fetch component id" + std::string(component_name) + " : invalid component", __FILE__, __LINE__, __FUNCTION__);
 				}
 				return component_type[component_name];
 

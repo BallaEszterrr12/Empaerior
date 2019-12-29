@@ -18,13 +18,14 @@ enum class LETTERS {
 //glyphs must be deallocated 
 struct glyph {
 
+	
+
 	void clean()
 	{
 		 SDL_DestroyTexture(&*image);
 		
 	}
 
-	
 	SDL_Texture* image;
 	int w, h;
 };

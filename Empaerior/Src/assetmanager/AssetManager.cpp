@@ -26,7 +26,7 @@ namespace Empaerior::Asset_Loading
 				if (rwop == nullptr) // if the file doesn't exists throws exception
 				{
 
-					throw E_runtime_exception("File not found", __FILE__, __LINE__, __FUNCTION__);
+					throw E_runtime_exception("File:  " + tex_path + " not found", __FILE__, __LINE__, __FUNCTION__);
 
 				}
 
@@ -47,7 +47,7 @@ namespace Empaerior::Asset_Loading
 					//delete rwop
 					SDL_RWclose(rwop);
 					//send the exception
-					throw E_runtime_exception("File is not a valid PNG", __FILE__, __LINE__, __FUNCTION__);
+					throw E_runtime_exception("File:  " + tex_path + "  is not a valid PNG" , __FILE__, __LINE__, __FUNCTION__);
 
 				}
 
@@ -92,14 +92,14 @@ namespace Empaerior::Asset_Loading
 				if (rwop == nullptr) // if the file doesn't exists throws exception
 				{
 
-					throw E_runtime_exception("File not found", __FILE__, __LINE__, __FUNCTION__);
+					throw E_runtime_exception("File " + font_path + " not found", __FILE__, __LINE__, __FUNCTION__);
 
 				}
 				std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFontRW(rwop, 1, size));
 				if (fnt == nullptr)//throw exception
 				{
 
-					throw E_runtime_exception("File is not a valid TTF or does not exist", __FILE__, __LINE__, __FUNCTION__);
+					throw E_runtime_exception("File" + font_path + " is not a valid TTF or does not exist", __FILE__, __LINE__, __FUNCTION__);
 				}
 
 
@@ -118,14 +118,14 @@ namespace Empaerior::Asset_Loading
 					if (rwop == nullptr) // if the file doesn't exists throws exception
 					{
 
-						throw E_runtime_exception("File not found", __FILE__, __LINE__, __FUNCTION__);
+						throw E_runtime_exception("File " + font_path + " not found", __FILE__, __LINE__, __FUNCTION__);
 
 					}
 					std::unique_ptr<TTF_Font> fnt = std::unique_ptr<TTF_Font>(TTF_OpenFontRW(rwop, 1, size));
 					if (fnt == nullptr)//throw exception
 					{
 
-						throw E_runtime_exception("File is not a valid TTF or does not exist", __FILE__, __LINE__, __FUNCTION__);
+						throw E_runtime_exception("File" + font_path + " is not a valid TTF or does not exist", __FILE__, __LINE__, __FUNCTION__);
 					}
 					Fonts[font_path].insert({ size,std::move(fnt) });
 					return &(*Fonts[font_path][size]);
@@ -161,7 +161,8 @@ namespace Empaerior::Asset_Loading
 				//Mix_LoadWAV(sound_path.c_str())
 				if (rwop == nullptr)
 				{
-					throw E_runtime_exception("Cannot fint the .wav find file ", __FILE__, __LINE__, __FUNCTION__);
+					
+					throw E_runtime_exception("Cannot find the .wav  file: " + sound_path + ' ', __FILE__, __LINE__, __FUNCTION__);
 				}
 				std::unique_ptr<Mix_Chunk>TempSound = std::unique_ptr<Mix_Chunk>(Mix_LoadWAV_RW(rwop, 1));
 

@@ -116,9 +116,7 @@ int main(int argc, char** argv)
 			if (!Empaerior::Game::is_paused)
 			{
 				
-				SDL_Color coly = { 255, 0, 0, 0 };
-				Empaerior::Text_Sprite* borge = new Empaerior::Text_Sprite({ 0,0,25,25 }, "assets/font.ttf", 32, "merge morge taralala", coly);
-
+				
 				framestart = SDL_GetTicks();
 				frametime = framestart - currentime;
 
@@ -151,9 +149,9 @@ int main(int argc, char** argv)
 			
 				Empaerior::Game::window.clear();
 				game.render();
-				borge->draw({ 0, 0, 960, 800 });
+			
 				Empaerior::Game::window.render();
-				delete borge;
+				
 				
 			}
 		

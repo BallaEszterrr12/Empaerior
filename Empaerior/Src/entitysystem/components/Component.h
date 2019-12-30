@@ -34,7 +34,7 @@ namespace Empaerior
 	struct Sprite_Component
 	{
 		std::vector<Sprite> sprites;
-		//std::vector<Text_Sprite> text_sprites;
+		std::vector<Text_Sprite> text_sprites;
 	};
 
 	struct Event_Listener_Component

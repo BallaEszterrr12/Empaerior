@@ -6,9 +6,8 @@
 //entity tests
 
 #include "entitysystem/ECS.h"
-#include "entitysystem/system/systems/print_system.h"
-#include "entitysystem/system/systems/sprite_system.h"
-#include "entitysystem/system/systems/event_system.h"
+#include "entitysystem/system/systems/Systems.h"
+
 /*
 	A state of the game engine.
 */

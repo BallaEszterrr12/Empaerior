@@ -36,17 +36,17 @@ project "Empaerior"
 	includedirs
 	{
 	"%{prj.name}/src",
-	"SDL2/include",
-	"SDL2_image/include",
-	"SDL2_mixer/include",
-	"SDL2_ttf/include"
+	"../External Libraries/SDL2/include",
+	"../External Libraries/SDL2_image/include",
+	"../External Libraries/SDL2_mixer/include",
+	"../External Libraries/SDL2_ttf/include"
 	}
 	libdirs 
 	{ 
-	"SDL2/lib/x64",
-	"SDL2_image/lib/x64",
-	"SDL2_mixer/lib/x64",
-	"SDL2_ttf/lib/x64"
+	"../External Libraries/SDL2/lib/x64",
+	"../External Libraries/SDL2_image/lib/x64",
+	"../External Libraries/SDL2_mixer/lib/x64",
+	"../External Libraries/SDL2_ttf/lib/x64"
 	}
 	links 
 	{ 

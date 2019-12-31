@@ -2,9 +2,11 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <unordered_map>
 #include "../../graphics/rendering/Camera.h"
 #include "../../graphics/rendering/objects/Sprite.h"
 #include "../../eventhandler/EventHandler.h"
+
 namespace Empaerior
 {
 
@@ -33,8 +35,13 @@ namespace Empaerior
 	*/
 	struct Sprite_Component
 	{
+		//the 'containers' for sprtites
 		std::vector<Sprite> sprites;
 		std::vector<Text_Sprite> text_sprites;
+
+		
+		
+		
 	};
 
 	struct Event_Listener_Component

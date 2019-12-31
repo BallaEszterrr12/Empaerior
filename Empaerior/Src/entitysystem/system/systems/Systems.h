@@ -63,11 +63,21 @@ public:
 	size_t add_sprite(Empaerior::ECS& ecs, const uint64_t& id, Empaerior::Sprite& sprite)
 	{
 #define SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).sprites
-		//search for the entity
+	
 		SPRITES.emplace_back(sprite);
 		return SPRITES.size() - 1;
 
 #undef SPRITES
+	}
+
+	size_t add_text_sprite(Empaerior::ECS& ecs, const uint64_t& id, Empaerior::Text_Sprite& sprite)
+	{
+#define TEXT_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).text_sprites
+		
+		TEXT_SPRITES.emplace_back(sprite);
+		return TEXT_SPRITES.size() - 1;
+
+#undef TEXT_SPRITES
 	}
 
 
@@ -88,6 +98,25 @@ public:
 		}
 #undef SPRITES
 	}
+
+	void remove_text_sprite(Empaerior::ECS& ecs, const uint64_t& id, const size_t& index)
+	{
+#define TEXT_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).text_sprites
+		try
+		{
+
+			if (index < TEXT_SPRITES.size()) { TEXT_SPRITES.erase(TEXT_SPRITES.begin() + index); return; }
+			throw E_runtime_exception("Cannot remove sprite: invalid index", __FILE__, __LINE__, __FUNCTION__);
+
+		}
+		catch (E_runtime_exception & e)
+		{
+			e.print_message();
+		}
+#undef TEXT_SPRITES
+	}
+
+
 
 	void update(Empaerior::ECS& ecs, const uint64_t& dt)
 	{

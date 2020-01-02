@@ -23,7 +23,7 @@ namespace std
 	struct std::default_delete<Mix_Chunk> {
 		void operator()(Mix_Chunk* ch) { Mix_FreeChunk(ch); }
 	};
-
+	
 
 }
 

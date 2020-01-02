@@ -13,6 +13,6 @@ namespace Empaerior
 		{
 			SDL_RenderSetLogicalSize(Empaerior::Game::window.renderer, rect.w, rect.h); // using letterboxing, not a huge deal
 		}
-
+		
 	}
 }

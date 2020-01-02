@@ -37,9 +37,20 @@ namespace Empaerior
 	{
 		//the 'containers' for sprtites
 		std::vector<Sprite> sprites;
-		std::vector<Text_Sprite> text_sprites;
+		//position of element n in the vector a_sprites
+		std::vector<size_t> pos_sprites;
+		size_t cur_it_spr = 0 ;
 
-		
+
+		std::vector<Text_Sprite> text_sprites;
+		std::vector<size_t> pos_text_sprites;
+		size_t cur_it_txt_spr = 0;
+
+		//the order in which the sprites are load
+		// 0 -the next sprite is drawn/updated
+		// 1 - the next text_sprite is drawn/updated
+		std::vector<bool> sprites_load;
+		std::vector<Graphic_element*> a_sprites;
 		
 		
 	};

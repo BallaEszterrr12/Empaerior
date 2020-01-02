@@ -23,10 +23,12 @@ namespace Empaerior {
 
 
 
-		virtual void draw(const Camera& camera) {};
+		virtual void draw(const Camera& camera) { std::cout << "wrong draw " << '\n'; };
 
 
-		virtual void update(const Uint32& dt) {};
+		virtual void update(const Uint32& dt) {
+			std::cout << "adfdfgfgddfgfgdfgd";
+		};
 
 		void set_angle(const double& newAngle)
 		{
@@ -88,18 +90,18 @@ namespace Empaerior {
 		}
 
 
-		void draw(const Camera& camera);
+		void draw(const Camera& camera) override;
 
-		void update(const uint64_t& dt)
+		void update(const Uint32& dt)
 		{
-			 
 			time += dt; // add the time passed
-			
+
 			while (time >= holdTime)// check if the necesarry time passed
 			{
 				time -= holdTime;
 				next_frame(); // advance
 			}
+			
 
 
 		}
@@ -160,7 +162,7 @@ namespace Empaerior {
 
 		}
 		void draw(const Camera& camera);
-	
+		void update(const uint64_t& dt) {};
 
 
 	public:

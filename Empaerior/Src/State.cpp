@@ -51,12 +51,18 @@ State::State()
 	ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
 	ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
 
-	ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
+	ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
 	
 
+	Empaerior::Sprite norge({0,0,100,100}, {0,0,1000,1000},"assets/img.png",1);
+	Empaerior::Sprite borge({ 100,100,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
 
 
-		
+	
+	spr_system->add_sprite(ecs, morge.id, norge);
+	spr_system->add_sprite(ecs, morge.id, borge);
+
+	//spr_system->remove_sprite(ecs, morge.id, 0);
 	camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 	
 	event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) {  std::cout << "You just pressed a button, idiot!" << '\n'; });

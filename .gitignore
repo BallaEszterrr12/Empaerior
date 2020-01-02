@@ -340,5 +340,5 @@ ASALocalRun/
 healthchecksdb
 
 #obj directory
-bin/
-bin-int/
+.bin/
+.bin-int/

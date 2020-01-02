@@ -39,19 +39,7 @@ public:
 
 };
 
-class Print_System : public Empaerior::System
-{
-public:
 
-	void update(Empaerior::ECS& ecs)
-	{
-		for (auto const& e : entities_id)
-		{
-			std::cout << ecs.get_component<Empaerior::Print_Component>(e).message << '\n';
-		}
-	}
-
-};
 #define SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).sprites
 #define POS_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).pos_sprites
 #define TEXT_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).text_sprites
@@ -70,6 +58,7 @@ public:
 
 		POS_SPRITES.emplace_back(SPRITES.size());
 		SPRITES.emplace_back(std::move(sprite));
+		//put a true in the queue 
 		ORDER.emplace_back(true);
 
 		make_render_cache(ecs, id);

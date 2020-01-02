@@ -23,20 +23,18 @@ State::State()
 	
 
 	ecs.Init();
-	ecs.register_component<Empaerior::Print_Component>();
 	ecs.register_component<Empaerior::Position_Component>();
 	ecs.register_component<Empaerior::Camera_Component>();
 	ecs.register_component<Empaerior::Sprite_Component>();
 	ecs.register_component<Empaerior::Event_Listener_Component>();
 
 
-	printy = ecs.register_system<Print_System>();
 	spr_system = ecs.register_system <Sprite_System>();
 	event_system = ecs.register_system<Event_System>();
 
 
 
-	ecs.add_component_to_system<Empaerior::Print_Component, Print_System>();
+	
 	ecs.add_component_to_system<Empaerior::Sprite_Component, Sprite_System>();
 	ecs.add_component_to_system<Empaerior::Event_Listener_Component, Event_System>();
 
@@ -46,23 +44,31 @@ State::State()
 	
 
 
-	ecs.add_component<Empaerior::Print_Component>(morge.id, Empaerior::Print_Component{ "morgeee" });
+	
 	ecs.add_component<Empaerior::Position_Component>(morge.id, Empaerior::Position_Component{ 10,10 });
 	ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
 	ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
 
 	ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
-	
-
-	Empaerior::Sprite norge({0,0,100,100}, {0,0,1000,1000},"assets/img.png",1);
-	Empaerior::Sprite borge({ 100,100,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
-
-
-	
-	spr_system->add_sprite(ecs, morge.id, norge);
+	Empaerior::Timer tim;
+	tim.start();
+	Empaerior::Sprite norge({ 0,0,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
+	for (int i = 0; i < 32; i++)
+	{
+		for (int j = 0; j < 32; j++)
+		{
+		
+			norge.set_position(100 * i, 100 * j);
+			std::cout << i << ' ' << j << '\n';
+			spr_system->add_sprite(ecs, morge.id, norge);
+		
+		}
+	}
+	Empaerior::Sprite borge({ 0 ,0,1,1 }, { 0,0,1000,1000 }, "assets/img.png", 1);
 	spr_system->add_sprite(ecs, morge.id, borge);
+	std::cout << tim.getTicks();
 
-	//spr_system->remove_sprite(ecs, morge.id, 0);
+	spr_system->remove_sprite(ecs, morge.id, 0);
 	camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 	
 	event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) {  std::cout << "You just pressed a button, idiot!" << '\n'; });
@@ -70,14 +76,11 @@ State::State()
 	
 }
 
-void State::Update(const uint64_t& dt)
+void State::Update(const Uint32& dt)
 {
 	
-	spr_system->update(ecs,dt);
+	spr_system->update(ecs, dt);
 
-	
-
-	
 
 }
 

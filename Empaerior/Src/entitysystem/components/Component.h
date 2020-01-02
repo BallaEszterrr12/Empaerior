@@ -11,11 +11,6 @@ namespace Empaerior
 {
 
 	//Some predifined components, feel free not to use them
-	struct Print_Component 
-	{
-		std::string message = "succes";
-	};
-
 	struct Position_Component
 	{
 		int x = 12;
@@ -37,22 +32,26 @@ namespace Empaerior
 	{
 		//the 'containers' for sprtites
 		std::vector<Sprite> sprites;
+		std::vector<Text_Sprite> text_sprites;
+	
+		
+
+	
+	
 		//position of element n in the vector a_sprites
 		std::vector<size_t> pos_sprites;
-		size_t cur_it_spr = 0 ;
-
-
-		std::vector<Text_Sprite> text_sprites;
 		std::vector<size_t> pos_text_sprites;
-		size_t cur_it_txt_spr = 0;
+
 
 		//the order in which the sprites are load
-		// 0 -the next sprite is drawn/updated
-		// 1 - the next text_sprite is drawn/updated
+		// 1 - the next sprite is drawn/updated
+		// 0 - the next text_sprite is drawn/updated
 		std::vector<bool> sprites_load;
+		//the container which is meant to be iterated over
 		std::vector<Graphic_element*> a_sprites;
-		
-		
+		//used to make the a_sprites vector
+		size_t cur_it_spr = 0;
+		size_t cur_it_txt_spr = 0;
 	};
 
 	struct Event_Listener_Component

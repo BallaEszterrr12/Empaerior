@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Empaerior.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h" />
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h" />

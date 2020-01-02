@@ -2,6 +2,7 @@
 #include "assetmanager/AssetManager.h"
 #include "graphics/rendering/objects/Sprite.h"
 #include "graphics/glyphs/Glyphs.h"
+
 #include "State.h"
 #include "graphics/rendering/Window.h"
 #include "eventhandler/EventHandler.h"

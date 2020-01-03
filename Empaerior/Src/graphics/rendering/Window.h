@@ -40,9 +40,10 @@ namespace Empaerior
 
 		SDL_Renderer* renderer;
 		SDL_Window* window;
+		EventListener window_listener;
 	private:
 
-		EventListener window_listener;
+		
 		Uint32 width = 0;
 		Uint32 height = 0;
 	};

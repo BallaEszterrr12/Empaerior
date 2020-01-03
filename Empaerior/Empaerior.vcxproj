@@ -157,7 +157,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -175,7 +175,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -196,7 +196,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -217,7 +217,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -235,7 +235,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -256,7 +256,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>

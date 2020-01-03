@@ -1,6 +1,8 @@
 #include <Empaerior.h>
 #include <main.h>
 
+//An example of what a application might look like
+
 //a user defined state
 class APP_State : public Emaperior::State
 {
@@ -83,7 +85,6 @@ public:
 		window.Init("test", 960, 800);
 
 		states.emplace_back(new APP_State());//add a new state
-		//second_state = new State();
 
 		set_state(states[0]);
 
@@ -95,6 +96,96 @@ public:
 	{
 
 	}
+
+	//the main loop
+
+	void run() override
+	{
+		Uint32 framestart = 0;
+		Uint32 frametime = 0;
+		Uint32 currentime = 0;
+		Uint32 acumulator = 0;
+
+		while (Empaerior::Application::is_running)
+		{
+
+
+
+
+
+			//not a permanent solution to handle events
+			while (SDL_PollEvent(&Empaerior::Application::event)) {
+
+				handlevents(Empaerior::Application::event);
+
+			}
+			if (!Empaerior::Application::is_paused)
+			{
+
+
+				framestart = SDL_GetTicks();
+				frametime = framestart - currentime;
+
+				if (frametime > 25) frametime = 25; //if too many frames are skipped
+
+				currentime = framestart;
+				acumulator += frametime;
+
+
+
+				while (acumulator >= Empaerior::Application::dt)
+				{
+
+
+					//update 
+
+					Update(Empaerior::Application::dt);
+
+					acumulator -= Empaerior::Application::dt;
+
+
+
+				}
+
+
+				//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
+
+
+
+
+				Empaerior::Application::window.clear();
+				render();
+
+				Empaerior::Application::window.render();
+
+
+			}
+
+			Empaerior::Asset_Loading::clean_textures();
+
+		}
+	}
+
+
+	void handlevents(const SDL_Event& event) override
+	{
+		Empaerior::Application::window.window_listener.handleEvents(event);
+		cur_state->handleevents(event);
+	}
+	void Update(const unsigned int& dt)override
+	{
+		cur_state->Update(Application::dt);
+	}
+
+
+	void render() override
+	{
+		cur_state->Render();
+	}
+
+	
+
+
 
 };
 

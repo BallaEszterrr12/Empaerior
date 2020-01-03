@@ -13,6 +13,10 @@
 // You will probably want to macro-fy this, to switch on/off easily and use things like __FUNCSIG__ for the profile name.
 //
 #pragma once
+//only to be used in Debug mode
+#ifdef EMPAERIOR_DEBUG
+
+
 
 #include <string>
 #include <chrono>
@@ -134,3 +138,4 @@ private:
     std::chrono::time_point<std::chrono::high_resolution_clock> m_StartTimepoint;
     bool m_Stopped;
 };
+#endif // EMPAERIOR_DEBUG

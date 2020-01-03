@@ -100,7 +100,7 @@ namespace Empaerior
 				//if the entity doesn't have this type of component throw exception
 				if (componenttoentity.find(entity_id) == componenttoentity.end())
 				{
-					//I don't know why it's giving a warning, oly here
+					//I don't know why it's giving a warning, only here as I have multiple blocks like this, not a big deal
 					E_runtime_exception("Cannot delete component: the entity doesn't have this type of component : " + std::string(typeid(T).name()), __FILE__, __LINE__, __FUNCTION__);
 				}
 				

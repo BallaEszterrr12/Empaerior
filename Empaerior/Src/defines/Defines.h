@@ -1,13 +1,14 @@
 #pragma once
 #include <memory>
 #include <iostream>
-//Platform detection
 
+//Platform detection
 #ifdef _WIN32
 	#ifdef _WIN64//if 64 bit 
 	//add 64 flag
-		
+		#define EMPAERIOR_64BIT
 	#else // if 32 bit
+		#define EMPAERIOR_32BIT
 		#pragma warning  "x86 is not a actively tested"	//x86 flag
 	#endif // _WIN64
 
@@ -15,16 +16,8 @@
 	#error "No Apple platforms are supported"
 #elif __linux__
 	#error "Linus is not a supported platform yet"
+#else
+	#error "platform not supported yet"
 
-#endif // __WIN32
+#endif 
 
-//platform specific linking
-#ifdef  EMPAERIOR_WINDOWS
-
-	#define EMPAERIOR_API __declspec(dllexport)
-#elif EMPAERIOR_LINUX
-	#error "Platform is not yet supported"
-#else 
-	#error "Platform is not supported"
-
-#endif

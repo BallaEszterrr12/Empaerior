@@ -61,16 +61,20 @@ project "Empaerior"
 	filter "system:windows"
 		systemversion "latest"
 		defines {"EMPAERIOR_WINDOWS"}
-	
-	configuration "Debug*"
-         runtime "Debug"
-		 symbols "on"
 
-    configuration "Release*"
-         runtime "Debug"
-         optimize "on"
-		 
-	configuration "Dist*"
+		
+	filter "configurations:Debug*"
+		defines "EMPAERIOR_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release*"
+		defines "EMPAERIOR_RELEASE"
+		runtime "Debug"
+		optimize "on"
+
+	filter "configurations:Dist*"
+		defines "EMPAERIOR_DIST"
 		runtime "Release"
 		optimize "on"
 	

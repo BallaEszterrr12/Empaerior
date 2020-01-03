@@ -26,14 +26,15 @@ public:
 
     void set_state(Emaperior::State* new_state); // sets a new state to be updated  & rendered 
 
-	void run();
+	//the running function
+	virtual void run() = 0;
 
 
-	void handlevents(const SDL_Event& event);
-    void Update(const unsigned int& dt);
+	virtual void handlevents(const SDL_Event& event);
+    virtual void Update(const unsigned int& dt);
 	
 
-	 void render();
+	virtual void render();
 
 
 private:

@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "AssetManager.h"
-#include "../Game.h"
+#include "../Application.h"
 #include "../SDLwrappers/Ptr_Wrappers.h"
 #include "../Exceptions/Exceptions.h"
 
@@ -11,6 +11,7 @@ extern std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
 namespace Empaerior::Asset_Loading
 {
+
 
 	std::shared_ptr<SDL_Texture> load_texture(const std::string& tex_path)//returnsnullptr on  exception
 	{
@@ -31,11 +32,10 @@ namespace Empaerior::Asset_Loading
 				}
 
 
-
 				if (IMG_isPNG(rwop))  // if the  image is a good png
 				{
 					//create atextureand free the rwop
-					std::shared_ptr<SDL_Texture> tex_p = sdl_shared(IMG_LoadTextureTyped_RW(Empaerior::Game::window.renderer, rwop, 1, "PNG"));
+					std::shared_ptr<SDL_Texture> tex_p = sdl_shared(IMG_LoadTextureTyped_RW(Empaerior::Application::window.renderer, rwop, 1, "PNG"));
 
 					Textures.insert({ tex_path,tex_p });  // put texture in  map
 

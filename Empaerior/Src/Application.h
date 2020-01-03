@@ -1,4 +1,7 @@
 #pragma once
+#include "defines/Defines.h"
+
+
 #include "assetmanager/AssetManager.h"
 #include "graphics/rendering/objects/Sprite.h"
 #include "graphics/glyphs/Glyphs.h"
@@ -9,16 +12,20 @@
 
 
 
-
 namespace  Empaerior{
-class Game
+class Application
 {
 public:
-	Game();
+	Application();
+
+	virtual ~Application() {};
 
 	void Init();
 
     void set_state(State* new_state); // sets a new state to be updated  & rendered 
+
+	
+
 
 	void handlevents(const SDL_Event& event);
     void Update(const unsigned int& dt);
@@ -34,12 +41,7 @@ private:
 public:
 	static State* cur_state;//current state
 
-	State* first_state;
-	State* second_state;
-
-
-	/*static SDL_Renderer* renderer;
-	static SDL_Window* s_window;*/
+	static std::vector<State*> states;
 	
 	static Empaerior::Window window;
 
@@ -52,9 +54,10 @@ public:
 private:
 
 
-	Empaerior::Text_Sprite* texy;
 	
 
 
 };
+	//defined in the application *Thanks to cherno*
+	Application* Create_Application();
 }

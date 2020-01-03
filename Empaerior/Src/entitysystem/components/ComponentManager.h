@@ -161,6 +161,7 @@ namespace Empaerior
 	
 	//handles all components
 	class ComponentManager {
+
 	public:
 		//register a component
 		//Note: add_component already registers a coponentthat has not been use before

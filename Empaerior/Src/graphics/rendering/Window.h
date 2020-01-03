@@ -1,11 +1,12 @@
 #pragma once
 #include "../../eventhandler/EventHandler.h"
+#include "defines/Defines.h"
 namespace Empaerior
 {
 
 	class Window
 	{
-		friend class Game;//Game can edit it's window
+		friend class Application;//Game can edit it's window
 
 	public:
 		Window();

@@ -34,14 +34,14 @@ namespace Empaerior {
 
 
 	//This function creates textures for all the characters
-	int createGlyphs(std::vector <glyph>& glyphs, const std::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color);
+	int createGlyphs(std::vector <Empaerior::glyph>& glyphs, const std::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color);
 
 
 
-	int renderLine_st(const std::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
+	int renderLine_st(const std::string& text, int const& margin, int const& Y, std::vector <Empaerior::glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
 
 
-	int renderLine(const std::vector<int>& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
+	int renderLine(const std::vector<int>& text, int const& margin, int const& Y, std::vector <Empaerior::glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
 
 
 	std::vector<int> load_glyph_values(const std::string& source);

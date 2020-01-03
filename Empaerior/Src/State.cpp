@@ -1,18 +1,12 @@
 #include "pch.h"
 #include "State.h"
-#include "Game.h"
+#include "Application.h"
 #include <SDL.h>
 //for testing
 #include<iostream>
 #include <string>
 #include "utilities/Timer.h"
 
-struct sdl_deleter
-{
-	void operator()(SDL_Window* p) const { SDL_DestroyWindow(p); }
-	void operator()(SDL_Renderer* p) const { SDL_DestroyRenderer(p); }
-	void operator()(SDL_Texture* p) const { SDL_DestroyTexture(p); }
-};
 
 
 State::State()
@@ -51,22 +45,11 @@ State::State()
 
 	ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
 	Empaerior::Timer tim;
-	tim.start();
-	Empaerior::Sprite norge({ 0,0,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
-	for (int i = 0; i < 32; i++)
-	{
-		for (int j = 0; j < 32; j++)
-		{
-		
-			norge.set_position(100 * i, 100 * j);
-			std::cout << i << ' ' << j << '\n';
-			spr_system->add_sprite(ecs, morge.id, norge);
-		
-		}
-	}
+	
+
 	Empaerior::Sprite borge({ 0 ,0,1,1 }, { 0,0,1000,1000 }, "assets/img.png", 1);
 	spr_system->add_sprite(ecs, morge.id, borge);
-	std::cout << tim.getTicks();
+	
 
 	spr_system->remove_sprite(ecs, morge.id, 0);
 	camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;

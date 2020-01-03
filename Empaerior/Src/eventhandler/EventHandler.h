@@ -2,12 +2,13 @@
 #include <SDL.h>
 #include<SDL_events.h>
 #include <functional>
+#include "defines/Defines.h"
 
 namespace Empaerior {
 
 
 	//stack overflow to the rescue
-	class EventListener//handles only one type of SDL_event
+	class EventListener
 	{
 	public:
 

@@ -46,6 +46,7 @@ public:
 #define TEXT_POS_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).pos_text_sprites
 #define ORDER ecs.get_component<Empaerior::Sprite_Component>(id).sprites_load
 #define ALLSPRITES ecs.get_component<Empaerior::Sprite_Component>(id).a_sprites
+
 class Sprite_System : public Empaerior::System
 {
 public:

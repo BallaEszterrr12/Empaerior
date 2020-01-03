@@ -10,9 +10,9 @@
 #define sdl_ttf 1<<2
 #define sdl_mix 1<<3
 
-namespace SDL {
+namespace SDLW {
 
-	uint16_t Init()
+	inline uint16_t Init()
 	{
 		uint16_t flags = 0;
 		
@@ -36,7 +36,7 @@ namespace SDL {
 
 		return flags;
 	}
-	void Quit()
+	inline void Quit()
 	{
 
 		Mix_Quit();

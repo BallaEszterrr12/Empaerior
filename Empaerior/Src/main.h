@@ -1,22 +1,19 @@
+#pragma once
+
 #include "pch.h"
 
 
 
-#ifdef _DEBUG   
-#ifndef DBG_NEW      
-#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )     
-#define new DBG_NEW   
-#endif
-#endif
 
+
+#define SDL_MAIN_HANDLED
 
 //
 
 
+#include "Application.h"
 
-#include "Game.h"
 
-#include <crtdbg.h>
 #include "SDLwrappers/SDL_Wrappers.h"
 #include "exceptions/Exceptions.h"
 #include "utilities/Utilities.h"
@@ -33,26 +30,25 @@ std::unordered_map<std::string, std::unordered_map<int, std::unique_ptr<TTF_Font
 std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
 
-/*SDL_Renderer* Game::renderer;
-SDL_Window* Game::s_window;*/
-State* Empaerior::Game::cur_state;
-const Uint32 Empaerior::Game::dt = 1000 / 60;
-bool Empaerior::Game::is_paused = 0;
-bool Empaerior::Game::is_running = 1;
-Empaerior::Window Empaerior::Game::window;
+
+State* Empaerior::Application::cur_state;
+std::vector <State*> Empaerior::Application::states;
+const Uint32 Empaerior::Application::dt = 1000 / 60;
+bool Empaerior::Application::is_paused = 0;
+bool Empaerior::Application::is_running = 1;
+Empaerior::Window Empaerior::Application::window;
 
 #pragma endregion
 
 
-
+extern Empaerior::Application* Empaerior::Create_Application();
 
 int main(int argc, char** argv)
 {
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	_CrtSetReportMode(_CRT_WARN, _CRTDBG_MODE_DEBUG);
+
 	#pragma region SDL_Inititalization
 	try {
-		uint16_t error_flags = SDL::Init();
+		uint16_t error_flags = SDLW::Init();
 		//check for errors
 		if(error_flags & sdl)
 		{
@@ -85,9 +81,9 @@ int main(int argc, char** argv)
 	
 	SDL_Event event;
 	
-	Empaerior::Game game;
+	Empaerior::Application* aplication = Empaerior::Create_Application();
 	
-	game.Init();
+	aplication->Init();
 
 
 	Uint32 framestart = 0;
@@ -100,7 +96,7 @@ int main(int argc, char** argv)
 	
 	
 	try {
-		while (Empaerior::Game::is_running)
+		while (Empaerior::Application::is_running)
 		{
 
 			
@@ -110,10 +106,10 @@ int main(int argc, char** argv)
 			//not a permanent solution to handle events
 			while (SDL_PollEvent(&event)) {
 
-				game.handlevents(event);
+				aplication->handlevents(event);
 				
 			}
-			if (!Empaerior::Game::is_paused)
+			if (!Empaerior::Application::is_paused)
 			{
 				
 				
@@ -127,15 +123,15 @@ int main(int argc, char** argv)
 
 
 				
-				while (acumulator >= Empaerior::Game::dt)
+				while (acumulator >= Empaerior::Application::dt)
 				{
 
 					
 					//update 
 
-					game.Update(Empaerior::Game::dt);
+					aplication->Update(Empaerior::Application::dt);
 					
-					acumulator -= Empaerior::Game::dt;
+					acumulator -= Empaerior::Application::dt;
 
 
 
@@ -147,10 +143,10 @@ int main(int argc, char** argv)
 
 
 			
-				Empaerior::Game::window.clear();
-				game.render();
+				Empaerior::Application::window.clear();
+				aplication->render();
 			
-				Empaerior::Game::window.render();
+				Empaerior::Application::window.render();
 				
 				
 			}
@@ -168,15 +164,14 @@ int main(int argc, char** argv)
 	
 
 	
-	Empaerior::Game::window.reset();
+	Empaerior::Application::window.reset();
 
 	Empaerior::Asset_Loading::reset_assets();
 
 	
 	
-	_CrtDumpMemoryLeaks();
 
-	SDL::Quit();
+	SDLW::Quit();
 	
 	return 0;
 }

@@ -8,15 +8,21 @@
 #include "entitysystem/ECS.h"
 #include "entitysystem/system/systems/Systems.h"
 
+
+#include "defines/Defines.h"
 /*
 	A state of the game engine.
 */
 
 
-class State
+class  State
 {
 public:
 	State();
+	virtual ~State() {
+
+	};
+
 	void Update(const Uint32& dt);
 	void Render();//renders the state
 	void set_camera(const SDL_Rect& rect);//sets the camera to the specified sdl rect

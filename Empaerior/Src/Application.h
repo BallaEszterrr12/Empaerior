@@ -13,6 +13,8 @@
 
 
 namespace  Empaerior{
+//this is the base application class
+//all others applications should inherit from this class
 class Application
 {
 public:
@@ -22,9 +24,9 @@ public:
 
 	void Init();
 
-    void set_state(State* new_state); // sets a new state to be updated  & rendered 
+    void set_state(Emaperior::State* new_state); // sets a new state to be updated  & rendered 
 
-	
+	void run();
 
 
 	void handlevents(const SDL_Event& event);
@@ -39,9 +41,9 @@ private:
 
 
 public:
-	static State* cur_state;//current state
+	static Emaperior::State* cur_state;//current state
 
-	static std::vector<State*> states;
+	static std::vector<Emaperior::State*> states;
 	
 	static Empaerior::Window window;
 
@@ -49,7 +51,7 @@ public:
 	
 	static bool is_paused;
 	static bool is_running;
-
+	static SDL_Event event;
 
 private:
 
@@ -58,6 +60,7 @@ private:
 
 
 };
-	//defined in the application *Thanks to cherno*
+	//defined in the application *Thanks to cherno* , 
+	//it is intended to create a derived class from Application
 	Application* Create_Application();
 }

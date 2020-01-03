@@ -14,29 +14,27 @@
 	A state of the game engine.
 */
 
+namespace Emaperior {
+	class  State
+	{
+	public:
+		State();
+		virtual ~State() {
 
-class  State
-{
-public:
-	State();
-	virtual ~State() {
+		};
 
-	};
+		virtual void Update(const Uint32& dt);
+		virtual void Render();//renders the state
+		virtual void handleevents(const SDL_Event& event);
+		void set_camera(const SDL_Rect& rect);//sets the camera to the specified sdl rect
+		
+		Empaerior::Camera& get_camera() { return camera; } // return a shared pointer to the camera
 
-	void Update(const Uint32& dt);
-	void Render();//renders the state
-	void set_camera(const SDL_Rect& rect);//sets the camera to the specified sdl rect
-	void handleevents(const SDL_Event& event);
-	Empaerior::Camera& get_camera() { return camera; } // return a shared pointer to the camera
+	protected:
+		Empaerior::Camera camera;
+		Empaerior::ECS ecs;
 
-private:
-	Empaerior::Camera camera;
-	Empaerior::ECS ecs;
 
 	
-	std::shared_ptr<Sprite_System> spr_system;
-	std::shared_ptr<Event_System> event_system;
-
-	Empaerior::Entity morge;
-	Empaerior::ComponentManager mangy;
-};
+	};
+}

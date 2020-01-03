@@ -31,18 +31,19 @@ std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
 
 
-State* Empaerior::Application::cur_state;
-std::vector <State*> Empaerior::Application::states;
+Emaperior::State* Empaerior::Application::cur_state;
+std::vector <Emaperior::State*> Empaerior::Application::states;
 const Uint32 Empaerior::Application::dt = 1000 / 60;
 bool Empaerior::Application::is_paused = 0;
 bool Empaerior::Application::is_running = 1;
+SDL_Event Empaerior::Application::event;
 Empaerior::Window Empaerior::Application::window;
 
 #pragma endregion
 
 
 extern Empaerior::Application* Empaerior::Create_Application();
-
+//THIS IS THE ENTRY POINT 
 int main(int argc, char** argv)
 {
 
@@ -79,82 +80,22 @@ int main(int argc, char** argv)
 
 
 	
-	SDL_Event event;
+	
 	
 	Empaerior::Application* aplication = Empaerior::Create_Application();
 	
 	aplication->Init();
 
 
-	Uint32 framestart = 0;
-	Uint32 frametime = 0;
-	Uint32 currentime = 0;
-	Uint32 acumulator = 0;
+
 
 	
 	
 	
 	
 	try {
-		while (Empaerior::Application::is_running)
-		{
-
-			
-
-			
 		
-			//not a permanent solution to handle events
-			while (SDL_PollEvent(&event)) {
-
-				aplication->handlevents(event);
-				
-			}
-			if (!Empaerior::Application::is_paused)
-			{
-				
-				
-				framestart = SDL_GetTicks();
-				frametime = framestart - currentime;
-
-				if (frametime > 25) frametime = 25; //if too many frames are skipped
-
-				currentime = framestart;
-				acumulator += frametime;
-
-
-				
-				while (acumulator >= Empaerior::Application::dt)
-				{
-
-					
-					//update 
-
-					aplication->Update(Empaerior::Application::dt);
-					
-					acumulator -= Empaerior::Application::dt;
-
-
-
-				}
-				
-
-				//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
-			
-
-
-			
-				Empaerior::Application::window.clear();
-				aplication->render();
-			
-				Empaerior::Application::window.render();
-				
-				
-			}
-		
-			Empaerior::Asset_Loading::clean_textures();
-		
-		}
-
+		aplication->run();
 	
 	}
 	catch (std::runtime_error & e)

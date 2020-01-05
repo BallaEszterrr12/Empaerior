@@ -23,11 +23,11 @@ namespace Empaerior {
 
 
 
-		virtual void draw(const Camera& camera) { std::cout << "wrong draw " << '\n'; };
+		virtual void draw(const Camera& camera) { };
 
 
 		virtual void update(const Uint32& dt) {
-			std::cout << "adfdfgfgddfgfgdfgd";
+		
 		};
 
 		void set_angle(const double& newAngle)

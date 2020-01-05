@@ -9,7 +9,7 @@
 
 
 
-Emaperior::State::State()
+Empaerior::State::State()
 
 {
 	
@@ -21,7 +21,7 @@ Emaperior::State::State()
 
 
 	
-void Emaperior::State::set_camera(const SDL_Rect& rect)
+void Empaerior::State::set_camera(const SDL_Rect& rect)
 {
 	camera.set_dimensions(rect.w,rect.h);
 	camera.set_position(rect.x, rect.y);

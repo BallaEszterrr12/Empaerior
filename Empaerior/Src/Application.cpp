@@ -23,7 +23,7 @@ void Empaerior::Application::Init()
 
 
 
-void Empaerior::Application::set_state(Emaperior::State* new_state)
+void Empaerior::Application::set_state(Empaerior::State* new_state)
 {
 	cur_state = new_state;
 	SDL_RenderSetLogicalSize(Application::window.renderer, new_state->get_camera().rect.w, new_state->get_camera().rect.h); // set the render size to the new state's camera

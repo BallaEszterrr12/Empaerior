@@ -5,6 +5,11 @@
 
 #include <iostream>
 
+#ifdef EMP_USE_LOGS
+	#include "debugging/Log.h"
+#endif // EMP_USE_LOGS
+
+
 class E_runtime_exception : public std::exception
 {
 public:
@@ -14,12 +19,14 @@ public:
 
 	E_runtime_exception(const std::string& what, const std::string& file, const int& line, const std::string& func)
 	{
-		message = "Exception: " + what + " in " + file +  " function :" + func + " at line " + std::to_string(line);
+		message = "Exception: " + what + " in " + file +  " function :" + func + " at line " + std::to_string(line) + '\n';
 	}
 	
 	void print_message()
 	{
-		std::cout << message << '\n';
+	#ifdef EMP_USE_LOGS
+		ENGINE_ERROR(message);
+	#endif
 	}
 
 	const char* what() const noexcept override 

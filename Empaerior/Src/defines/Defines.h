@@ -21,3 +21,11 @@
 
 #endif 
 
+//Log usage
+
+#if defined(EMPAERIOR_DEBUG) || defined(EMPAERIOR_RELEASE)
+
+#define EMP_USE_LOGS
+
+#endif
+

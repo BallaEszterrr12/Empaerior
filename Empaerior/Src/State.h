@@ -14,7 +14,7 @@
 	A state of the game engine.
 */
 
-namespace Emaperior {
+namespace Empaerior {
 	class  State
 	{
 	public:

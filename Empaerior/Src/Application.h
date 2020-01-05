@@ -24,7 +24,7 @@ public:
 
 	void Init();
 
-    void set_state(Emaperior::State* new_state); // sets a new state to be updated  & rendered 
+    void set_state(Empaerior::State* new_state); // sets a new state to be updated  & rendered 
 
 	//the running function
 	virtual void run() = 0;
@@ -42,9 +42,9 @@ private:
 
 
 public:
-	static Emaperior::State* cur_state;//current state
+	static Empaerior::State* cur_state;//current state
 
-	static std::vector<Emaperior::State*> states;
+	static std::vector<Empaerior::State*> states;
 	
 	static Empaerior::Window window;
 

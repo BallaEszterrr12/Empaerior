@@ -49,10 +49,11 @@ project "Empaerior"
 	includedirs
 	{
 	"%{prj.name}/src",
-	"../External Libraries/SDL2/include",
-	"../External Libraries/SDL2_image/include",
-	"../External Libraries/SDL2_mixer/include",
-	"../External Libraries/SDL2_ttf/include"
+	"External_Libraries/SDL/SDL2/include",
+	"External_Libraries/SDL/SDL2_image/include",
+	"External_Libraries/SDL/SDL2_mixer/include",
+	"External_Libraries/SDL/SDL2_ttf/include",
+	"External_Libraries/spdlog/include"
 	}
 	
 	
@@ -100,10 +101,11 @@ project "Application"
 	includedirs
 	{
 		
-		"../External Libraries/SDL2/include",
-		"../External Libraries/SDL2_image/include",
-		"../External Libraries/SDL2_mixer/include",
-		"../External Libraries/SDL2_ttf/include",
+		"External_Libraries/SDL/SDL2/include",
+		"External_Libraries/SDL/SDL2_image/include",
+		"External_Libraries/SDL/SDL2_mixer/include",
+		"External_Libraries/SDL/SDL2_ttf/include",
+		"External_Libraries/spdlog/include",
 		"Empaerior/Src"
 	}
 
@@ -140,18 +142,18 @@ project "Application"
 	filter "configurations:*32"
 		libdirs 
 		{ 
-		"../External Libraries/SDL2/lib/x86",
-		"../External Libraries/SDL2_image/lib/x86",
-		"../External Libraries/SDL2_mixer/lib/x86",
-		"../External Libraries/SDL2_ttf/lib/x86"
+		"External_Libraries/SDL/SDL2/lib/x86",
+		"External_Libraries/SDL/SDL2_image/lib/x86",
+		"External_Libraries/SDL//SDL2_mixer/lib/x86",
+		"External_Libraries/SDL/SDL2_ttf/lib/x86"
 		}
 
    filter "configurations:*64"     
 	libdirs 
 	{ 
-	"../External Libraries/SDL2/lib/x64",
-	"../External Libraries/SDL2_image/lib/x64",
-	"../External Libraries/SDL2_mixer/lib/x64",
-	"../External Libraries/SDL2_ttf/lib/x64"
+	"External_Libraries/SDL/SDL2/lib/x64",
+	"External_Libraries/SDL/SDL2_image/lib/x64",
+	"External_Libraries/SDL/SDL2_mixer/lib/x64",
+	"External_Libraries/SDL/SDL2_ttf/lib/x64"
 	}
 	

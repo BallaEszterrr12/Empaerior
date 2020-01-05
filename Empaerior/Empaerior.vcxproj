@@ -158,7 +158,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -176,7 +176,7 @@
       <WarningLevel>Level3</WarningLevel>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -197,7 +197,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -218,7 +218,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -236,7 +236,7 @@
       <WarningLevel>Level3</WarningLevel>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -257,7 +257,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;EMPAERIOR_WINDOWS;EMPAERIOR_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\..\External Libraries\SDL2\include;..\..\External Libraries\SDL2_image\include;..\..\External Libraries\SDL2_mixer\include;..\..\External Libraries\SDL2_ttf\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\External_Libraries\SDL\SDL2\include;..\External_Libraries\SDL\SDL2_image\include;..\External_Libraries\SDL\SDL2_mixer\include;..\External_Libraries\SDL\SDL2_ttf\include;..\External_Libraries\spdlog\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -279,6 +279,7 @@
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\assetmanager\AssetManager.h" />
+    <ClInclude Include="src\debugging\Log.h" />
     <ClInclude Include="src\debugging\v_proffiler.h" />
     <ClInclude Include="src\defines\Defines.h" />
     <ClInclude Include="src\entitysystem\ECS.h" />
@@ -300,6 +301,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="Src\debugging\Log.cpp" />
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\assetmanager\AssetManager.cpp" />
     <ClCompile Include="src\eventhandler\EventHandler.cpp" />

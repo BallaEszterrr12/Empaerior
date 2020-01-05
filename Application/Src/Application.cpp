@@ -4,7 +4,7 @@
 //An example of what a application might look like
 
 //a user defined state
-class APP_State : public Emaperior::State
+class APP_State : public Empaerior::State
 {
 
 public:
@@ -40,26 +40,65 @@ public:
 
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
 
-
+		
+		for (int i = 0; i < 16; i++)
+		{
+			for (int j = 0; j < 16; j++)
+			{
+				Empaerior::Sprite borge({ 100*i ,100*j,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
+				spr_system->add_sprite(ecs, morge.id, borge);
+			}
+		}
 	
-		Empaerior::Sprite borge({ 0 ,0,100,100}, { 0,0,1000,1000 }, "assets/img.png", 1);
-		spr_system->add_sprite(ecs, morge.id, borge);
+
 		
 	
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) {  std::cout << "You just pressed a button, idiot!" << '\n'; });
+
+		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) { ENGINE_INFO("A button has been pressed"); });
 
 	}
 
 	void Update(const Uint32& dt)override
 	{
+		unsigned char const* keys = SDL_GetKeyboardState(nullptr);
+		if (keys[SDL_SCANCODE_UP])
+		{
+			Empaerior::Application::cur_state->get_camera().set_dimensions(Empaerior::Application::cur_state->get_camera().rect.w + 12, Empaerior::Application::cur_state->get_camera().rect.h + 10);
+		}
+		else if (keys[SDL_SCANCODE_DOWN])
+		{
+			Empaerior::Application::cur_state->get_camera().set_dimensions(Empaerior::Application::cur_state->get_camera().rect.w - 12, Empaerior::Application::cur_state->get_camera().rect.h - 10);
+		}
+		else if (keys[SDL_SCANCODE_W])
+		{
+			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x, Empaerior::Application::cur_state->get_camera().rect.y - 10);
+		}
+		else if (keys[SDL_SCANCODE_S])
+		{
+			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x, Empaerior::Application::cur_state->get_camera().rect.y + 10);
+		}
+		else if (keys[SDL_SCANCODE_A])
+		{
+			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x - 10, Empaerior::Application::cur_state->get_camera().rect.y);
+		}
+		else if (keys[SDL_SCANCODE_D])
+		{
+			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x + 10, Empaerior::Application::cur_state->get_camera().rect.y);
+		}
+
+
+
 		spr_system->update(ecs, dt);
 	}
 
 	virtual void Render() override//renders the state
 	{
+		
+	
 		spr_system->render(ecs,camera);
+	
 	}
 	virtual void handleevents(const SDL_Event& event) override
 	{
@@ -81,7 +120,6 @@ class Test_Aplication : public Empaerior::Application
 public:
 	Test_Aplication()
 	{
-		std::cout << typeid(this).name() << '\n';
 		window.Init("test", 960, 800);
 
 		states.emplace_back(new APP_State());//add a new state

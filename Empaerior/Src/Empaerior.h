@@ -27,3 +27,10 @@
 #include "graphics/rendering/objects/Sprite.h"
 
 #include "eventhandler/EventHandler.h"
+
+#ifdef EMP_USE_LOGS
+
+#include "debugging/Log.h"
+
+	
+#endif

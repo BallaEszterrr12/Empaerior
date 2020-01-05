@@ -59,7 +59,8 @@ namespace Empaerior
 			}
 			catch(E_runtime_exception & e)
 			{
-				std::cout << e.what() << '\n';
+				e.print_message();
+
 			}
 
 
@@ -85,6 +86,7 @@ namespace Empaerior
 			catch (E_runtime_exception & e)
 			{
 				e.print_message();
+				//something else should happen here, but I can't think what
 				throw;
 			
 				

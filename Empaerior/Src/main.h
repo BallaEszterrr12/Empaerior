@@ -19,15 +19,14 @@
 #include "utilities/Utilities.h"
 #include  "utilities/Timer.h"
 
-typedef uint32_t Uint32;
 
 //static objects variables
 #pragma region static objects
 
 
-std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> Textures;
-std::unordered_map<std::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
-std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
+std::unordered_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
+std::unordered_map<Empaerior::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
+std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
 
 

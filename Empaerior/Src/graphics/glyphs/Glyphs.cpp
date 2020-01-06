@@ -4,7 +4,7 @@
 namespace Empaerior {
 
 
-	int createGlyphs(std::vector <glyph>& glyphs, const std::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color)
+	int createGlyphs(std::vector <glyph>& glyphs, const Empaerior::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color)
 	{
 		int w, h;
 		char fontChar[86] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";
@@ -29,7 +29,7 @@ namespace Empaerior {
 	}
 
 	//renders from string
-	int renderLine_st(const std::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
+	int renderLine_st(const Empaerior::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
 	{
 		int x = margin, y = Y, wX = 0;
 		SDL_Rect textRect;
@@ -113,7 +113,7 @@ namespace Empaerior {
 
 
 
-	std::vector<int> load_glyph_values(const std::string& source)
+	std::vector<int> load_glyph_values(const Empaerior::string& source)
 	{
 		std::vector<int> text;
 		for (int i = 0; i < source.length(); i++) {

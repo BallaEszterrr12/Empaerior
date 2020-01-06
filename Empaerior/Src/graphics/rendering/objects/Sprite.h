@@ -68,7 +68,7 @@ namespace Empaerior {
 	public:
 		// the size of the rect is only for one frame of the sprite
 	    // so the length of the texture should be frames * tex_rect.w
-		Sprite(const SDL_Rect& rect, const SDL_Rect& tex_rect, const std::string& tex_path, const unsigned int& frames)
+		Sprite(const SDL_Rect& rect, const SDL_Rect& tex_rect, const Empaerior::string& tex_path, const unsigned int& frames)
 			:Graphic_element(rect), tex_rect(tex_rect), anim_x(tex_rect.x), anim_y(tex_rect.y),frames(frames)
 
 		{
@@ -84,7 +84,7 @@ namespace Empaerior {
 		}
 
 	
-		void set_texture(const std::string& tex_path)
+		void set_texture(const Empaerior::string& tex_path)
 		{
 			texture = Asset_Loading::load_texture(tex_path);
 		}
@@ -144,7 +144,7 @@ namespace Empaerior {
 	class Text_Sprite : public Graphic_element
 	{
 	public:
-		Text_Sprite(const SDL_Rect& rect, const std::string& font_path, const unsigned int& size, const std::string& message, SDL_Color& color);
+		Text_Sprite(const SDL_Rect& rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, SDL_Color& color);
 
 
 		

@@ -1,6 +1,7 @@
 #pragma once
-#include <memory>
-#include <iostream>
+
+#include <string>
+
 
 //Platform detection
 #ifdef _WIN32
@@ -10,7 +11,8 @@
 	#else // if 32 bit
 		#define EMPAERIOR_32BIT
 		#pragma warning  "x86 is not a actively tested"	//x86 flag
-	#endif // _WIN64
+	
+#endif // _WIN64
 
 #elif __APPLE__
 	#error "No Apple platforms are supported"
@@ -29,3 +31,12 @@
 
 #endif
 
+
+//Variable defines // just in case
+
+namespace Empaerior
+{
+
+	using string = std::string;
+
+}

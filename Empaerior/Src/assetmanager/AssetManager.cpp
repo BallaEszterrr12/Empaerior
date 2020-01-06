@@ -5,15 +5,15 @@
 #include "../Exceptions/Exceptions.h"
 
 
-extern std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> Textures;
-extern std::unordered_map<std::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
-extern std::unordered_map<std::string, std::unique_ptr<Mix_Chunk>> Sounds;
+extern std::unordered_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
+extern std::unordered_map<Empaerior::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
+extern std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
 namespace Empaerior::Asset_Loading
 {
 
 
-	std::shared_ptr<SDL_Texture> load_texture(const std::string& tex_path)//returnsnullptr on  exception
+	std::shared_ptr<SDL_Texture> load_texture(const Empaerior::string& tex_path)//returnsnullptr on  exception
 	{
 		//I Had to rewrite this whole fucking things so please don't have leaks....
 		//search for texture
@@ -74,7 +74,7 @@ namespace Empaerior::Asset_Loading
 
 	}
 
-	TTF_Font* load_font(const std::string& font_path, const int& size)
+	TTF_Font* load_font(const Empaerior::string& font_path, const int& size)
 	{
 		//this was a fucking rollercoaster
 		//I hope I never have to do this ever again
@@ -148,7 +148,7 @@ namespace Empaerior::Asset_Loading
 
 	}
 
-	void play_sound(const std::string& sound_path)
+	void play_sound(const Empaerior::string& sound_path)
 	{
 		try {
 			auto sound = Sounds.find(sound_path);

@@ -10,7 +10,7 @@ namespace Empaerior
 
 	public:
 		Window();
-		Window(const std::string& name, const Uint32& width, const Uint32& height);
+		Window(const Empaerior::string& name, const Uint32& width, const Uint32& height);
 
 
 
@@ -21,7 +21,7 @@ namespace Empaerior
 			if (renderer != nullptr)SDL_DestroyRenderer(renderer);
 
 		}
-		int Init(const std::string& name, const Uint32& width, const Uint32& height);
+		int Init(const Empaerior::string& name, const Uint32& width, const Uint32& height);
 		void render();
 		void clear();
 

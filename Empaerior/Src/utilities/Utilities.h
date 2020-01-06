@@ -5,12 +5,12 @@
 namespace Empaerior
 {
 	//clipboard functions
-	std::string get_clipboard_text()
+	Empaerior::string get_clipboard_text()
 	{
 		if (SDL_HasClipboardText())//if there's text
 		{
 			char* sdl_text = SDL_GetClipboardText();//get the clipboard content as char*
-			std::string clip_text = sdl_text;//transfom  the char* intoa std::string
+			Empaerior::string clip_text = sdl_text;//transfom  the char* into a Empaerior::string
 			SDL_free(sdl_text);//free the char*
 			return clip_text;//return a string
 		}
@@ -35,10 +35,10 @@ namespace Empaerior
 
 
 	//system functions
-	std::string get_platform()//gets the current platform
+	Empaerior::string get_platform()//gets the current platform
 	{
 		const char* sdl_platform = SDL_GetPlatform();
-		std::string e_platform = sdl_platform;
+		Empaerior::string e_platform = sdl_platform;
 		SDL_free((void*)sdl_platform);
 		return e_platform;
 

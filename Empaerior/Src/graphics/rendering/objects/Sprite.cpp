@@ -20,7 +20,7 @@ void Empaerior::Text_Sprite::draw(const Camera& camera)
 
 
 
-Empaerior::Text_Sprite::Text_Sprite(const SDL_Rect& rect, const std::string& font_path, const unsigned int& size, const std::string& message,  SDL_Color& color)
+Empaerior::Text_Sprite::Text_Sprite(const SDL_Rect& rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message,  SDL_Color& color)
 	:Graphic_element(rect) // no use for tex_ rect
 {
 	if (createGlyphs(this->glyphs, font_path, size, Application::window.renderer, color) != -1)// create glyphs

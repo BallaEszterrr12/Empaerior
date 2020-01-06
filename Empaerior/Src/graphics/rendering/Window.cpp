@@ -3,7 +3,7 @@
 #include "../../Application.h"
 
 
-Empaerior::Window::Window(const std::string& name, const Uint32& width, const Uint32& height)
+Empaerior::Window::Window(const Empaerior::string& name, const Uint32& width, const Uint32& height)
 : width(width),height(height)
 {
 	window = SDL_CreateWindow(name.c_str(),
@@ -34,7 +34,7 @@ Empaerior::Window::Window()
 
 }
 
-int Empaerior::Window::Init(const std::string& name, const Uint32& m_width, const Uint32& m_height)
+int Empaerior::Window::Init(const Empaerior::string& name, const Uint32& m_width, const Uint32& m_height)
 {
 	width = m_width;
 	height = m_height;

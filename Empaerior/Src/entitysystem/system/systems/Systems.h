@@ -54,11 +54,15 @@ public:
 	//adds a new sprite to the entity
 	//doesn't need to be efficient
 	//it return the index of the sprite just in case
-	size_t add_sprite(Empaerior::ECS& ecs, const uint64_t& id, Empaerior::Sprite sprite)
+	size_t add_sprite(Empaerior::ECS& ecs, const uint64_t& id, 
+		
+		const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
 	{
 
-		POS_SPRITES.emplace_back(SPRITES.size());
-		SPRITES.emplace_back(std::move(sprite));
+		POS_SPRITES.emplace_back(ORDER.size());
+		SPRITES.push_back({});
+		SPRITES[SPRITES.size() - 1].Init(m_rect, m_tex_rect, tex_path, m_frames);
+
 		//put a true in the queue 
 		ORDER.emplace_back(true);
 
@@ -69,12 +73,16 @@ public:
 
 	}
 
-	size_t add_text_sprite(Empaerior::ECS& ecs, const uint64_t& id, Empaerior::Text_Sprite& sprite)
+	size_t add_text_sprite(Empaerior::ECS& ecs, const uint64_t& id, 
+		const SDL_Rect& m_rect, const Empaerior::string& font_path, const unsigned int& m_size, const Empaerior::string& message, SDL_Color& m_color)
 	{
 
 
-		TEXT_POS_SPRITES.emplace_back(TEXT_SPRITES.size());
-		TEXT_SPRITES.emplace_back(sprite);
+		TEXT_POS_SPRITES.emplace_back(ORDER.size());
+
+		TEXT_SPRITES.push_back({});
+		TEXT_SPRITES[TEXT_SPRITES.size() - 1].Init(m_rect, font_path, m_size, message, m_color);
+
 		ORDER.emplace_back(false);
 		make_render_cache(ecs, id);
 	
@@ -92,11 +100,10 @@ public:
 		{
 
 			if (index < SPRITES.size()) { 
-				//remove the sprites from the chache
-				ORDER.erase(ORDER.begin() + POS_SPRITES[index]);  
-				//remove the sprites from the container
+			  //remove the sprites from the container
 				SPRITES.erase(SPRITES.begin() + index); 
-				POS_SPRITES.erase(POS_SPRITES.begin() + index); 
+				ORDER.erase(ORDER.begin() + POS_SPRITES[index]);
+				POS_SPRITES.erase(POS_SPRITES.begin() + index);
 				make_render_cache(ecs, id);
 				return;
 			}
@@ -117,8 +124,14 @@ public:
 		{
 
 			if (index < TEXT_SPRITES.size()) {
-			ORDER.erase(ORDER.begin() + TEXT_POS_SPRITES[index]); 
+			//delete from render cache
+		 
+
+			//clean the glyphs
+			TEXT_SPRITES[index].clean();
+			//delete from veectors
 			TEXT_SPRITES.erase(TEXT_SPRITES.begin() + index);
+			ORDER.erase(ORDER.begin() + TEXT_POS_SPRITES[index]);
 			TEXT_POS_SPRITES.erase(TEXT_POS_SPRITES.begin() + index);
 			make_render_cache(ecs, id);
 			return;
@@ -173,14 +186,15 @@ public:
 		ecs.get_component<Empaerior::Sprite_Component>(id).cur_it_txt_spr = 0;
 		for (int i = 0; i < ORDER.size(); i++)
 		{
-			
 			switch (ORDER[i])
 			{
 			case true:
 				//load the next sprite
 				ALLSPRITES.emplace_back(&SPRITES[ecs.get_component<Empaerior::Sprite_Component>(id).cur_it_spr++]);
+			
 				break;
 			case false:
+				
 				ALLSPRITES.emplace_back(&TEXT_SPRITES[ecs.get_component<Empaerior::Sprite_Component>(id).cur_it_txt_spr++]);
 				break;
 			}

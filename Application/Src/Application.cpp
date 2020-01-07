@@ -40,19 +40,15 @@ public:
 
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
 
-		
-		for (int i = 0; i < 16; i++)
-		{
-			for (int j = 0; j < 16; j++)
-			{
-				Empaerior::Sprite borge({ 100*i ,100*j,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
-				spr_system->add_sprite(ecs, morge.id, borge);
-			}
-		}
-	
 
+
+		SDL_Color colo = { 77,55,255,255 };
 		
 	
+		
+		spr_system->add_text_sprite(ecs, morge.id, { 212,212,100,100 }, "assets/font.ttf", 32, "gsdf fsdfsdsdffsdsdfsdfsdfdfsf sdf fds dfs sdf ", colo);
+		spr_system->add_sprite(ecs, morge.id, { 0,0,255,255 }, { 0,0,100,100 }, "assets/img.png", 1);
+
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
 
@@ -97,7 +93,9 @@ public:
 	{
 		
 	
+		//std::cout << ecs.get_component<Empaerior::Sprite_Component>(morge.id).text_sprites[0].glyphs[0].image << '\n';
 		spr_system->render(ecs,camera);
+		
 	
 	}
 	virtual void handleevents(const SDL_Event& event) override
@@ -139,10 +137,10 @@ public:
 
 	void run() override
 	{
-		Uint32 framestart = 0;
-		Uint32 frametime = 0;
-		Uint32 currentime = 0;
-		Uint32 acumulator = 0;
+		Empaerior::u_s_int framestart = 0;
+		Empaerior::u_s_int frametime = 0;
+		Empaerior::u_s_int currentime = 0;
+		Empaerior::u_s_int acumulator = 0;
 
 		while (Empaerior::Application::is_running)
 		{

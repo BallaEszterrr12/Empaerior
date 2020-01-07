@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "Glyphs.h"
 #include "../../assetmanager/AssetManager.h"
+
 namespace Empaerior {
 
 
@@ -16,6 +17,7 @@ namespace Empaerior {
 		char shortString[2] = "";
 
 		for (int cnt = 0; cnt < 86; cnt++) {
+			
 			shortString[0] = fontChar[cnt];
 			tempSurface = TTF_RenderText_Solid(font, shortString, color);
 			temp.image = SDL_CreateTextureFromSurface(renderer, tempSurface);
@@ -24,7 +26,6 @@ namespace Empaerior {
 			glyphs.push_back(std::move(temp));
 			SDL_FreeSurface(tempSurface);// delete surface
 		}
-
 		return 1;
 	}
 
@@ -36,7 +37,7 @@ namespace Empaerior {
 		int lValue = 0;
 		int lastSpace = 0;
 		bool safe = true;
-
+		
 		for (unsigned int cnt = 0; cnt < text.length(); cnt++)
 		{   //covert from character to glyph id
 			lValue = getValue(text[cnt]);
@@ -57,13 +58,14 @@ namespace Empaerior {
 					}
 				}
 			}
-			if (safe) {
+			if (true) {
 				textRect.x = x - camera_x; textRect.y = y - camera_y; textRect.w = glyphs[lValue].w; textRect.h = glyphs[lValue].h;
 				SDL_RenderCopyEx(renderer, &(*glyphs[lValue].image), NULL, &textRect, 0, NULL, SDL_FLIP_NONE);
 				x = x + glyphs[lValue].w;
 			}
 			else { cnt = lastSpace; x = margin; y = y + glyphs[lValue].h; safe = true; }
 		}
+	//	std::cout << '\n';
 		return 1;
 	}
 	//slower,as  it doesn't preload the values but simpler
@@ -72,6 +74,7 @@ namespace Empaerior {
 	//renders from a vector of int,where each int is a value of a char from glyphs
 	int renderLine(const std::vector<int>& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
 	{
+		
 		int x = margin, y = Y, wX = 0;
 		SDL_Rect textRect;
 		int lValue = 0;
@@ -101,6 +104,7 @@ namespace Empaerior {
 			if (safe) {
 
 				textRect.x = x - camera_x; textRect.y = y - camera_y; textRect.w = glyphs[lValue].w; textRect.h = glyphs[lValue].h;
+			
 				SDL_RenderCopyEx(renderer, &(*glyphs[lValue].image), NULL, &textRect, angle, NULL, SDL_FLIP_NONE);
 				x = x + glyphs[lValue].w;
 			}
@@ -115,10 +119,10 @@ namespace Empaerior {
 
 	std::vector<int> load_glyph_values(const Empaerior::string& source)
 	{
+	
 		std::vector<int> text;
 		for (int i = 0; i < source.length(); i++) {
 			text.emplace_back(getValue(source[i]));
-
 		}
 
 		return text;

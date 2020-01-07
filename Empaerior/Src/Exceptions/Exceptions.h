@@ -1,4 +1,5 @@
 #pragma once
+#include "defines/Defines.h"
 #include <exception>
 #include <stdexcept>
 #include <string>
@@ -17,7 +18,7 @@ public:
 	
 
 
-	E_runtime_exception(const std::string& what, const std::string& file, const int& line, const std::string& func)
+	E_runtime_exception(const Empaerior::string& what, const Empaerior::string& file, const int& line, const  Empaerior::string& func)
 	{
 		message = "Exception: " + what + " in " + file +  " function :" + func + " at line " + std::to_string(line) + '\n';
 	}
@@ -35,7 +36,7 @@ public:
 	}
 
 private:
-	std::string message = "";//message
+	Empaerior::string message = "";//message
 	
 
 

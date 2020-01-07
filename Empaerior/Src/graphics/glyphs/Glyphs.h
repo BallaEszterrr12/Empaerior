@@ -3,7 +3,7 @@
 
 
 
-
+#include <iostream>
 #include "../../SDLwrappers/Ptr_Wrappers.h"
 
 namespace Empaerior {
@@ -17,14 +17,13 @@ namespace Empaerior {
 	};
 
 	//glyphs must be deallocated 
-	struct glyph {
-
-
-
+	class glyph {
+	public:
+		
 		void clean()
 		{
 			SDL_DestroyTexture(&*image);
-
+			
 		}
 
 		SDL_Texture* image;

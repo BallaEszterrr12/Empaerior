@@ -36,7 +36,16 @@
 
 namespace Empaerior
 {
-
+	//string definition
 	using string = std::string;
+
+	//one byte interger
+	using byte = uint8_t;
+	//type compatible with SDL
+	using u_s_int = uint32_t;
+	using s_int = int32_t;
+	//the type the engine works with 
+	using u_inter = uint64_t;
+	using inter = int64_t;
 
 }

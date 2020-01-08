@@ -12,7 +12,7 @@ class Event_System : public Empaerior::System
 {
 public:
 
-	void add_event_to_entity(Empaerior::ECS& ecs, const uint64_t& entity_id, const Uint32& event_type, std::function<void(SDL_Event const&)> function)
+	void add_event_to_entity(Empaerior::ECS& ecs, const uint64_t& entity_id, const Empaerior::u_s_int& event_type, std::function<void(SDL_Event const&)> function)
 	{
 #define EVENTLISTENER  ecs.get_component<Empaerior::Event_Listener_Component>(entity_id).event_listener
 
@@ -164,7 +164,7 @@ public:
 		ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_color(r, g, b);
 	}
 
-	void update(Empaerior::ECS& ecs, const Uint32& dt)
+	void update(Empaerior::ECS& ecs, const Empaerior::u_s_int& dt)
 	{
 		for (auto& id : entities_id)
 		{

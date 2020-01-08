@@ -33,7 +33,7 @@ std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 Empaerior::State* Empaerior::Application::cur_state;
 std::vector <Empaerior::State*> Empaerior::Application::states;
 //time between frames
-const Uint32 Empaerior::Application::dt = 1000 / 60;
+const Empaerior::u_s_int Empaerior::Application::dt = 1000 / 60;
 bool Empaerior::Application::is_paused = 0;
 bool Empaerior::Application::is_running = 1;
 SDL_Event Empaerior::Application::event;

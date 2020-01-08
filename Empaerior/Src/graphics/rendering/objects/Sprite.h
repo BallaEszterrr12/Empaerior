@@ -29,7 +29,7 @@ namespace Empaerior {
 		virtual void draw(const Camera& camera) { };
 
 
-		virtual void update(const Uint32& dt) {
+		virtual void update(const Empaerior::u_s_int& dt) {
 		
 		};
 
@@ -40,7 +40,7 @@ namespace Empaerior {
 
 
 
-		void set_position(const int& x, const int& y)
+		void set_position(const Empaerior::s_int& x, const Empaerior::s_int& y)
 		{
 			rect.x = x;
 			rect.y = y;
@@ -57,9 +57,6 @@ namespace Empaerior {
 	protected:
 
 		SDL_Rect rect; // the sprite
-
-
-
 
 		double angle = 0; // rotation fo the element
 
@@ -98,7 +95,7 @@ namespace Empaerior {
 
 		void draw(const Camera& camera) override;
 
-		void update(const Uint32& dt)
+		void update(const Empaerior::u_s_int& dt)
 		{
 			time += dt; // add the time passed
 
@@ -172,7 +169,7 @@ namespace Empaerior {
 		void clean()
 		{
 			//destroy the glyphs, becuase unlike the normal sprite, the texture  is unique for all texts and alocatted bu the assetmanager
-			unsigned int i;
+			Empaerior::u_inter i;
 			for (i = 0; i < glyphs.size(); i++)
 			{
 				glyphs[i].clean();
@@ -182,7 +179,7 @@ namespace Empaerior {
 
 
 		void draw(const Camera& camera);
-		void update(const uint64_t& dt) {};
+		void update(const Empaerior::u_s_int& dt) {};
 
 
 	public:

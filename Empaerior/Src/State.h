@@ -23,7 +23,7 @@ namespace Empaerior {
 
 		};
 
-		virtual void Update(const Uint32& dt) = 0;
+		virtual void Update(const Empaerior::u_s_int& dt) = 0;
 		virtual void Render() = 0 ;//renders the state
 		virtual void handleevents(const SDL_Event& event) = 0;
 

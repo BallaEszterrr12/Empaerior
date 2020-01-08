@@ -51,10 +51,6 @@ public:
 		{
 			for (int j = 0; j < 10; j++)
 			{
-
-
-				// ...
-				 // needed once per program run
 			
 
 				APP_INFO("Generating the " + std::to_string(i) + ' ' + std::to_string(j) + " element");
@@ -72,7 +68,7 @@ public:
 
 	}
 
-	void Update(const Uint32& dt)override
+	void Update(const Empaerior::u_s_int& dt)override
 	{
 		unsigned char const* keys = SDL_GetKeyboardState(nullptr);
 		if (keys[SDL_SCANCODE_UP])
@@ -108,9 +104,6 @@ public:
 	virtual void Render() override//renders the state
 	{
 		
-		Empaerior::Timer time_rend;
-		time_rend.start();
-		//std::cout << ecs.get_component<Empaerior::Sprite_Component>(morge.id).text_sprites[0].glyphs[0].image << '\n';
 		spr_system->render(ecs,camera);
 	
 	}
@@ -165,7 +158,7 @@ public:
 
 
 
-			//not a permanent solution to handle events
+	
 			while (SDL_PollEvent(&Empaerior::Application::event)) {
 
 				handlevents(Empaerior::Application::event);

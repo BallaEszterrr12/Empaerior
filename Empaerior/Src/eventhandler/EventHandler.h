@@ -18,7 +18,7 @@ namespace Empaerior {
 		~EventListener() {};
 
 
-		void register_event(Uint32 type, EventCallback callback); //put a callback in the lisener
+		void register_event(Empaerior::u_s_int type, EventCallback callback); //put a callback in the lisener
 		
 		void handleEvents(const SDL_Event& cur_event); //execute commands
 		

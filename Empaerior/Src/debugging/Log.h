@@ -11,7 +11,6 @@ namespace Empaerior
 	{
 
 		void Init();
-		void Quit();
 
 		struct Logger
 		{

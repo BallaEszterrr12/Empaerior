@@ -1,9 +1,8 @@
 #pragma once
 #include <SDL.h>
-
+#include "defines/Defines.h"
 namespace Empaerior
 {
-
 
 	class Camera
 	{
@@ -34,11 +33,10 @@ namespace Empaerior
 			rect.y = y;
 
 		}
-		void set_dimensions(const int& w, const int& h);
+		void set_dimensions(const  Empaerior::s_int& w, const  Empaerior::s_int& h);
 
 
 		SDL_Rect rect = { 0,0,0,0 };
-
 	private:
 
 

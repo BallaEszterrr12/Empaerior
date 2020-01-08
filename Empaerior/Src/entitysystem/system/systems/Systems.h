@@ -39,14 +39,14 @@ public:
 
 };
 
-
+//SPRITE SYSTEM
 #define SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).sprites // the sprites vector
 #define POS_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).pos_sprites // the position of the sprite in  the render cache
 #define TEXT_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).text_sprites// the text_sprite
 #define TEXT_POS_SPRITES ecs.get_component<Empaerior::Sprite_Component>(id).pos_text_sprites // the position of the text_ sprite in  the render cache
 #define ORDER ecs.get_component<Empaerior::Sprite_Component>(id).sprites_load//the order in which the sprites were loaded 0 for text_Sprites and 1 for sprites
 #define ALLSPRITES ecs.get_component<Empaerior::Sprite_Component>(id).a_sprites//all sprites to be rendered
-
+//An abstraction over the sprite and text_sprite rendering for ease of use
 class Sprite_System : public Empaerior::System
 {
 public:
@@ -94,8 +94,8 @@ public:
 	}
 
 
-	//removes the sprite at a given index
-		void remove_sprite(Empaerior::ECS& ecs, const uint64_t& id, const size_t& index)
+	//removes the sprite at a given index	
+	void remove_sprite(Empaerior::ECS& ecs, const uint64_t& id, const size_t& index)
 	{
 
 		try
@@ -153,7 +153,16 @@ public:
 
 	}
 
-
+	//sets the texture of the sprite at the specified file path
+	void set_texture(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index,const Empaerior::string& file)
+	{
+		ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_texture(file);
+	}
+	//sets the color of the sprite at the specified index
+	void set_color(Empaerior::ECS& ecs, const Empaerior::u_inter& id,const Empaerior::u_inter& index,const Empaerior::byte r, const Empaerior::byte g, const Empaerior::byte b)
+	{
+		ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_color(r, g, b);
+	}
 
 	void update(Empaerior::ECS& ecs, const Uint32& dt)
 	{

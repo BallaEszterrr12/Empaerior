@@ -18,7 +18,13 @@ void Empaerior::Sprite::Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect,
 void Empaerior::Sprite::draw(const Camera& camera)
 {
 	SDL_Rect position_rect = {rect.x - camera.rect.x,rect.y - camera.rect.y,rect.w,rect.h };
-	if(texture != nullptr)SDL_RenderCopyEx(Application::window.renderer, &(*texture), &tex_rect, &position_rect, angle, NULL, SDL_FLIP_NONE);
+	if (texture != nullptr)
+	{
+		//setting the texture's color, because each sprite that uses the texture uses it differently (or not)
+		SDL_SetTextureColorMod(texture.get(), r, g, b);//Safe/acceptable to call SDL_SetTextureColorMod a lot?
+		//render it
+		SDL_RenderCopyEx(Application::window.renderer, &(*texture), &tex_rect, &position_rect, angle, NULL, SDL_FLIP_NONE);
+	}
 }
 void Empaerior::Text_Sprite::draw(const Camera& camera)
 {

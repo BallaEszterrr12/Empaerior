@@ -80,12 +80,21 @@ namespace Empaerior {
 		// so the length of the texture should be frames * tex_rect.w
 		void Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
 		
-	
+		//sets a new texture instead of the old one
+		//rect , animation  and position doesn't change
 		void set_texture(const Empaerior::string& tex_path)
 		{
 			texture = Asset_Loading::load_texture(tex_path);
-		}
 
+		}
+		//changes the color of the texture tot the rgb value
+		//255,255,255 - 
+		void set_color(Empaerior::byte p_r, Empaerior::byte p_g, Empaerior::byte p_b)
+		{
+			r = p_r;
+			g = p_g;
+			b = p_b;
+		}
 
 		void draw(const Camera& camera) override;
 
@@ -103,6 +112,8 @@ namespace Empaerior {
 
 		}
 
+		
+		
 
 	std::shared_ptr<SDL_Texture> texture;
 	private:
@@ -136,8 +147,8 @@ namespace Empaerior {
 		Empaerior::byte cur_frame = 0;
 
 		//color values
-		Empaerior::byte r = 255;
-		Empaerior::byte g = 255;
+		Empaerior::byte r = 0;
+		Empaerior::byte g = 0;
 		Empaerior::byte b = 255;
 
 

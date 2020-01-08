@@ -43,21 +43,27 @@ public:
 
 
 		SDL_Color colo = { 77,55,255,255 };
-		
-#define APP_INFO(...)
+
 		Empaerior::Timer timy;
 		timy.start();
 
-		for (int i = 0 ; i < 100;i++)
+		for (int i = 0 ; i < 10;i++)
 		{
-			for (int j = 0; j < 100; j++)
+			for (int j = 0; j < 10; j++)
 			{
+
+
+				// ...
+				 // needed once per program run
+			
+
 				APP_INFO("Generating the " + std::to_string(i) + ' ' + std::to_string(j) + " element");
-				spr_system->add_sprite(ecs, morge.id, { i * 32,j * 32,32,32 }, { 0,0,960,800 }, "assets/img.png", 1);
+				auto index = spr_system->add_sprite(ecs, morge.id, { i * 32,j * 32,32,32 }, { 0,0,960,800 }, "assets/img.png", 1);
+				spr_system->set_color(ecs, morge.id, index, std::rand() % 255 + 1 , std::rand() % 255 + 1 , std::rand() % 255 + 1);
 			}
 
 		}
-		APP_INFO("GENERATING 10000 sprites took" + std::to_string(timy.getTicks()));
+		APP_INFO("GENERATING 100 sprites took" + std::to_string(timy.getTicks()));
 		
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
@@ -98,14 +104,14 @@ public:
 
 		spr_system->update(ecs, dt);
 	}
-
+	
 	virtual void Render() override//renders the state
 	{
 		
-	
+		Empaerior::Timer time_rend;
+		time_rend.start();
 		//std::cout << ecs.get_component<Empaerior::Sprite_Component>(morge.id).text_sprites[0].glyphs[0].image << '\n';
 		spr_system->render(ecs,camera);
-		
 	
 	}
 	virtual void handleevents(const SDL_Event& event) override
@@ -114,7 +120,7 @@ public:
 	}
 
 private:
-
+	
 	std::shared_ptr<Sprite_System> spr_system;
 	std::shared_ptr<Event_System> event_system;
 

@@ -5,16 +5,16 @@
 namespace Empaerior {
 
 
-	int createGlyphs(std::vector <glyph>& glyphs, const Empaerior::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color)
+	Empaerior::byte createGlyphs(std::vector <glyph>& glyphs, const Empaerior::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color)
 	{
-		int w, h;
-		char fontChar[86] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";
+		Empaerior::s_int w, h;
+		Empaerior::ch fontChar[86] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";
 		fontChar[84] = '"'; fontChar[85] = ' ';
 		SDL_Surface* tempSurface;
 		TTF_Font* font = Empaerior::Asset_Loading::load_font(path, size);
 		if (font == nullptr)  return -1;
 		glyph temp;
-		char shortString[2] = "";
+		Empaerior::ch shortString[2] = "";
 
 		for (int cnt = 0; cnt < 86; cnt++) {
 			
@@ -30,14 +30,15 @@ namespace Empaerior {
 	}
 
 	//renders from string
-	int renderLine_st(const Empaerior::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
+	void renderLine_st(const Empaerior::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
 	{
-		int x = margin, y = Y, wX = 0;
+
+		Empaerior::s_int x = margin, y = Y, wX = 0;
 		SDL_Rect textRect;
-		int lValue = 0;
-		int lastSpace = 0;
-		bool safe = true;
-		
+		Empaerior::byte lValue = 0;
+		Empaerior::u_inter lastSpace = 0;
+		Empaerior::boole safe = true;
+
 		for (unsigned int cnt = 0; cnt < text.length(); cnt++)
 		{   //covert from character to glyph id
 			lValue = getValue(text[cnt]);
@@ -66,20 +67,20 @@ namespace Empaerior {
 			else { cnt = lastSpace; x = margin; y = y + glyphs[lValue].h; safe = true; }
 		}
 	//	std::cout << '\n';
-		return 1;
+	
 	}
 	//slower,as  it doesn't preload the values but simpler
 
 
 	//renders from a vector of int,where each int is a value of a char from glyphs
-	int renderLine(const std::vector<Empaerior::byte>& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
+	void renderLine(const std::vector<Empaerior::byte>& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
 	{
 		
-		int x = margin, y = Y, wX = 0;
+		Empaerior::s_int x = margin, y = Y, wX = 0;
 		SDL_Rect textRect;
-		int lValue = 0;
-		int lastSpace = 0;
-		bool safe = true;
+		Empaerior::byte lValue = 0;
+		Empaerior::u_inter lastSpace = 0;
+		Empaerior::boole safe = true;
 
 		for (unsigned int cnt = 0; cnt < text.size(); cnt++)
 		{   //covert from character to glyph id
@@ -111,7 +112,7 @@ namespace Empaerior {
 			else { cnt = lastSpace; x = margin; y = y + glyphs[lValue].h; safe = true; }
 		}
 
-		return 1;
+		
 	}
 	//faster,but you need to preload the vector
 

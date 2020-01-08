@@ -47,5 +47,7 @@ namespace Empaerior
 	//the type the engine works with 
 	using u_inter = uint64_t;
 	using inter = int64_t;
+	using boole = bool;
+	using ch = char;
 
 }

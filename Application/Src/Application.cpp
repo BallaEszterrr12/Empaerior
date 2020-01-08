@@ -44,18 +44,25 @@ public:
 
 		SDL_Color colo = { 77,55,255,255 };
 		
-		for (int i = 0; i < 4; i++)
-		{
-			spr_system->add_text_sprite(ecs, morge.id, { i,i,100,100 }, "assets/font.ttf", 32, "gsdf fsdfsdsdffsdsdfsdfsdfdfsf sdf fds dfs sdf ", colo);
-		}
-		
-		
-		spr_system->add_sprite(ecs, morge.id, { 0,0,255,255 }, { 0,0,100,100 }, "assets/img.png", 1);
+#define APP_INFO(...)
+		Empaerior::Timer timy;
+		timy.start();
 
+		for (int i = 0 ; i < 100;i++)
+		{
+			for (int j = 0; j < 100; j++)
+			{
+				APP_INFO("Generating the " + std::to_string(i) + ' ' + std::to_string(j) + " element");
+				spr_system->add_sprite(ecs, morge.id, { i * 32,j * 32,32,32 }, { 0,0,960,800 }, "assets/img.png", 1);
+			}
+
+		}
+		APP_INFO("GENERATING 10000 sprites took" + std::to_string(timy.getTicks()));
+		
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
 
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) { ENGINE_INFO("A button has been pressed"); });
+		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) { APP_INFO("A button has been pressed"); });
 
 	}
 

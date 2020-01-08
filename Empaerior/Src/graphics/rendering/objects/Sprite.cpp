@@ -5,6 +5,16 @@
 #include "../Window.h"
 
 
+void Empaerior::Sprite::Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
+{
+	rect = m_rect;
+	tex_rect = m_tex_rect;
+	// load the texture
+	texture = Asset_Loading::load_texture(tex_path);
+	frames = m_frames;
+
+}
+
 void Empaerior::Sprite::draw(const Camera& camera)
 {
 	SDL_Rect position_rect = {rect.x - camera.rect.x,rect.y - camera.rect.y,rect.w,rect.h };

@@ -44,9 +44,12 @@ public:
 
 		SDL_Color colo = { 77,55,255,255 };
 		
-	
+		for (int i = 0; i < 4; i++)
+		{
+			spr_system->add_text_sprite(ecs, morge.id, { i,i,100,100 }, "assets/font.ttf", 32, "gsdf fsdfsdsdffsdsdfsdfsdfdfsf sdf fds dfs sdf ", colo);
+		}
 		
-		spr_system->add_text_sprite(ecs, morge.id, { 212,212,100,100 }, "assets/font.ttf", 32, "gsdf fsdfsdsdffsdsdfsdfsdfdfsf sdf fds dfs sdf ", colo);
+		
 		spr_system->add_sprite(ecs, morge.id, { 0,0,255,255 }, { 0,0,100,100 }, "assets/img.png", 1);
 
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;

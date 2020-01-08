@@ -78,15 +78,8 @@ namespace Empaerior {
 
 		// the size of the rect is only for one frame of the sprite
 		// so the length of the texture should be frames * tex_rect.w
-		void Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
-		{
-			rect = m_rect;
-			tex_rect = m_tex_rect;
-			// load the texture
-			texture = Asset_Loading::load_texture(tex_path);
-			frames = m_frames;
-
-		}
+		void Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
+		
 	
 		void set_texture(const Empaerior::string& tex_path)
 		{
@@ -183,7 +176,7 @@ namespace Empaerior {
 
 	public:
 		std::vector<glyph> glyphs; // texts have glyphs instead of texture (the same thing but not )
-		std::vector<int> text_values;
+		std::vector<Empaerior::byte> text_values;
 
 	};
 }

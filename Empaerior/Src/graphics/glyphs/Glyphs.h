@@ -40,10 +40,10 @@ namespace Empaerior {
 	int renderLine_st(const Empaerior::string& text, int const& margin, int const& Y, std::vector <Empaerior::glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
 
 
-	int renderLine(const std::vector<int>& text, int const& margin, int const& Y, std::vector <Empaerior::glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
+	int renderLine(const std::vector<Empaerior::byte>& text, int const& margin, int const& Y, std::vector <Empaerior::glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
 
 
-	std::vector<int> load_glyph_values(const  Empaerior::string& source);
+	std::vector<Empaerior::byte> load_glyph_values(const  Empaerior::string& source);
 	int getValue(char Letter);
 
 

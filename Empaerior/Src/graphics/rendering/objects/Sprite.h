@@ -83,7 +83,7 @@ namespace Empaerior {
 			b = p_b;
 		}
 		//sets the number of frames the sprite should rotate through, 
-		void set_frames(const Empaerior::u_inter& m_frames)
+		void set_frames(const Empaerior::byte m_frames)
 		{
 			frames = m_frames;
 		}

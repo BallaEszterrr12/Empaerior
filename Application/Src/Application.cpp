@@ -96,7 +96,9 @@ public:
 			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x + 10, Empaerior::Application::cur_state->get_camera().rect.y);
 		}
 
-
+		Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> m_p = Empaerior::get_world_mouse_coords(camera);;
+		
+		ENGINE_INFO("mouse coordinates: " + std::to_string(m_p.first) + ' ' + std::to_string(m_p.second) + '\n');
 
 		spr_system->update(ecs, dt);
 	}

@@ -49,5 +49,8 @@ namespace Empaerior
 	using inter = int64_t;
 	using boole = bool;
 	using ch = char;
+	//value tuple // fore small types
+	template <typename T, typename Y>
+	using v_pair = std::pair<T, Y>;
 
 }

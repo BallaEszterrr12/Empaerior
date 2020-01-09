@@ -13,8 +13,8 @@ namespace Empaerior
 	//Some predifined components, feel free not to use them
 	struct Position_Component
 	{
-		int x = 12;
-		int y = 10;
+		Empaerior::inter x = 12;
+		Empaerior::inter y = 10;
 	};
 
 	//camera that follows an entity
@@ -56,7 +56,7 @@ namespace Empaerior
 
 	struct Event_Listener_Component
 	{
-		EventListener event_listener;
+		Event_Listener event_listener;
 	};
 
 

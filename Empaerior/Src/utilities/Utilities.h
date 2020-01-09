@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <string>
 #include <iostream>
+#include <Empaerior.h>
 namespace Empaerior
 {
 	//clipboard functions
@@ -58,6 +59,35 @@ namespace Empaerior
 	{
 		return SDL_GetSystemRAM();
 	}
+
+
+
+
+	//gets the coordinates of the mouse based on where the camera is
+	Empaerior::v_pair<Empaerior::s_int,Empaerior::s_int> get_world_mouse_coords(const Empaerior::Camera& camera)
+	{
+		//get the positions
+		v_pair<Empaerior::s_int, Empaerior::s_int> pos;
+		SDL_GetMouseState(&pos.first, &pos.second);
+
+
+		//Transform the position relative to the camera
+		pos.first *= camera.rect.w;
+		pos.second *= camera.rect.h;
+
+
+
+		pos.first /= Application::window.get_width();
+		pos.second /= Application::window.get_heigth();
+
+		pos.first += camera.rect.x;
+		pos.second += camera.rect.y;
+
+
+		return pos;
+	}
+
+
 
 	
 

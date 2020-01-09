@@ -8,14 +8,14 @@ namespace Empaerior {
 
 
 	//stack overflow to the rescue
-	class EventListener
+	class Event_Listener
 	{
 	public:
 
 		using EventCallback = std::function<void(SDL_Event const&)>;
 
-		EventListener() {};
-		~EventListener() {};
+		Event_Listener() {};
+		~Event_Listener() {};
 
 
 		void register_event(Empaerior::u_s_int type, EventCallback callback); //put a callback in the lisener

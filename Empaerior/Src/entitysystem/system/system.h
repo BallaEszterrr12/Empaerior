@@ -12,7 +12,7 @@ namespace Empaerior {
 	{
 	public:
 		//the id od the entities the systemworks on
-		std::set<uint64_t> entities_id;
+		std::set<Empaerior::u_inter> entities_id;
 
 	};
 
@@ -105,7 +105,7 @@ namespace Empaerior {
 
 
 		//erase entity from all systems
-		void OnEntityDestroy(const uint64_t& entity_id)
+		void OnEntityDestroy(const Empaerior::u_inter& entity_id)
 		{
 			for (auto const& it : typetosystem)
 			{
@@ -115,7 +115,7 @@ namespace Empaerior {
 		}
 
 		// Notify each system that an entity's signature changed
-		void OnEntitySignatureChange(const uint64_t& entity_id,std::vector<bool>& signature)
+		void OnEntitySignatureChange(const Empaerior::u_inter& entity_id,std::vector<bool>& signature)
 		{
 			for (auto const& it : typetosystem)
 			{

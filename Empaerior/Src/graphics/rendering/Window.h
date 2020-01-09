@@ -40,6 +40,7 @@ namespace Empaerior
 
 		SDL_Renderer* renderer;
 		SDL_Window* window;
+		//lisens for window events
 		Event_Listener window_listener;
 	private:
 		Empaerior::u_s_int width = 0;

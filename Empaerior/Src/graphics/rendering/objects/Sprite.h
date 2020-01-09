@@ -23,23 +23,14 @@ namespace Empaerior {
 		{
 
 		}
-
-
-
 		virtual void draw(const Camera& camera) { };
-
-
 		virtual void update(const Empaerior::u_s_int& dt) {
 		
 		};
-
 		void set_angle(const double& newAngle)
 		{
 			angle = newAngle;
 		}
-
-
-
 		void set_position(const Empaerior::s_int& x, const Empaerior::s_int& y)
 		{
 			rect.x = x;
@@ -76,7 +67,6 @@ namespace Empaerior {
 		// the size of the rect is only for one frame of the sprite
 		// so the length of the texture should be frames * tex_rect.w
 		void Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
-		
 		//sets a new texture instead of the old one
 		//rect , animation  and position doesn't change
 		void set_texture(const Empaerior::string& tex_path)
@@ -84,7 +74,7 @@ namespace Empaerior {
 			texture = Asset_Loading::load_texture(tex_path);
 
 		}
-		//changes the color of the texture tot the rgb value
+		//changes the color of the texture to the rgb value provided
 		//255,255,255 - 
 		void set_color(Empaerior::byte p_r, Empaerior::byte p_g, Empaerior::byte p_b)
 		{
@@ -92,6 +82,12 @@ namespace Empaerior {
 			g = p_g;
 			b = p_b;
 		}
+		//sets the number of frames the sprite should rotate through, 
+		void set_frames(const Empaerior::u_inter& m_frames)
+		{
+			frames = m_frames;
+		}
+		//
 
 		void draw(const Camera& camera) override;
 
@@ -109,6 +105,7 @@ namespace Empaerior {
 
 		}
 
+	
 		
 		
 

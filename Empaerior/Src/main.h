@@ -57,8 +57,6 @@ int main(int argc, char** argv)
 
 	#pragma region SDL_Inititalization
 
-
-	
 	try {
 #ifdef EMP_USE_LOGS
 		ENGINE_INFO("INITIALIZING SDL");
@@ -106,12 +104,6 @@ int main(int argc, char** argv)
 	Empaerior::Application* aplication = Empaerior::Create_Application();
 	
 	aplication->Init();
-
-
-
-
-	
-	
 	
 	
 	try {

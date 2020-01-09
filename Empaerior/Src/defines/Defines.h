@@ -17,7 +17,7 @@
 #elif __APPLE__
 	#error "No Apple platforms are supported"
 #elif __linux__
-	#error "Linus is not a supported platform yet"
+	#error "Linux is not a supported platform yet"
 #else
 	#error "platform not supported yet"
 

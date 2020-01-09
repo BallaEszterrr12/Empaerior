@@ -61,6 +61,13 @@ namespace Empaerior
 	}
 
 
+	//returns the coordnitaes of the mouse relative to the screen
+	Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> get_screen_mouse_coords()
+	{
+		v_pair<Empaerior::s_int, Empaerior::s_int> pos;
+		SDL_GetMouseState(&pos.first, &pos.second);
+		return pos;
+	}
 
 
 	//gets the coordinates of the mouse based on where the camera is

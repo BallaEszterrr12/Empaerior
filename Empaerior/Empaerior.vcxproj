@@ -301,9 +301,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="Src\debugging\Log.cpp" />
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\assetmanager\AssetManager.cpp" />
+    <ClCompile Include="src\debugging\Log.cpp" />
     <ClCompile Include="src\eventhandler\EventHandler.cpp" />
     <ClCompile Include="src\graphics\glyphs\Glyphs.cpp" />
     <ClCompile Include="src\graphics\rendering\Camera.cpp" />
@@ -313,6 +313,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\utilities\Timer.cpp" />
+    <ClCompile Include="src\utilities\Utilities.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -120,6 +120,9 @@
     <ClCompile Include="src\assetmanager\AssetManager.cpp">
       <Filter>assetmanager</Filter>
     </ClCompile>
+    <ClCompile Include="src\debugging\Log.cpp">
+      <Filter>debugging</Filter>
+    </ClCompile>
     <ClCompile Include="src\eventhandler\EventHandler.cpp">
       <Filter>eventhandler</Filter>
     </ClCompile>
@@ -139,8 +142,8 @@
     <ClCompile Include="src\utilities\Timer.cpp">
       <Filter>utilities</Filter>
     </ClCompile>
-    <ClCompile Include="Src\debugging\Log.cpp">
-      <Filter>debugging</Filter>
+    <ClCompile Include="src\utilities\Utilities.cpp">
+      <Filter>utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

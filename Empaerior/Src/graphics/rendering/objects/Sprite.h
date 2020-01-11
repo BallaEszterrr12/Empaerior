@@ -37,7 +37,7 @@ namespace Empaerior {
 			rect.y = y;
 			return;
 		}
-
+		
 
 	protected:
 

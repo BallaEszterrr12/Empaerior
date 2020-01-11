@@ -1,11 +1,6 @@
 #include "pch.h"
 #include "State.h"
 #include "Application.h"
-#include <SDL.h>
-//for testing
-#include<iostream>
-#include <string>
-#include "utilities/Timer.h"
 
 
 

@@ -158,7 +158,7 @@ namespace Empaerior {
 		
 
 
-		void Init(const Empaerior::Rect& rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, SDL_Color& color);
+		void Init(const Empaerior::Rect& rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, Empaerior::Color& color);
 		
 		// load the font and load the texture
 

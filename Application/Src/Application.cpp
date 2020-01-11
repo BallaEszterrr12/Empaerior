@@ -12,20 +12,20 @@ public:
 	{
 		
         ecs.Init();
-		ecs.register_component<Empaerior::Position_Component>();
+		
 		ecs.register_component<Empaerior::Camera_Component>();
 		ecs.register_component<Empaerior::Sprite_Component>();
 		ecs.register_component<Empaerior::Event_Listener_Component>();
 
 
-		spr_system = ecs.register_system <Sprite_System>();
-		event_system = ecs.register_system<Event_System>();
+		spr_system = ecs.register_system <Empaerior::Sprite_System>();
+		event_system = ecs.register_system<Empaerior::Event_System>();
 
 
 
 
-		ecs.add_component_to_system<Empaerior::Sprite_Component, Sprite_System>();
-		ecs.add_component_to_system<Empaerior::Event_Listener_Component, Event_System>();
+		ecs.add_component_to_system<Empaerior::Sprite_Component, Empaerior::Sprite_System>();
+		ecs.add_component_to_system<Empaerior::Event_Listener_Component, Empaerior::Event_System>();
 
 
 
@@ -34,7 +34,7 @@ public:
 
 
 
-		ecs.add_component<Empaerior::Position_Component>(morge.id, Empaerior::Position_Component{ 10,10 });
+		
 		ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
 		ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
 
@@ -42,7 +42,7 @@ public:
 
 
 
-		SDL_Color colo = { 77,55,255,255 };
+		Empaerior::Color colo = { 77,55,255,255 };
 
 		Empaerior::Timer timy;
 		timy.start();
@@ -116,8 +116,8 @@ public:
 
 private:
 	
-	std::shared_ptr<Sprite_System> spr_system;
-	std::shared_ptr<Event_System> event_system;
+	std::shared_ptr<Empaerior::Sprite_System> spr_system;
+	std::shared_ptr<Empaerior::Event_System> event_system;
 
 	Empaerior::Entity morge;
 	Empaerior::ComponentManager mangy;

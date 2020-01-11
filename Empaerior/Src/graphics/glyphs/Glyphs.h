@@ -33,7 +33,7 @@ namespace Empaerior {
 
 
 	//This function creates textures for all the characters
-	Empaerior::byte createGlyphs(std::vector <Empaerior::glyph>& glyphs, const Empaerior::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color);
+	Empaerior::byte createGlyphs(std::vector <Empaerior::glyph>& glyphs, const Empaerior::string& path, const unsigned int& size, SDL_Renderer* renderer, Empaerior::Color& color);
 
 
 

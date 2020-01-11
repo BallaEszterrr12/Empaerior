@@ -5,7 +5,7 @@
 namespace Empaerior {
 
 
-	Empaerior::byte createGlyphs(std::vector <glyph>& glyphs, const Empaerior::string& path, const unsigned int& size, SDL_Renderer* renderer, SDL_Color& color)
+	Empaerior::byte createGlyphs(std::vector <glyph>& glyphs, const Empaerior::string& path, const unsigned int& size, SDL_Renderer* renderer, Empaerior::Color& color)
 	{
 		Empaerior::s_int w, h;
 		Empaerior::ch fontChar[86] = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,!@#$%&:;'{}[]<>/+-=*";

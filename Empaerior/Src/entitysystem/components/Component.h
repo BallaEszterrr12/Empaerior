@@ -10,13 +10,7 @@
 namespace Empaerior
 {
 
-	//Some predifined components, feel free not to use them
-	struct Position_Component
-	{
-		Empaerior::inter x = 12;
-		Empaerior::inter y = 10;
-	};
-
+	
 	//camera that follows an entity
 	struct Camera_Component
 	{
@@ -60,6 +54,15 @@ namespace Empaerior
 	};
 
 
+	//Timed Exceution Component
+	struct T_E_Component
+	{
+		//the function
+		using Timed_Function = std::function<void()>;
+		std::vector<Empaerior::u_inter> elapsed_time;
+		std::vector<Empaerior::u_inter> time;
+		std::vector<Timed_Function> functions;
+	};
 
 
 }

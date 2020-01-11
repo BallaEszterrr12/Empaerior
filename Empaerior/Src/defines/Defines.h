@@ -36,9 +36,10 @@
 
 namespace Empaerior
 {
-	//string definition
-	using string = std::string;
+	
 
+
+	//BASIC TYPES
 	//one byte interger
 	using byte = uint8_t;
 	//type compatible with SDL
@@ -49,10 +50,14 @@ namespace Empaerior
 	using inter = int64_t;
 	using boole = bool;
 	using ch = char;
+
+	//OTHER TYPES
 	//value tuple // fore small types
 	template <typename T, typename Y>
 	using v_pair = std::pair<T, Y>;
+	//string definition
+	using string = std::string;
 
 	using Rect = SDL_Rect;
-
+	using Color = SDL_Color;
 }

@@ -35,7 +35,7 @@ void Empaerior::Text_Sprite::draw(const Camera& camera)
 
 
 
-void Empaerior::Text_Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, SDL_Color& color)
+void Empaerior::Text_Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, Empaerior::Color& color)
 {
 	rect = m_rect;
 	if (createGlyphs(this->glyphs, font_path, size, Application::window.renderer, color) != -1)// create glyphs

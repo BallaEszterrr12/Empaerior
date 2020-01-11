@@ -56,7 +56,7 @@ public:
 	//it return the index of the sprite just in case
 	size_t add_sprite(Empaerior::ECS& ecs, const uint64_t& id, 
 		
-		const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
+		const Empaerior::Rect& m_rect, const Empaerior::Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
 	{
 		//on the top 
 		POS_SPRITES.emplace_back(ORDER.size());
@@ -76,7 +76,7 @@ public:
 	//CREATES A TEXT SPRITE WITH THE GIVEN PROPERTIES
 	//returns the index of the text_sprite in a text sprites list
 	size_t add_text_sprite(Empaerior::ECS& ecs, const uint64_t& id, 
-		const SDL_Rect& m_rect, const Empaerior::string& font_path, const unsigned int& m_size, const Empaerior::string& message, SDL_Color& m_color)
+		const Empaerior::Rect& m_rect, const Empaerior::string& font_path, const unsigned int& m_size, const Empaerior::string& message, SDL_Color& m_color)
 	{
 		//the same as add_sprite
 		

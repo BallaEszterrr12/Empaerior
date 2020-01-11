@@ -5,7 +5,7 @@
 #include "../Window.h"
 
 
-void Empaerior::Sprite::Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
+void Empaerior::Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
 {
 	rect = m_rect;
 	tex_rect = m_tex_rect;
@@ -17,7 +17,7 @@ void Empaerior::Sprite::Init(const SDL_Rect& m_rect, const SDL_Rect& m_tex_rect,
 
 void Empaerior::Sprite::draw(const Camera& camera)
 {
-	SDL_Rect position_rect = {rect.x - camera.rect.x,rect.y - camera.rect.y,rect.w,rect.h };
+	Empaerior::Rect position_rect = {rect.x - camera.rect.x,rect.y - camera.rect.y,rect.w,rect.h };
 	if (texture != nullptr)
 	{
 		//setting the texture's color, because each sprite that uses the texture uses it differently (or not)
@@ -35,7 +35,7 @@ void Empaerior::Text_Sprite::draw(const Camera& camera)
 
 
 
-void Empaerior::Text_Sprite::Init(const SDL_Rect& m_rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, SDL_Color& color)
+void Empaerior::Text_Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::string& font_path, const unsigned int& size, const Empaerior::string& message, SDL_Color& color)
 {
 	rect = m_rect;
 	if (createGlyphs(this->glyphs, font_path, size, Application::window.renderer, color) != -1)// create glyphs

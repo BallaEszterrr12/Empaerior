@@ -34,19 +34,19 @@ namespace Empaerior {
 	{
 
 		Empaerior::s_int x = margin, y = Y, wX = 0;
-		SDL_Rect textRect;
+		Empaerior::Rect textRect;
 		Empaerior::byte lValue = 0;
 		Empaerior::u_inter lastSpace = 0;
 		Empaerior::boole safe = true;
 
-		for (unsigned int cnt = 0; cnt < text.length(); cnt++)
+		for (Empaerior::u_inter cnt = 0; cnt < text.length(); cnt++)
 		{   //covert from character to glyph id
 			lValue = getValue(text[cnt]);
 
 			if (lValue == 85) {
 				lastSpace = cnt; wX = x + glyphs[85].w;
 				//need to read ahead make sure room for next word if not then skip to next line
-				for (unsigned int t = lastSpace + 1; t < text.length(); t++) {
+				for (Empaerior::u_inter t = lastSpace + 1; t < text.length(); t++) {
 					lValue = getValue(text[t]);
 					wX = wX + glyphs[lValue].w;
 					if (wX >= screenWidth - margin) {
@@ -77,19 +77,19 @@ namespace Empaerior {
 	{
 		
 		Empaerior::s_int x = margin, y = Y, wX = 0;
-		SDL_Rect textRect;
+		Empaerior::Rect textRect;
 		Empaerior::byte lValue = 0;
 		Empaerior::u_inter lastSpace = 0;
 		Empaerior::boole safe = true;
 
-		for (unsigned int cnt = 0; cnt < text.size(); cnt++)
+		for (Empaerior::u_inter cnt = 0; cnt < text.size(); cnt++)
 		{   //covert from character to glyph id
 			lValue = text[cnt];
 
 			if (lValue == 85) {
 				lastSpace = cnt; wX = x + glyphs[85].w;
 				//need to read ahead make sure room for next word if not then skip to next line
-				for (unsigned int t = lastSpace + 1; t < text.size(); t++) {
+				for (Empaerior::u_inter t = lastSpace + 1; t < text.size(); t++) {
 					int m_lValue = text[t];
 					wX = wX + glyphs[m_lValue].w;
 					if (wX >= screenWidth - margin) {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-
+#include <SDL.h>
 
 //Platform detection
 #ifdef _WIN32
@@ -52,5 +52,7 @@ namespace Empaerior
 	//value tuple // fore small types
 	template <typename T, typename Y>
 	using v_pair = std::pair<T, Y>;
+
+	using Rect = SDL_Rect;
 
 }

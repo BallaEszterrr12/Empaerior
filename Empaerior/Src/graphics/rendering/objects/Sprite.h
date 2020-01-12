@@ -141,8 +141,8 @@ namespace Empaerior {
 		Empaerior::byte cur_frame = 0;
 
 		//color values
-		Empaerior::byte r = 0;
-		Empaerior::byte g = 0;
+		Empaerior::byte r = 255;
+		Empaerior::byte g = 255;
 		Empaerior::byte b = 255;
 
 

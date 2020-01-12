@@ -159,12 +159,41 @@ namespace Empaerior
 		//sets the texture of the sprite at the specified file path
 		void set_texture(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index, const Empaerior::string& file)
 		{
-			ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_texture(file);
+			try {
+				if (index < SPRITES.size())
+				{
+					ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_texture(file);
+				}
+				else
+				{
+					throw E_runtime_exception("Cannot set the texture of the sprite, index " + std::to_string(index) + "  is invalid", __FILE__, __LINE__, __FUNCTION__);
+				}
+			}
+			catch (E_runtime_exception & e)
+			{
+				e.print_message();
+			}
 		}
 		//sets the color of the sprite at the specified index
 		void set_color(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index, const Empaerior::byte r, const Empaerior::byte g, const Empaerior::byte b)
 		{
-			ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_color(r, g, b);
+			try {
+				if (index < SPRITES.size())
+				{
+
+					ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_color(r, g, b);
+				}
+				else
+				{
+					throw E_runtime_exception("Cannot set the color of the sprite, index " + std::to_string(index) + "  is invalid", __FILE__, __LINE__, __FUNCTION__);
+				}
+
+			}
+			catch (E_runtime_exception & e)
+			{
+				e.print_message();
+			}
+
 		}
 
 		void update(Empaerior::ECS& ecs, const Empaerior::u_s_int& dt)
@@ -242,14 +271,18 @@ namespace Empaerior
 	{
 	public:
 		using Timed_Function = std::function<void()>;
+
+		//Adds a function to the container
 		void add_function(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& time, Timed_Function function)
 		{
+			//adds the necessary data in the containers
 			ecs.get_component<T_E_Component>(id).time.emplace_back(time);
 			ecs.get_component<T_E_Component>(id).functions.emplace_back(function);
 			ecs.get_component<T_E_Component>(id).elapsed_time.emplace_back(0);
 
 		}
 
+	//iterates throught the container and executes the functions for which enough time has passed
 #define component ecs.get_component<T_E_Component>(id)
 		void Update(Empaerior::ECS& ecs, const Empaerior::u_s_int& dt)
 		{
@@ -258,12 +291,12 @@ namespace Empaerior
 				for (Empaerior::u_inter i = 0; i < component.functions.size(); i++)
 				{
 					component.elapsed_time[i] += dt;
-					//if enought time has passed
+					//if enought time has passed,execute the function and delete it from the registry
 					if (component.elapsed_time[i] >= component.time[i])
 					{
 						//call function
 						component.functions[i]();
-						//erase
+						//erase all
 						component.elapsed_time.erase(component.elapsed_time.begin() + i);
 						component.time.erase(component.time.begin() + i);
 						component.functions.erase(component.functions.begin() + i);

@@ -47,19 +47,21 @@ public:
 		Empaerior::Timer timy;
 		timy.start();
 
-		for (int i = 0 ; i < 10;i++)
+		for (int i = 0 ; i < 4;i++)
 		{
-			for (int j = 0; j < 10; j++)
+			for (int j = 0; j < 4; j++)
 			{
 			
 
 				APP_INFO("Generating the " + std::to_string(i) + ' ' + std::to_string(j) + " element");
 				auto index = spr_system->add_sprite(ecs, morge.id, { i * 32,j * 32,32,32 }, { 0,0,960,800 }, "assets/img.png", 1);
 				spr_system->set_color(ecs, morge.id, index, std::rand() % 255 + 1 , std::rand() % 255 + 1 , std::rand() % 255 + 1);
+
+				
 			}
 
 		}
-		APP_INFO("GENERATING 100 sprites took" + std::to_string(timy.getTicks()));
+		APP_INFO("GENERATING 1000 sprites took" + std::to_string(timy.getTicks()));
 		
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
@@ -96,9 +98,7 @@ public:
 			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x + 10, Empaerior::Application::cur_state->get_camera().rect.y);
 		}
 
-		Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> m_p = Empaerior::get_screen_mouse_coords();
 		
-		ENGINE_INFO("mouse coordinates: " + std::to_string(m_p.first) + ' ' + std::to_string(m_p.second) + '\n');
 
 		spr_system->update(ecs, dt);
 	}

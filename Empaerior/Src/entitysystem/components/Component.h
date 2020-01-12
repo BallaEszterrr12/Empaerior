@@ -59,8 +59,11 @@ namespace Empaerior
 	{
 		//the function
 		using Timed_Function = std::function<void()>;
+		//times passes
 		std::vector<Empaerior::u_inter> elapsed_time;
+		//the total time
 		std::vector<Empaerior::u_inter> time;
+		//function container	
 		std::vector<Timed_Function> functions;
 	};
 

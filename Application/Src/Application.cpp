@@ -8,70 +8,75 @@ class APP_State : public Empaerior::State
 {
 
 public:
+	
 	APP_State()
 	{
-		
+		//INITIALIZE THE ECS
         ecs.Init();
 		
+		//REGISTER SOME COMPONENTS
 		ecs.register_component<Empaerior::Camera_Component>();
 		ecs.register_component<Empaerior::Sprite_Component>();
 		ecs.register_component<Empaerior::Event_Listener_Component>();
 
-
+		//CREATE SOME SYSTEMS TO USE THE COMPONENTS
 		spr_system = ecs.register_system <Empaerior::Sprite_System>();
 		event_system = ecs.register_system<Empaerior::Event_System>();
-
-
-
-
+		//SPECIFIY WHAT TYPES OF COMPONENT EACH SYSTEM NEEDS
 		ecs.add_component_to_system<Empaerior::Sprite_Component, Empaerior::Sprite_System>();
 		ecs.add_component_to_system<Empaerior::Event_Listener_Component, Empaerior::Event_System>();
 
 
-
+		//CREATE AN ENTITY
 		morge.id = ecs.create_entity_ID();
 
 
 
 
-		
+		//ADD SOME COMPONENTS TO IT
 		ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
 		ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
-
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
 
 
-
+		//CREATE A COLOR
 		Empaerior::Color colo = { 77,55,255,255 };
 
+		//ADD A TIMER FOR BENCHMARKING
 		Empaerior::Timer timy;
+		//START THE TIMER
 		timy.start();
-
+		//CREATE n^2 sprites 	
 		for (int i = 0 ; i < 4;i++)
 		{
 			for (int j = 0; j < 4; j++)
 			{
 			
-
+				//LOG WHAT SPRITE IS CURRENTLY LOADING
 				APP_INFO("Generating the " + std::to_string(i) + ' ' + std::to_string(j) + " element");
+				//ADD A SPRITE
 				auto index = spr_system->add_sprite(ecs, morge.id, { i * 32,j * 32,32,32 }, { 0,0,960,800 }, "assets/img.png", 1);
+				//SET IT'S Color to Random
 				spr_system->set_color(ecs, morge.id, index, std::rand() % 255 + 1 , std::rand() % 255 + 1 , std::rand() % 255 + 1);
 
 				
 			}
 
 		}
+		//LOG THE TIME IT TOOK
 		APP_INFO("GENERATING 1000 sprites took" + std::to_string(timy.getTicks()));
 		
+		//SET THE CAMERA
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
-
+		//ADD AN EVENT 
 		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) { APP_INFO("A button has been pressed"); });
 
 	}
 
 	void Update(const Empaerior::u_s_int& dt)override
 	{
+		//DEBUG CODE, LETS YOU MOVE AROUND THE MAP
 		unsigned char const* keys = SDL_GetKeyboardState(nullptr);
 		if (keys[SDL_SCANCODE_UP])
 		{
@@ -99,18 +104,19 @@ public:
 		}
 
 		
-
+		//UPDATE 
 		spr_system->update(ecs, dt);
 	}
 	
 	virtual void Render() override//renders the state
 	{
-		
+		//RENDER
 		spr_system->render(ecs,camera);
 	
 	}
 	virtual void handleevents(const SDL_Event& event) override
 	{
+		//HANDLE EVENTS
 		event_system->handle_events(ecs, event);
 	}
 
@@ -129,12 +135,13 @@ class Test_Aplication : public Empaerior::Application
 public:
 	Test_Aplication()
 	{
+		//CREATE A WINDOW
 		window.Init("test", 960, 800);
-
+		//CREATE A NEW STATE
 		states.emplace_back(new APP_State());//add a new state
-
+		//SET THE CURRENTLY RUNNING STATE
 		set_state(states[0]);
-
+		//SET THE DIMENSIONS OF THE CAMERA
 		SDL_RenderSetLogicalSize(Application::window.renderer, Application::cur_state->get_camera().rect.w, Application::cur_state->get_camera().rect.h);
 
 	}
@@ -148,6 +155,7 @@ public:
 
 	void run() override
 	{
+		//GAME LOOP
 		Empaerior::u_s_int framestart = 0;
 		Empaerior::u_s_int frametime = 0;
 		Empaerior::u_s_int currentime = 0;
@@ -236,7 +244,7 @@ public:
 
 };
 
-
+//CREATE A NEW APPLICATION
 Empaerior::Application* Empaerior::Create_Application()
 {
 	return new Test_Aplication();

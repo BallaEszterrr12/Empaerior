@@ -47,8 +47,8 @@ public:
 		spr_system->set_color(ecs, morge.id, 0, 255,0,0);
 		spr_system->set_color(ecs, norge.id, 0, 0, 0, 255);
 
-
-
+		//set the camera
+		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
 		//Add two event
 		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,ID = morge.id,&Camera = camera](Empaerior::Event& event)
@@ -70,7 +70,7 @@ public:
 
 			//get mouse coordinates
 			auto coords = Empaerior::Utilities::get_world_mouse_coords(Camera);
-
+		
 			//if the left mouse button is pressed do something
 			if (event.event.button.button == SDL_BUTTON_LEFT && Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_dimensions(), coords.first, coords.second))
 			{

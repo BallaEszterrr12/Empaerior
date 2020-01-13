@@ -94,7 +94,7 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 
 
 	//Transform for the position of the renderer
-	//This is in case the viewport  doesn't match the camera (blackboxing)
+//This is in case the viewport  doesn't match the camera (blackboxing)
 
 	Empaerior::Rect renderer_viewport;
 	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);

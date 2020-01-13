@@ -57,6 +57,16 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::get_screen_mous
 {
 	v_pair<Empaerior::s_int, Empaerior::s_int> pos;
 	SDL_GetMouseState(&pos.first, &pos.second);
+
+//Transform for the position of the renderer
+//This is in case the viewport  doesn't match the camera (blackboxing)
+
+	Empaerior::Rect renderer_viewport;
+	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
+
+	pos.first -= renderer_viewport.x;
+	pos.second -= renderer_viewport.y;
+
 	return pos;
 }
 
@@ -76,9 +86,21 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::get_world_mouse
 	pos.first /= Application::window.get_width();
 	pos.second /= Application::window.get_heigth();
 
+
+
+	//Tranform for position
 	pos.first += camera.rect.x;
 	pos.second += camera.rect.y;
 
+
+	//Transform for the position of the renderer
+	//This is in case the viewport  doesn't match the camera (blackboxing)
+
+	Empaerior::Rect renderer_viewport;
+	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
+
+	pos.first -= renderer_viewport.x;
+	pos.second -= renderer_viewport.y;
 
 	return pos;
 }

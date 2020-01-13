@@ -166,8 +166,6 @@ public:
 
 
 
-
-
 	
 			while (SDL_PollEvent(&Empaerior::Application::event)) {
 

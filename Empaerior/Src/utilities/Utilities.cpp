@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Utilities.h"
 #include <SDL.h>
-Empaerior::string Empaerior::get_clipboard_text()
+Empaerior::string Empaerior::Utilities::get_clipboard_text()
 {
 	if (SDL_HasClipboardText())//if there's text
 	{
@@ -13,7 +13,7 @@ Empaerior::string Empaerior::get_clipboard_text()
 	return "";
 }
 
-void Empaerior::set_clipboard_text(const char* text)
+void Empaerior::Utilities::set_clipboard_text(const char* text)
 {
 	try
 	{
@@ -29,7 +29,7 @@ void Empaerior::set_clipboard_text(const char* text)
 	}
 }
 
-Empaerior::string Empaerior::get_platform()
+Empaerior::string Empaerior::Utilities::get_platform()
 {
 	const char* sdl_platform = SDL_GetPlatform();
 	Empaerior::string e_platform = sdl_platform;
@@ -38,22 +38,22 @@ Empaerior::string Empaerior::get_platform()
 
 }
 
-int Empaerior::cpu_cache_size()
+int Empaerior::Utilities::cpu_cache_size()
 {
 	return SDL_GetCPUCacheLineSize();
 }
 
-int Empaerior::get_core_number()
+int Empaerior::Utilities::get_core_number()
 {
 	return SDL_GetCPUCount();
 }
 
-int Empaerior::get_system_ram()
+int Empaerior::Utilities::get_system_ram()
 {
 	return SDL_GetSystemRAM();
 }
 
-Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::get_screen_mouse_coords()
+Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_screen_mouse_coords()
 {
 	v_pair<Empaerior::s_int, Empaerior::s_int> pos;
 	SDL_GetMouseState(&pos.first, &pos.second);
@@ -70,7 +70,7 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::get_screen_mous
 	return pos;
 }
 
-Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::get_world_mouse_coords(const Empaerior::Camera& camera)
+Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_world_mouse_coords(const Empaerior::Camera& camera)
 {
 	//get the positions
 	v_pair<Empaerior::s_int, Empaerior::s_int> pos;

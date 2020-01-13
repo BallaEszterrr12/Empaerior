@@ -25,7 +25,7 @@ namespace Empaerior {
 	{
 	public:
 
-		using EventCallback = std::function<void(Empaerior::Event const&)>;
+		using EventCallback = std::function<void(Empaerior::Event&)>;
 
 		Event_Listener() {};
 		~Event_Listener() {};
@@ -33,7 +33,7 @@ namespace Empaerior {
 
 		void register_event(Empaerior::u_s_int type, EventCallback callback); //put a callback in the lisener
 		
-		void handleEvents(const Empaerior::Event& cur_event); //execute commands
+		void handleEvents(Empaerior::Event& cur_event); //execute commands
 		
 	private:
 		std::unordered_map<uint64_t, std::vector<EventCallback>> _registeredCallbacks;//type of the event and function

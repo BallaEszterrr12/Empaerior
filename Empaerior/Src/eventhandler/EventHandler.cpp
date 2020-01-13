@@ -7,7 +7,7 @@ void Empaerior::Event_Listener::register_event(Empaerior::u_s_int type, EventCal
 }
 
 
-void Empaerior::Event_Listener::handleEvents(const Empaerior::Event& cur_event)
+void Empaerior::Event_Listener::handleEvents(Empaerior::Event& cur_event)
 {
 	for (int i = 0; i < _registeredCallbacks[cur_event.event.type].size(); i++)//iterate throught command and match thoose that fit
 	{

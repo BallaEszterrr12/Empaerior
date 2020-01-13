@@ -27,50 +27,26 @@ public:
 		ecs.add_component_to_system<Empaerior::Event_Listener_Component, Empaerior::Event_System>();
 
 
-		//CREATE AN ENTITY
+		//CREATE Two ENTITY
 		morge.id = ecs.create_entity_ID();
+		norge.id = ecs.create_entity_ID();
 
 
 
-
-		//ADD SOME COMPONENTS TO IT
+		//ADD SOME COMPONENTS TO Them
 		ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
 		ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
 
+		ecs.add_component<Empaerior::Event_Listener_Component>(norge.id, Empaerior::Event_Listener_Component{});
+		ecs.add_component<Empaerior::Sprite_Component>(norge.id, { {},{}, {},{},{} });
 
-		//CREATE A COLOR
-		Empaerior::Color colo = { 77,55,255,255 };
+		//CREate a Sprite for each
+		spr_system->add_sprite(ecs, morge.id, { 0,0,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
+		spr_system->add_sprite(ecs, norge.id, { 50,50,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
+		spr_system->set_color(ecs, morge.id, 0, 255,0,0);
+		spr_system->set_color(ecs, norge.id, 0, 0, 0, 255);
 
-		//ADD A TIMER FOR BENCHMARKING
-		Empaerior::Timer timy;
-		//START THE TIMER
-		timy.start();
-		//CREATE n^2 sprites 	
-		for (int i = 0 ; i < 4;i++)
-		{
-			for (int j = 0; j < 4; j++)
-			{
-			
-				//LOG WHAT SPRITE IS CURRENTLY LOADING
-				APP_INFO("Generating the " + std::to_string(i) + ' ' + std::to_string(j) + " element");
-				//ADD A SPRITE
-				auto index = spr_system->add_sprite(ecs, morge.id, { i * 32,j * 32,32,32 }, { 0,0,960,800 }, "assets/img.png", 1);
-				//SET IT'S Color to Random
-				spr_system->set_color(ecs, morge.id, index, std::rand() % 255 + 1 , std::rand() % 255 + 1 , std::rand() % 255 + 1);
-
-				
-			}
-
-		}
-		//LOG THE TIME IT TOOK
-		APP_INFO("GENERATING 1000 sprites took" + std::to_string(timy.getTicks()));
-		
-		//SET THE CAMERA
-		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
-
-		//ADD AN EVENT 
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](Empaerior::Event const& event) { APP_INFO("A button has been pressed"); });
 
 	}
 
@@ -114,7 +90,7 @@ public:
 		spr_system->render(ecs,camera);
 	
 	}
-	virtual void handleevents(const Empaerior::Event& event) override
+	virtual void handleevents(Empaerior::Event& event) override
 	{
 		//HANDLE EVENTS
 		event_system->handle_events(ecs, event);
@@ -126,7 +102,8 @@ private:
 	std::shared_ptr<Empaerior::Event_System> event_system;
 
 	Empaerior::Entity morge;
-	Empaerior::ComponentManager mangy;
+	Empaerior::Entity norge;
+
 };
 
 //a user defined application
@@ -222,7 +199,7 @@ public:
 	}
 
 
-	void handlevents(const Empaerior::Event& event) override
+	void handlevents(Empaerior::Event& event) override
 	{
 		Empaerior::Application::window.window_listener.handleEvents(event);
 		cur_state->handleevents(event);

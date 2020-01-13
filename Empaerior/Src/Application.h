@@ -30,7 +30,7 @@ public:
 	virtual void run() = 0;
 
 
-	virtual void handlevents(const Empaerior::Event& event);
+	virtual void handlevents(Empaerior::Event& event);
     virtual void Update(const unsigned int& dt);
 	
 

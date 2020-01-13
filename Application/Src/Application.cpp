@@ -47,26 +47,38 @@ public:
 		spr_system->set_color(ecs, morge.id, 0, 255,0,0);
 		spr_system->set_color(ecs, norge.id, 0, 0, 0, 255);
 
+
+
+
 		//Add two event
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](Empaerior::Event& event)
+		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,ID = morge.id,&Camera = camera](Empaerior::Event& event)
 			{
+
+				//get mouse coordinates
+				auto coords = Empaerior::Utilities::get_world_mouse_coords(Camera);
+
 				//if the left mouse button is pressed do something
-				if (event.event.button.button == SDL_BUTTON_LEFT)
+				if (event.event.button.button == SDL_BUTTON_LEFT && Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_dimensions(),coords.first,coords.second))
 				{
 					APP_INFO("MORGE!");
 					Empaerior::event_handled(event);
 				}
 
 			});
-		event_system->add_event_to_entity(ecs, norge.id, SDL_MOUSEBUTTONDOWN, [](Empaerior::Event& event)
+		event_system->add_event_to_entity(ecs, norge.id, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs, ID = norge.id, &Camera = camera](Empaerior::Event& event)
+		{
+
+			//get mouse coordinates
+			auto coords = Empaerior::Utilities::get_world_mouse_coords(Camera);
+
+			//if the left mouse button is pressed do something
+			if (event.event.button.button == SDL_BUTTON_LEFT && Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_dimensions(), coords.first, coords.second))
 			{
-				if (event.event.button.button == SDL_BUTTON_LEFT)
-				{
-					APP_INFO("NORGE!");
-					Empaerior::event_handled(event);
-				}
+				APP_INFO("NORGE!");
+				Empaerior::event_handled(event);
 			}
-		);
+
+		});
 	}
 
 	void Update(const Empaerior::u_s_int& dt)override

@@ -104,8 +104,8 @@ namespace Empaerior {
 
 
 		}
-
-	
+		//gets the dimesnions of the sprite
+		Empaerior::Rect const& get_dimensions();
 		
 		
 

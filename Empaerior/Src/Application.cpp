@@ -43,7 +43,7 @@ void Empaerior::Application::Update(const unsigned int& dt )
 
 }
 
-void Empaerior::Application::handlevents(const SDL_Event & event)
+void Empaerior::Application::handlevents(const Empaerior::Event& event)
 {
 	
 	Empaerior::Application::window.window_listener.handleEvents(event);

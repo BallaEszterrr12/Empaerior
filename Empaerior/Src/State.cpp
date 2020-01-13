@@ -9,9 +9,7 @@ Empaerior::State::State()
 {
 	
 	
-	
 
-	
 }
 
 

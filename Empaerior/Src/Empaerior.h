@@ -5,7 +5,7 @@
 #include "Application.h"
 #include "State.h"
 
-#define SDL_MAIN_HANDLED
+
 #include <SDL.h>
 
 #include <SDL_mixer.h>

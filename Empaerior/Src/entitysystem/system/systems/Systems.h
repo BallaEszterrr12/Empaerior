@@ -15,7 +15,7 @@ namespace Empaerior
 	{
 	public:
 
-		void add_event_to_entity(Empaerior::ECS& ecs, const uint64_t& entity_id, const Empaerior::u_s_int& event_type, std::function<void(SDL_Event const&)> function)
+		void add_event_to_entity(Empaerior::ECS& ecs, const uint64_t& entity_id, const Empaerior::u_s_int& event_type, std::function<void(Empaerior::Event const&)> function)
 		{
 #define EVENTLISTENER  ecs.get_component<Empaerior::Event_Listener_Component>(entity_id).event_listener
 
@@ -25,15 +25,21 @@ namespace Empaerior
 		}
 
 
-		void handle_events(Empaerior::ECS& ecs, const SDL_Event& event)
+		void handle_events(Empaerior::ECS& ecs, const Empaerior::Event& event)
 		{
-#define EVENTLISTENER  ecs.get_component<Empaerior::Event_Listener_Component>(entity_id).event_listener
-
-			for (auto& entity_id : entities_id)
+#define EVENTLISTENER  ecs.get_component<Empaerior::Event_Listener_Component>(*Iterator).event_listener
+			//REVERSE ITERATOR
+			std::set<Empaerior::u_inter>::reverse_iterator Iterator = entities_id.rbegin();
+			//ITERATING THROUGH THE ENTITIES IN REVERSE
+			while (Iterator != entities_id.rend() && !Empaerior::is_event_handled(event))
 			{
 				EVENTLISTENER.handleEvents(event);
+				Iterator++;
 			}
-
+			
+			
+			
+			
 #undef EVENTLISTENER
 
 		}

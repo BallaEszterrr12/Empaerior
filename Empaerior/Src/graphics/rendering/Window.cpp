@@ -10,12 +10,12 @@ Empaerior::Window::Window(const Empaerior::string& name, const Empaerior::u_s_in
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
-	window_listener.register_event(SDL_QUIT, [](SDL_Event const& event) { // add quit event 
+	window_listener.register_event(SDL_QUIT, [](Empaerior::Event const& event) { // add quit event 
 		Empaerior::Application::is_running = false;
 		});
 
-	window_listener.register_event(SDL_WINDOWEVENT, [](SDL_Event const& event) { //add 
-		switch (event.window.event) {
+	window_listener.register_event(SDL_WINDOWEVENT, [](Empaerior::Event const& event) { //add 
+		switch (event.event.window.event) {
 		case SDL_WINDOWEVENT_MINIMIZED:
 			Empaerior::Application::is_paused = true;
 			break;
@@ -42,12 +42,12 @@ int Empaerior::Window::Init(const Empaerior::string& name, const Empaerior::u_s_
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
-	window_listener.register_event(SDL_QUIT, [](SDL_Event const& event) { // add quit event 
+	window_listener.register_event(SDL_QUIT, [](Empaerior::Event const& event) { // add quit event 
 		Empaerior::Application::is_running = false;
 		});
 
-	window_listener.register_event(SDL_WINDOWEVENT, [](SDL_Event const& event) { //add 
-		switch (event.window.event) {
+	window_listener.register_event(SDL_WINDOWEVENT, [](Empaerior::Event const& event) { //add 
+		switch (event.event.window.event) {
 		case SDL_WINDOWEVENT_MINIMIZED:
 			Empaerior::Application::is_paused = true;
 			break;

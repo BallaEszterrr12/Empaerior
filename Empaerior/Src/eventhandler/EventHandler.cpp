@@ -7,11 +7,21 @@ void Empaerior::Event_Listener::register_event(Empaerior::u_s_int type, EventCal
 }
 
 
-void Empaerior::Event_Listener::handleEvents(const SDL_Event& cur_event)
+void Empaerior::Event_Listener::handleEvents(const Empaerior::Event& cur_event)
 {
-	for (int i = 0; i < _registeredCallbacks[cur_event.type].size(); i++)//iterate throught command and match thoose that fit
+	for (int i = 0; i < _registeredCallbacks[cur_event.event.type].size(); i++)//iterate throught command and match thoose that fit
 	{
-		_registeredCallbacks[cur_event.type][i](cur_event);
+		_registeredCallbacks[cur_event.event.type][i](cur_event);
 	}
 
+}
+
+void Empaerior::event_handled(Empaerior::Event& event)
+{
+	event.is_handled = true;
+}
+
+Empaerior::boole Empaerior::is_event_handled(const Empaerior::Event& event)
+{
+	return event.is_handled;
 }

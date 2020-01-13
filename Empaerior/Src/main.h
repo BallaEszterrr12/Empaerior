@@ -1,15 +1,8 @@
 #pragma once
 
+
+
 #include "pch.h"
-
-
-
-
-
-#define SDL_MAIN_HANDLED
-
-//
-
 
 #include "Empaerior.h"
 
@@ -36,7 +29,7 @@ std::vector <Empaerior::State*> Empaerior::Application::states;
 const Empaerior::u_s_int Empaerior::Application::dt = 1000 / 60;
 bool Empaerior::Application::is_paused = 0;
 bool Empaerior::Application::is_running = 1;
-SDL_Event Empaerior::Application::event;
+Empaerior::Event Empaerior::Application::event;
 Empaerior::Window Empaerior::Application::window;
 
 
@@ -46,6 +39,8 @@ Empaerior::Window Empaerior::Application::window;
 
 extern Empaerior::Application* Empaerior::Create_Application();
 //THIS IS THE ENTRY POINT 
+
+#define SDL_MAIN_HANDLED
 int main(int argc, char** argv)
 {
 

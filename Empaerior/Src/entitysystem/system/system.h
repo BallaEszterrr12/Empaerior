@@ -11,7 +11,7 @@ namespace Empaerior {
 	class System
 	{
 	public:
-		//the id od the entities the systemworks on
+		//the id of the entities the system works on
 		std::set<Empaerior::u_inter> entities_id;
 
 	};

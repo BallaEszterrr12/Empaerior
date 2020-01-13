@@ -70,7 +70,7 @@ public:
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
 		//ADD AN EVENT 
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](SDL_Event const& event) { APP_INFO("A button has been pressed"); });
+		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](Empaerior::Event const& event) { APP_INFO("A button has been pressed"); });
 
 	}
 
@@ -114,7 +114,7 @@ public:
 		spr_system->render(ecs,camera);
 	
 	}
-	virtual void handleevents(const SDL_Event& event) override
+	virtual void handleevents(const Empaerior::Event& event) override
 	{
 		//HANDLE EVENTS
 		event_system->handle_events(ecs, event);
@@ -166,9 +166,11 @@ public:
 
 
 
-	
-			while (SDL_PollEvent(&Empaerior::Application::event)) {
-
+			//poll what event is registered
+			while (SDL_PollEvent(&Empaerior::Application::event.event)) {
+				//make it not handled yet
+				Empaerior::Application::event.is_handled = false;
+				//handle it
 				handlevents(Empaerior::Application::event);
 
 			}
@@ -220,7 +222,7 @@ public:
 	}
 
 
-	void handlevents(const SDL_Event& event) override
+	void handlevents(const Empaerior::Event& event) override
 	{
 		Empaerior::Application::window.window_listener.handleEvents(event);
 		cur_state->handleevents(event);

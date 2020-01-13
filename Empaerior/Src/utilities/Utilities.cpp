@@ -103,4 +103,16 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 	pos.second -= renderer_viewport.y;
 
 	return pos;
+
+
+}
+
+Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::Rect& rect, int x, int y)
+{
+
+
+	if (y <= rect.y || y > rect.y + rect.h) return false;
+	if (x <= rect.x || x > rect.x + rect.w) return false;
+
+	return true;
 }

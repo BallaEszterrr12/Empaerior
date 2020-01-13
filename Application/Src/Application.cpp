@@ -47,7 +47,26 @@ public:
 		spr_system->set_color(ecs, morge.id, 0, 255,0,0);
 		spr_system->set_color(ecs, norge.id, 0, 0, 0, 255);
 
+		//Add two event
+		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [](Empaerior::Event& event)
+			{
+				//if the left mouse button is pressed do something
+				if (event.event.button.button == SDL_BUTTON_LEFT)
+				{
+					APP_INFO("MORGE!");
+					Empaerior::event_handled(event);
+				}
 
+			});
+		event_system->add_event_to_entity(ecs, norge.id, SDL_MOUSEBUTTONDOWN, [](Empaerior::Event& event)
+			{
+				if (event.event.button.button == SDL_BUTTON_LEFT)
+				{
+					APP_INFO("NORGE!");
+					Empaerior::event_handled(event);
+				}
+			}
+		);
 	}
 
 	void Update(const Empaerior::u_s_int& dt)override

@@ -23,6 +23,8 @@ namespace Empaerior
 		int get_system_ram();//get the amount of RAM configured in the system.
 
 
+		
+		
 
 
 
@@ -35,6 +37,10 @@ namespace Empaerior
 		Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> get_world_mouse_coords(const Empaerior::Camera& camera);
 
 
+
+
+		//check if a rect contains a point
+		Empaerior::boole rect_contains_point(const Empaerior::Rect& rect, int x, int y);
 
 	}
 

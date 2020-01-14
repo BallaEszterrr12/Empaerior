@@ -57,7 +57,7 @@ public:
 			auto coords = Empaerior::Utilities::get_world_mouse_coords(Camera);
 
 			//if the left mouse button is pressed do something
-			if (event.event.button.button == SDL_BUTTON_LEFT && Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_dimensions(), coords.first, coords.second))
+			if (event.event.button.button == SDL_BUTTON_LEFT && Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_rect(), coords.first, coords.second))
 			{
 				APP_INFO("MORGE!");
 				Empaerior::event_handled(event);

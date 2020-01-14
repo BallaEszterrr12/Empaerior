@@ -107,12 +107,15 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 
 }
 
-Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::D_Rect& rect, int x, int y)
+Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::Rect& rect, int x, int y)
 {
+	//TODO: add rotation in consideration, rotate position of the point by the counter angle of the rects angle ( the anglem of the rect is clockwise so the point should be rotated counter-clockwise )
+
+	
 
 
-	if (y <= rect.y || y > rect.y + rect.h) return false;
-	if (x <= rect.x || x > rect.x + rect.w) return false;
+	if (y <= rect.dimensions.y || y > rect.dimensions.y + rect.dimensions.h) return false;
+	if (x <= rect.dimensions.x || x > rect.dimensions.x + rect.dimensions.w) return false;
 
 	return true;
 }

@@ -26,9 +26,9 @@ void Empaerior::Sprite::draw(const Camera& camera)
 		SDL_RenderCopyEx(Application::window.renderer, &(*texture), &tex_rect, &position_rect, rect.angle, NULL, SDL_FLIP_NONE);
 	}
 }
-Empaerior::D_Rect const& Empaerior::Sprite::get_dimensions()
+Empaerior::Rect const& Empaerior::Sprite::get_rect()
 {
-	return rect.dimensions;
+	return rect;
 }
 void Empaerior::Text_Sprite::draw(const Camera& camera)
 {

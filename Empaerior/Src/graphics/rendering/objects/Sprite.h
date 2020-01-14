@@ -39,11 +39,7 @@ namespace Empaerior {
 			return;
 		}
 		
-		//TODO 
-		Empaerior::D_Rect& get_dimesnsions()
-		{
 
-		}
 
 
 	protected:
@@ -112,7 +108,7 @@ namespace Empaerior {
 
 		}
 		//gets the dimesnions of the sprite
-		Empaerior::D_Rect const& get_dimensions();
+		Empaerior::Rect const& get_rect();
 		
 		
 

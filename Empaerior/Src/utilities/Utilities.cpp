@@ -61,7 +61,7 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 //Transform for the position of the renderer
 //This is in case the viewport  doesn't match the camera (blackboxing)
 
-	Empaerior::Rect renderer_viewport;
+	Empaerior::D_Rect renderer_viewport;
 	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
 
 	pos.first -= renderer_viewport.x;
@@ -96,7 +96,7 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 	//Transform for the position of the renderer
 //This is in case the viewport  doesn't match the camera (blackboxing)
 
-	Empaerior::Rect renderer_viewport;
+	Empaerior::D_Rect renderer_viewport;
 	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
 
 	pos.first -= renderer_viewport.x;
@@ -107,7 +107,7 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 
 }
 
-Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::Rect& rect, int x, int y)
+Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::D_Rect& rect, int x, int y)
 {
 
 

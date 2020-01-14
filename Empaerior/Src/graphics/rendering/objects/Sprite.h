@@ -6,8 +6,8 @@ namespace Empaerior {
 	class Graphic_element
 	{
 	public:
-		Graphic_element(const Rect& rect)
-			:rect(rect)
+		Graphic_element(const D_Rect& rect, const fl_point& angle)
+			:rect({rect, angle})
 			// the size of the rect is only for one frame of the sprite
 			// so the length of the texture should be frames * tex_rect.w
 		{
@@ -27,17 +27,24 @@ namespace Empaerior {
 		virtual void update(const Empaerior::u_s_int& dt) {
 		
 		};
-		void set_angle(const double& newAngle)
+		// TODO:ROTATE THE RECT TOO
+		void set_angle(const Empaerior::fl_point& newAngle)
 		{
-			angle = newAngle;
+			rect.angle = newAngle;
 		}
 		void set_position(const Empaerior::s_int& x, const Empaerior::s_int& y)
 		{
-			rect.x = x;
-			rect.y = y;
+			rect.dimensions.x = x;
+			rect.dimensions.y = y;
 			return;
 		}
 		
+		//TODO 
+		Empaerior::D_Rect& get_dimesnsions()
+		{
+
+		}
+
 
 	protected:
 
@@ -49,7 +56,7 @@ namespace Empaerior {
 
 		Empaerior::Rect rect; // the sprite
 
-		double angle = 0; // rotation fo the element
+		 // rotation fo the element
 
 
 	};
@@ -66,7 +73,7 @@ namespace Empaerior {
 
 		// the size of the rect is only for one frame of the sprite
 		// so the length of the texture should be frames * tex_rect.w
-		void Init(const Empaerior::Rect& m_rect, const Empaerior::Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
+		void Init(const Empaerior::Rect& m_rect, const Empaerior::D_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
 		//sets a new texture instead of the old one
 		//rect , animation  and position doesn't change
 		void set_texture(const Empaerior::string& tex_path)
@@ -105,7 +112,7 @@ namespace Empaerior {
 
 		}
 		//gets the dimesnions of the sprite
-		Empaerior::Rect const& get_dimensions();
+		Empaerior::D_Rect const& get_dimensions();
 		
 		
 
@@ -131,7 +138,7 @@ namespace Empaerior {
 
 
 
-		Empaerior::Rect tex_rect;// the portion of the texture the sprite represents
+		Empaerior::D_Rect tex_rect;// the portion of the texture the sprite represents
 		Empaerior::u_s_int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
 		
 		Empaerior::u_s_int time = 0;

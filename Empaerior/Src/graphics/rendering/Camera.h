@@ -15,7 +15,7 @@ namespace Empaerior
 		{
 
 		}
-		Camera(const Empaerior::Rect& camera)
+		Camera(const Empaerior::D_Rect& camera)
 			:rect(camera)
 
 		{
@@ -36,7 +36,7 @@ namespace Empaerior
 		void set_dimensions(const  Empaerior::s_int& w, const  Empaerior::s_int& h);
 
 
-		Empaerior::Rect rect = { 0,0,0,0 };
+		Empaerior::D_Rect rect = { 0,0,0,0 };
 	private:
 
 

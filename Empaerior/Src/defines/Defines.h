@@ -50,6 +50,8 @@ namespace Empaerior
 	using inter = int64_t;
 	using boole = bool;
 	using ch = char;
+	using fl_point = double;
+
 
 	//OTHER TYPES
 	//value tuple // fore small types
@@ -57,7 +59,17 @@ namespace Empaerior
 	using v_pair = std::pair<T, Y>;
 	//string definition
 	using string = std::string;
+	//Dimensions Rectangle (without rotation)
+	using D_Rect = SDL_Rect;
 
-	using Rect = SDL_Rect;
+	struct Rect
+	{
+
+		Empaerior::D_Rect dimensions;
+		Empaerior::fl_point angle;
+
+	};
+
+
 	using Color = SDL_Color;
 }

@@ -65,7 +65,7 @@ namespace Empaerior
 		//it return the index of the sprite just in case
 		size_t add_sprite(Empaerior::ECS& ecs, const uint64_t& id,
 
-			const Empaerior::Rect& m_rect, const Empaerior::Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
+			const Empaerior::Rect& m_rect, const Empaerior::D_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
 		{
 			//on the top 
 			POS_SPRITES.emplace_back(ORDER.size());
@@ -188,6 +188,28 @@ namespace Empaerior
 				{
 
 					ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_color(r, g, b);
+				}
+				else
+				{
+					throw E_runtime_exception("Cannot set the color of the sprite, index " + std::to_string(index) + "  is invalid", __FILE__, __LINE__, __FUNCTION__);
+				}
+
+			}
+			catch (E_runtime_exception & e)
+			{
+				e.print_message();
+			}
+
+		}
+
+		void set_angle(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index, const double& angle)
+		{
+
+			try {
+				if (index < SPRITES.size())
+				{
+
+					ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_angle(angle);
 				}
 				else
 				{

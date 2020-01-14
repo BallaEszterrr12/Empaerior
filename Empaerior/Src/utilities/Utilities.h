@@ -40,7 +40,7 @@ namespace Empaerior
 
 
 		//check if a rect contains a point
-		Empaerior::boole rect_contains_point(const Empaerior::Rect& rect, int x, int y);
+		Empaerior::boole rect_contains_point(const Empaerior::D_Rect& rect, int x, int y);
 
 	}
 

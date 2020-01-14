@@ -12,8 +12,8 @@ public:
 	APP_State()
 	{
 		//INITIALIZE THE ECS
-        ecs.Init();
-		
+		ecs.Init();
+
 		//REGISTER SOME COMPONENTS
 		ecs.register_component<Empaerior::Camera_Component>();
 		ecs.register_component<Empaerior::Sprite_Component>();
@@ -29,7 +29,7 @@ public:
 
 		//CREATE Two ENTITY
 		morge.id = ecs.create_entity_ID();
-		norge.id = ecs.create_entity_ID();
+
 
 
 
@@ -38,49 +38,34 @@ public:
 		ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
 
-		ecs.add_component<Empaerior::Event_Listener_Component>(norge.id, Empaerior::Event_Listener_Component{});
-		ecs.add_component<Empaerior::Sprite_Component>(norge.id, { {},{}, {},{},{} });
 
 		//CREate a Sprite for each
-		spr_system->add_sprite(ecs, morge.id, { 0,0,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
-		spr_system->add_sprite(ecs, norge.id, { 50,50,100,100 }, { 0,0,1000,1000 }, "assets/img.png", 1);
-		spr_system->set_color(ecs, morge.id, 0, 255,0,0);
-		spr_system->set_color(ecs, norge.id, 0, 0, 0, 255);
+		spr_system->add_sprite(ecs, morge.id, { { 0,0,100,100 } ,90}, { 0,0,1000,1000 }, "assets/img.png", 1);
+		spr_system->set_color(ecs, morge.id, 0, 255, 0, 0);
+
+
+
 
 		//set the camera
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
 		//Add two event
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,ID = morge.id,&Camera = camera](Empaerior::Event& event)
-			{
-
-				//get mouse coordinates
-				auto coords = Empaerior::Utilities::get_world_mouse_coords(Camera);
-
-				//if the left mouse button is pressed do something
-				if (event.event.button.button == SDL_BUTTON_LEFT && Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_dimensions(),coords.first,coords.second))
-				{
-					APP_INFO("MORGE!");
-					Empaerior::event_handled(event);
-				}
-
-			});
-		event_system->add_event_to_entity(ecs, norge.id, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs, ID = norge.id, &Camera = camera](Empaerior::Event& event)
+		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs, ID = morge.id, &Camera = camera](Empaerior::Event& event)
 		{
 
 			//get mouse coordinates
 			auto coords = Empaerior::Utilities::get_world_mouse_coords(Camera);
-		
+
 			//if the left mouse button is pressed do something
 			if (event.event.button.button == SDL_BUTTON_LEFT && Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_dimensions(), coords.first, coords.second))
 			{
-				APP_INFO("NORGE!");
+				APP_INFO("MORGE!");
 				Empaerior::event_handled(event);
 			}
 
 		});
-	}
 
+	}
 	void Update(const Empaerior::u_s_int& dt)override
 	{
 		//DEBUG CODE, LETS YOU MOVE AROUND THE MAP
@@ -110,6 +95,9 @@ public:
 			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x + 10, Empaerior::Application::cur_state->get_camera().rect.y);
 		}
 
+
+		//i++;
+		//spr_system->set_angle(ecs, norge.id, 0, i);
 		
 		//UPDATE 
 		spr_system->update(ecs, dt);
@@ -131,7 +119,7 @@ private:
 	
 	std::shared_ptr<Empaerior::Sprite_System> spr_system;
 	std::shared_ptr<Empaerior::Event_System> event_system;
-
+	int i = 0;
 	Empaerior::Entity morge;
 	Empaerior::Entity norge;
 

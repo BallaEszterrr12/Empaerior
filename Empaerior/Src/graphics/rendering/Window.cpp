@@ -10,6 +10,7 @@ Empaerior::Window::Window(const Empaerior::string& name, const Empaerior::u_s_in
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_RESIZABLE);
 	renderer = SDL_CreateRenderer(window, -1, 0);
 
+	//SOME EVENTS 
 	window_listener.register_event(SDL_QUIT, [](Empaerior::Event const& event) { // add quit event 
 		Empaerior::Application::is_running = false;
 		});

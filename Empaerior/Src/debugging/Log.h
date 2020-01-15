@@ -43,20 +43,5 @@ namespace Empaerior
 #define APP_CRITICAL(...) Empaerior::Log::Logger::application_logger->critical(__VA_ARGS__)
 
 
-#else
-
-
-#define ENGINE_TRACE(...) 	
-#define ENGINE_INFO(...) 
-#define ENGINE_WARN(...) 	
-#define ENGINE_ERROR(...) 
-#define ENGINE_CRITICAL(...) 	
-
-#define APP_TRACE(...) 
-#define APP_INFO(...) 
-#define APP_WARN(...) 
-#define APP_ERROR(...)
-#define APP_CRITICAL(...) 
-
 
 #endif // EMP_USE_LOGS

@@ -109,13 +109,26 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 
 Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::Rect& rect, int x, int y)
 {
-	//TODO: add rotation in consideration, rotate position of the point by the counter angle of the rects angle ( the anglem of the rect is clockwise so the point should be rotated counter-clockwise )
+	//TODO: This is the ugliest piece of code in the entire project,nice
+	double p_x = double(x);
+	double p_y = double(y);
+	double o_x = double(rect.dimensions.x) + double(rect.dimensions.w)/2;
+	double o_y = double(rect.dimensions.y) + double(rect.dimensions.h)/2;
+
 
 	
+	//rotating the point counter-clockwise
+	double c_x = o_x +  (p_x - o_x) * cosd(rect.angle) - (p_y - o_y) *sind(rect.angle);
+	double c_y = o_y +	(p_y - o_y) * cosd(rect.angle) + (p_x - o_x) *sind(rect.angle);
+	
+	//
+	
 
-
-	if (y <= rect.dimensions.y || y > rect.dimensions.y + rect.dimensions.h) return false;
-	if (x <= rect.dimensions.x || x > rect.dimensions.x + rect.dimensions.w) return false;
+	
+	//checking the collision
+	if (c_x <= double(rect.dimensions.x) || c_x > double(rect.dimensions.x) + double(rect.dimensions.w)) return false;
+	if (c_y <= double(rect.dimensions.y) || c_y > double(rect.dimensions.y) + double(rect.dimensions.h)) return false;
 
 	return true;
 }
+

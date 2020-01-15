@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <Empaerior.h>
+#include <cmath>
 namespace Empaerior
 {
 	namespace Utilities {
@@ -41,6 +42,28 @@ namespace Empaerior
 
 		//check if a rect contains a point
 		Empaerior::boole rect_contains_point(const Empaerior::Rect& rect, int x, int y);
+
+
+		inline double d2r(double d)
+		{
+			return (d / 180.0) * ((double)M_PI);
+		}
+
+		inline double sind(double x) 
+		{
+			
+			return std::sin(d2r(x));
+		}
+
+
+		inline double cosd(double x) 
+		{
+			return std::cos(d2r(x));
+		}
+
+		
+
+
 
 	}
 

@@ -27,7 +27,7 @@ namespace Empaerior {
 		virtual void update(const Empaerior::u_s_int& dt) {
 		
 		};
-		// TODO:ROTATE THE RECT TOO
+		
 		void set_angle(const Empaerior::fl_point& newAngle)
 		{
 			rect.angle = newAngle;

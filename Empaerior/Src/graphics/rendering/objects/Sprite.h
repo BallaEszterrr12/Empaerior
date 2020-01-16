@@ -6,7 +6,7 @@ namespace Empaerior {
 	class Graphic_element
 	{
 	public:
-		Graphic_element(const D_Rect& rect, const fl_point& angle)
+		Graphic_element(const F_Rect& rect, const fl_point& angle)
 			:rect({rect, angle})
 			// the size of the rect is only for one frame of the sprite
 			// so the length of the texture should be frames * tex_rect.w
@@ -32,7 +32,7 @@ namespace Empaerior {
 		{
 			rect.angle = newAngle;
 		}
-		void set_position(const Empaerior::s_int& x, const Empaerior::s_int& y)
+		void set_position(const Empaerior::fl_point& x, const Empaerior::fl_point& y)
 		{
 			rect.dimensions.x = x;
 			rect.dimensions.y = y;

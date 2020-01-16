@@ -40,42 +40,28 @@ public:
 
 
 		//CREate a Sprite for each
-		spr_system->add_sprite(ecs, morge.id, { { 100,100,250,250 } ,90}, { 0,0,1000,1000 }, "assets/img.png", 1);
-		spr_system->set_color(ecs, morge.id, 0, 255, 0, 0);
-		spr_system->set_angle(ecs, norge.id, 0, 45);
+		
 
 		
 
 		//set the camera
 		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
 
-		//Add two event
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN, [&Ecs = ecs,&Spr_system = spr_system , ID = morge.id, &Camera = camera](Empaerior::Event& event)
+		Empaerior::Timer timy;
+		timy.start();
+		//Add a tile map worth of sprites
+		for (float i = 0; i < 100; i+=1)
 		{
-
-			//get mouse coordinates
-			auto coords = Empaerior::Utilities::get_world_mouse_coords(Camera);
-
-			//if the left mouse button is pressed do something
-			if (event.event.button.button == SDL_BUTTON_LEFT )
+			for (float j = 0; j < 100; j+=1)
 			{
-				APP_INFO("MORGE!");
-				
-				if(Empaerior::Utilities::rect_contains_point(Ecs.get_component<Empaerior::Sprite_Component>(ID).sprites[0].get_rect(),coords.first,coords.second))
-				{
-					auto index = Spr_system->add_sprite(Ecs, ID, { coords.first,coords.second,10,10 }, { 0,0,1,1 }, "assets/img.png", 1);
-					Spr_system->set_color(Ecs, ID, index, 255, 255, 255);
-				
-				}
-
-
-
-
-			
-				Empaerior::event_handled(event);
+				//std::cout << i << ' ' << j << '\n';
+				auto index = spr_system->add_sprite(ecs, morge.id, { { 32.0f * i,32.0f * j,32,32 } ,90 }, { 0,0,1000,1000 }, "assets/img.png", 1);
+				spr_system->set_color(ecs, morge.id, index, 255, 0, 0);
+				//spr_system->set_angle(ecs, norge.id, index, 45);
 			}
-
-		});
+		}
+		std::cout << timy.getTicks();
+	
 
 	}
 	void Update(const Empaerior::u_s_int& dt)override

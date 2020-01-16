@@ -53,27 +53,31 @@ int Empaerior::Utilities::get_system_ram()
 	return SDL_GetSystemRAM();
 }
 
-Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_screen_mouse_coords()
+Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities::get_screen_mouse_coords()
 {
-	v_pair<Empaerior::s_int, Empaerior::s_int> pos;
+	Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> pos;
 	SDL_GetMouseState(&pos.first, &pos.second);
 
 //Transform for the position of the renderer
 //This is in case the viewport  doesn't match the camera (blackboxing)
 
 	Empaerior::D_Rect renderer_viewport;
-	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
+	SDL_RenderGetViewport(Empaerior::Application::window.renderer, &renderer_viewport);
 
 	pos.first -= renderer_viewport.x;
 	pos.second -= renderer_viewport.y;
 
-	return pos;
+	Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> f_pos;
+	f_pos.first = pos.first;
+	f_pos.second = pos.second;
+
+	return f_pos;
 }
 
-Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_world_mouse_coords(const Empaerior::Camera& camera)
+Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities::get_world_mouse_coords(const Empaerior::Camera& camera)
 {
 	//get the positions
-	v_pair<Empaerior::s_int, Empaerior::s_int> pos;
+	Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> pos;
 	SDL_GetMouseState(&pos.first, &pos.second);
 
 
@@ -101,9 +105,16 @@ Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> Empaerior::Utilities::get_
 
 	pos.first -= renderer_viewport.x;
 	pos.second -= renderer_viewport.y;
+	
 
-	return pos;
 
+
+
+	 Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> f_pos;
+	 f_pos.first = Empaerior::fl_point(pos.first);
+	 f_pos.second = Empaerior::fl_point(pos.second);
+
+	 return f_pos;
 
 }
 

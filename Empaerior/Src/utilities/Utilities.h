@@ -31,11 +31,11 @@ namespace Empaerior
 
 
 		//returns the coordinates of the mouse relative to the screen
-		Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> get_screen_mouse_coords();
+		Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> get_screen_mouse_coords();
 
 
 		//gets the coordinates of the mouse based on where the camera is
-		Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> get_world_mouse_coords(const Empaerior::Camera& camera);
+		Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> get_world_mouse_coords(const Empaerior::Camera& camera);
 
 
 

@@ -65,7 +65,7 @@ namespace Empaerior
 	using inter = int64_t;
 	using boole = bool;
 	using ch = char;
-	using fl_point = double;
+	using fl_point = float;
 
 
 	//OTHER TYPES
@@ -75,12 +75,20 @@ namespace Empaerior
 	//string definition
 	using string = std::string;
 	//Dimensions Rectangle (without rotation)
+
+	//TODO: Switch to floating points
 	using D_Rect = SDL_Rect;
+	struct F_Rect
+	{
+		float x, y;
+		float w, h;
+	};
+
 
 	struct Rect
 	{
 
-		Empaerior::D_Rect dimensions;
+		Empaerior::F_Rect dimensions;
 		Empaerior::fl_point angle;
 
 	};

@@ -202,7 +202,7 @@ namespace Empaerior
 
 		}
 
-		void set_angle(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index, const double& angle)
+		void set_angle(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index, const Empaerior::fl_point& angle)
 		{
 
 			try {

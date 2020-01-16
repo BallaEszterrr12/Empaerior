@@ -48,7 +48,7 @@ namespace Empaerior
 		//dergrees to radians
 		inline Empaerior::fl_point d2r(Empaerior::fl_point d)
 		{
-			return (d / 180.0) * Empaerior::fl_point(M_PI);
+			return (d / 180.0f) * Empaerior::fl_point(M_PI);
 		}
 
 		//sin & cos in degress

@@ -69,8 +69,8 @@ Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities
 	pos.second -= renderer_viewport.y;
 
 	Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> f_pos;
-	f_pos.first = pos.first;
-	f_pos.second = pos.second;
+	f_pos.first = Empaerior::fl_point(pos.first);
+	f_pos.second = Empaerior::fl_point(pos.second);
 
 	return f_pos;
 }

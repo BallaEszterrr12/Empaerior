@@ -53,6 +53,9 @@
     <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h">
       <Filter>SDLwrappers</Filter>
     </ClInclude>
+    <ClInclude Include="src\SDLwrappers\Rendering_Wrappers.h">
+      <Filter>SDLwrappers</Filter>
+    </ClInclude>
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h">
       <Filter>SDLwrappers</Filter>
     </ClInclude>

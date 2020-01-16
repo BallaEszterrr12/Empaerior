@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "Glyphs.h"
 #include "../../assetmanager/AssetManager.h"
-
+#include "SDLwrappers/Rendering_Wrappers.h"
 namespace Empaerior {
 
 
@@ -30,11 +30,11 @@ namespace Empaerior {
 	}
 
 	//renders from string
-	void renderLine_st(const Empaerior::string& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
+	void renderLine_st(const Empaerior::string& text, Empaerior::fl_point const& margin, Empaerior::fl_point const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, Empaerior::fl_point const& screenWidth, Empaerior::fl_point const& screenHeight, const Empaerior::fl_point& angle, const Empaerior::fl_point& camera_x, const Empaerior::fl_point& camera_y)
 	{
-
-		Empaerior::s_int x = margin, y = Y, wX = 0;
-		Empaerior::D_Rect textRect;
+		
+		Empaerior::fl_point x = margin, y = Y, wX = 0;
+		Empaerior::F_Rect textRect;
 		Empaerior::byte lValue = 0;
 		Empaerior::u_inter lastSpace = 0;
 		Empaerior::boole safe = true;
@@ -61,7 +61,7 @@ namespace Empaerior {
 			}
 			if (true) {
 				textRect.x = x - camera_x; textRect.y = y - camera_y; textRect.w = glyphs[lValue].w; textRect.h = glyphs[lValue].h;
-				SDL_RenderCopyEx(renderer, &(*glyphs[lValue].image), NULL, &textRect, 0, NULL, SDL_FLIP_NONE);
+				Empaerior::Render::RenderEx(renderer, &(*glyphs[lValue].image), NULL, &textRect,0,  angle, SDL_FLIP_NONE);
 				x = x + glyphs[lValue].w;
 			}
 			else { cnt = lastSpace; x = margin; y = y + glyphs[lValue].h; safe = true; }
@@ -71,13 +71,13 @@ namespace Empaerior {
 	}
 	//slower,as  it doesn't preload the values but simpler
 
-
+	//TODO: Addapt to render wrapper
 	//renders from a vector of int,where each int is a value of a char from glyphs
-	void renderLine(const std::vector<Empaerior::byte>& text, int const& margin, int const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y)
+	void renderLine(const std::vector<Empaerior::byte>& text, Empaerior::fl_point const& margin, Empaerior::fl_point const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, Empaerior::fl_point const& screenWidth, Empaerior::fl_point const& screenHeight, const Empaerior::fl_point& angle, const Empaerior::fl_point& camera_x, const Empaerior::fl_point& camera_y)
 	{
 		
-		Empaerior::s_int x = margin, y = Y, wX = 0;
-		Empaerior::D_Rect textRect;
+		Empaerior::fl_point x = margin, y = Y, wX = 0;
+		Empaerior::F_Rect textRect;
 		Empaerior::byte lValue = 0;
 		Empaerior::u_inter lastSpace = 0;
 		Empaerior::boole safe = true;
@@ -106,7 +106,7 @@ namespace Empaerior {
 
 				textRect.x = x - camera_x; textRect.y = y - camera_y; textRect.w = glyphs[lValue].w; textRect.h = glyphs[lValue].h;
 			
-				SDL_RenderCopyEx(renderer, &(*glyphs[lValue].image), NULL, &textRect, angle, NULL, SDL_FLIP_NONE);
+				Empaerior::Render::RenderEx(renderer, &(*glyphs[lValue].image), NULL, &textRect, 0, angle, SDL_FLIP_NONE);
 				x = x + glyphs[lValue].w;
 			}
 			else { cnt = lastSpace; x = margin; y = y + glyphs[lValue].h; safe = true; }

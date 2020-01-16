@@ -37,10 +37,10 @@ namespace Empaerior {
 
 
 
-	void renderLine_st(const Empaerior::string& text, int const& margin, int const& Y, std::vector <Empaerior::glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
+	void renderLine_st(const Empaerior::string& text, Empaerior::fl_point const& margin, Empaerior::fl_point const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, Empaerior::fl_point const& screenWidth, Empaerior::fl_point const& screenHeight, const Empaerior::fl_point& angle, const Empaerior::fl_point& camera_x, const Empaerior::fl_point& camera_y);
 
 
-	void renderLine(const std::vector<Empaerior::byte>& text, int const& margin, int const& Y, std::vector <Empaerior::glyph>& glyphs, SDL_Renderer* renderer, int const& screenWidth, int const& screenHeight, const double& angle, const int& camera_x, const int& camera_y);
+	void renderLine(const std::vector<Empaerior::byte>& text, Empaerior::fl_point const& margin, Empaerior::fl_point const& Y, std::vector <glyph>& glyphs, SDL_Renderer* renderer, Empaerior::fl_point const& screenWidth, Empaerior::fl_point const& screenHeight, const Empaerior::fl_point& angle, const Empaerior::fl_point& camera_x, const Empaerior::fl_point& camera_y);
 
 
 	std::vector<Empaerior::byte> load_glyph_values(const  Empaerior::string& source);

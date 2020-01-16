@@ -5,7 +5,7 @@
 #include "../Window.h"
 
 
-void Empaerior::Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::D_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
+void Empaerior::Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
 {
 	rect = m_rect;
 	tex_rect = m_tex_rect;
@@ -14,10 +14,10 @@ void Empaerior::Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::D_R
 	frames = m_frames;
 
 }
-
+//TODO: change to use float in rendering
 void Empaerior::Sprite::draw(const Camera& camera)
 {
-	Empaerior::D_Rect position_rect = {rect.dimensions.x - camera.rect.x,rect.dimensions.y - camera.rect.y,rect.dimensions.w,rect.dimensions.h };
+	Empaerior::Int_Rect position_rect = {rect.dimensions.x - camera.rect.x,rect.dimensions.y - camera.rect.y,rect.dimensions.w,rect.dimensions.h };
 	if (texture != nullptr)
 	{
 		//setting the texture's color, because each sprite that uses the texture uses it differently (or not)

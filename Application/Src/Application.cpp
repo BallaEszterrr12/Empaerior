@@ -50,15 +50,13 @@ public:
 		Empaerior::Timer timy;
 		timy.start();
 		//Add a tile map worth of sprites
-		for (float i = 0; i < 100; i+=1)
+		for (float i = 0; i < 10; i+=1)
 		{
-			for (float j = 0; j < 100; j+=1)
-			{
+			
 				//std::cout << i << ' ' << j << '\n';
-				auto index = spr_system->add_sprite(ecs, morge.id, { { 32.0f * i,32.0f * j,32,32 } ,90 }, { 0,0,1000,1000 }, "assets/img.png", 1);
+				auto index = spr_system->add_text_sprite(ecs, morge.id, { { 0,100.0f * i,320,32 } ,0 }, "assets/font.ttf", 32, " The quick blue fuck fdwsiousdfojsdf husdfhu9dfshu8fsdhu8fsdhsdfhuisdfhusfhdu9sfdhu9sdfh9u8sfhd89hsfd9hsdf89", {0,0,255,255});
 				spr_system->set_color(ecs, morge.id, index, 255, 0, 0);
-				//spr_system->set_angle(ecs, norge.id, index, 45);
-			}
+
 		}
 		std::cout << timy.getTicks();
 	

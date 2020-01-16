@@ -41,22 +41,25 @@ namespace Empaerior
 
 
 		//check if a rect contains a point
-		Empaerior::boole rect_contains_point(const Empaerior::Rect& rect, int x, int y);
+		Empaerior::boole rect_contains_point(const Empaerior::Rect& rect, Empaerior::fl_point x , Empaerior::fl_point y);
 
 
-		inline double d2r(double d)
+
+		//dergrees to radians
+		inline Empaerior::fl_point d2r(Empaerior::fl_point d)
 		{
-			return (d / 180.0) * ((double)M_PI);
+			return (d / 180.0) * Empaerior::fl_point(M_PI);
 		}
 
-		inline double sind(double x) 
+		//sin & cos in degress
+		inline Empaerior::fl_point sind(Empaerior::fl_point x)
 		{
 			
 			return std::sin(d2r(x));
 		}
 
 
-		inline double cosd(double x) 
+		inline Empaerior::fl_point cosd(Empaerior::fl_point x)
 		{
 			return std::cos(d2r(x));
 		}

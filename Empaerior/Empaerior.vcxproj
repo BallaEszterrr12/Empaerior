@@ -276,6 +276,7 @@
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Empaerior.h" />
     <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h" />
+    <ClInclude Include="src\SDLwrappers\Rendering_Wrappers.h" />
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\assetmanager\AssetManager.h" />

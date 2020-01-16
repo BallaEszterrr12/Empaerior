@@ -53,6 +53,7 @@ int Empaerior::Utilities::get_system_ram()
 	return SDL_GetSystemRAM();
 }
 
+//TODO: CHANGE TO USE F_POINT
 Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities::get_screen_mouse_coords()
 {
 	Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> pos;
@@ -61,7 +62,7 @@ Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities
 //Transform for the position of the renderer
 //This is in case the viewport  doesn't match the camera (blackboxing)
 
-	Empaerior::D_Rect renderer_viewport;
+	Empaerior::Int_Rect renderer_viewport;
 	SDL_RenderGetViewport(Empaerior::Application::window.renderer, &renderer_viewport);
 
 	pos.first -= renderer_viewport.x;
@@ -100,7 +101,7 @@ Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities
 	//Transform for the position of the renderer
 //This is in case the viewport  doesn't match the camera (blackboxing)
 
-	Empaerior::D_Rect renderer_viewport;
+	Empaerior::Int_Rect renderer_viewport;
 	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
 
 	pos.first -= renderer_viewport.x;
@@ -118,27 +119,26 @@ Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities
 
 }
 
-Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::Rect& rect, int x, int y)
+Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::Rect& rect, Empaerior::fl_point x, Empaerior::fl_point y)
 {
 	//TODO: This is the ugliest piece of code in the entire project,nice
-	double p_x = double(x);
-	double p_y = double(y);
-	double o_x = double(rect.dimensions.x) + double(rect.dimensions.w)/2;
-	double o_y = double(rect.dimensions.y) + double(rect.dimensions.h)/2;
+
+	Empaerior::fl_point o_x = rect.dimensions.x + rect.dimensions.w/2;
+	Empaerior::fl_point o_y = rect.dimensions.y + rect.dimensions.h/2;
 
 
 	
 	//rotating the point counter-clockwise
-	double c_x = o_x +  (p_x - o_x) * cosd(rect.angle) - (p_y - o_y) *sind(rect.angle);
-	double c_y = o_y +	(p_y - o_y) * cosd(rect.angle) + (p_x - o_x) *sind(rect.angle);
+	Empaerior::fl_point c_x = o_x +  (x - o_x) * cosd(rect.angle) - (y - o_y) *sind(rect.angle);
+	Empaerior::fl_point c_y = o_y +	(y - o_y) * cosd(rect.angle) + (x - o_x) *sind(rect.angle);
 	
 	//
 	
 
 	
 	//checking the collision
-	if (c_x <= double(rect.dimensions.x) || c_x > double(rect.dimensions.x) + double(rect.dimensions.w)) return false;
-	if (c_y <= double(rect.dimensions.y) || c_y > double(rect.dimensions.y) + double(rect.dimensions.h)) return false;
+	if (c_x <= rect.dimensions.x || c_x > rect.dimensions.x + rect.dimensions.w) return false;
+	if (c_y <= rect.dimensions.y || c_y > rect.dimensions.y + rect.dimensions.h) return false;
 
 	return true;
 }

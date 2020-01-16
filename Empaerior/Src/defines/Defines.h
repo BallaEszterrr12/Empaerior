@@ -77,7 +77,7 @@ namespace Empaerior
 	//Dimensions Rectangle (without rotation)
 
 	//TODO: Switch to floating points
-	using D_Rect = SDL_Rect;
+	using Int_Rect = SDL_Rect;
 	struct F_Rect
 	{
 		float x, y;

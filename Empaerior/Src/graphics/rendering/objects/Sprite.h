@@ -69,7 +69,7 @@ namespace Empaerior {
 
 		// the size of the rect is only for one frame of the sprite
 		// so the length of the texture should be frames * tex_rect.w
-		void Init(const Empaerior::Rect& m_rect, const Empaerior::D_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
+		void Init(const Empaerior::Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
 		//sets a new texture instead of the old one
 		//rect , animation  and position doesn't change
 		void set_texture(const Empaerior::string& tex_path)
@@ -134,7 +134,7 @@ namespace Empaerior {
 
 
 
-		Empaerior::D_Rect tex_rect;// the portion of the texture the sprite represents
+		Empaerior::Int_Rect tex_rect;// the portion of the texture the sprite represents
 		Empaerior::u_s_int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
 		
 		Empaerior::u_s_int time = 0;

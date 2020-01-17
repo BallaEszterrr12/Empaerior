@@ -12,7 +12,7 @@ namespace Empaerior
 		inline void RenderEx(SDL_Renderer* renderer,
 			SDL_Texture* texture,
 			const Empaerior::Int_Rect* srcrect,
-			const Empaerior::F_Rect* dstrect,
+			const Empaerior::Float_Rect* dstrect,
 			const SDL_Point* center,
 			const double& angle,
 			const SDL_RendererFlip flip)

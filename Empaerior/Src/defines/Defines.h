@@ -78,17 +78,18 @@ namespace Empaerior
 
 	//TODO: Switch to floating points
 	using Int_Rect = SDL_Rect;
-	struct F_Rect
+
+	struct Float_Rect
 	{
-		float x, y;
-		float w, h;
+		fl_point x, y;
+		fl_point w, h;
 	};
 
 
 	struct Rect
 	{
 
-		Empaerior::F_Rect dimensions;
+		Empaerior::Float_Rect dimensions;
 		Empaerior::fl_point angle;
 
 	};

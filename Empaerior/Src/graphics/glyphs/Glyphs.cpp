@@ -34,7 +34,7 @@ namespace Empaerior {
 	{
 		
 		Empaerior::fl_point x = margin, y = Y, wX = 0;
-		Empaerior::F_Rect textRect;
+		Empaerior::Float_Rect textRect;
 		Empaerior::byte lValue = 0;
 		Empaerior::u_inter lastSpace = 0;
 		Empaerior::boole safe = true;
@@ -77,7 +77,7 @@ namespace Empaerior {
 	{
 		
 		Empaerior::fl_point x = margin, y = Y, wX = 0;
-		Empaerior::F_Rect textRect;
+		Empaerior::Float_Rect textRect;
 		Empaerior::byte lValue = 0;
 		Empaerior::u_inter lastSpace = 0;
 		Empaerior::boole safe = true;

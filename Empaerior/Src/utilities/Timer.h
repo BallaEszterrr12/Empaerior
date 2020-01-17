@@ -18,7 +18,7 @@ namespace  Empaerior
 		void unpause();
 
 		//Gets the timer's time
-		Empaerior::u_s_int getTicks();
+		Empaerior::u_int getTicks();
 
 		//Checks the status of the timer
 		bool isStarted();
@@ -26,10 +26,10 @@ namespace  Empaerior
 
 	private:
 		//The clock time when the timer started
-		Empaerior::u_s_int mStartTicks;
+		Empaerior::u_int mStartTicks;
 
 		//The ticks stored when the timer was paused
-		Empaerior::u_s_int mPausedTicks;
+		Empaerior::u_int mPausedTicks;
 
 		//The timer status
 		bool mPaused;

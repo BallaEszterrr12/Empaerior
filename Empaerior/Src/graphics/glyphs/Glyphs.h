@@ -27,7 +27,7 @@ namespace Empaerior {
 		}
 
 		SDL_Texture* image;
-		int w, h;
+		Empaerior::fl_point w, h;
 	};
 
 
@@ -44,7 +44,7 @@ namespace Empaerior {
 
 
 	std::vector<Empaerior::byte> load_glyph_values(const  Empaerior::string& source);
-	int getValue(char Letter);
+	int getValue(Empaerior::ch Letter);
 
 
 

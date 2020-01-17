@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "EventHandler.h"
 
-void Empaerior::Event_Listener::register_event(Empaerior::u_s_int type, EventCallback callback)
+void Empaerior::Event_Listener::register_event(Empaerior::u_int type, EventCallback callback)
 {
 	_registeredCallbacks[type].push_back(callback);
 }

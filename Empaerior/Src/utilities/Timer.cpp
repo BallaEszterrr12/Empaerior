@@ -67,10 +67,10 @@ void Empaerior::Timer::unpause()
 	}
 }
 
-Empaerior::u_s_int Empaerior::Timer::getTicks()
+Empaerior::u_int Empaerior::Timer::getTicks()
 {
 	//The actual timer time
-	Empaerior::u_s_int time = 0;
+	Empaerior::u_int time = 0;
 
 	//If the timer is running
 	if (mStarted)

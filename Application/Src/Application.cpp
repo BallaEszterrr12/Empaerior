@@ -62,7 +62,7 @@ public:
 	
 
 	}
-	void Update(const Empaerior::u_s_int& dt)override
+	void Update(const Empaerior::u_int& dt)override
 	{
 		//DEBUG CODE, LETS YOU MOVE AROUND THE MAP
 		unsigned char const* keys = SDL_GetKeyboardState(nullptr);
@@ -149,10 +149,10 @@ public:
 	void run() override
 	{
 		//GAME LOOP
-		Empaerior::u_s_int framestart = 0;
-		Empaerior::u_s_int frametime = 0;
-		Empaerior::u_s_int currentime = 0;
-		Empaerior::u_s_int acumulator = 0;
+		Empaerior::u_int framestart = 0;
+		Empaerior::u_int frametime = 0;
+		Empaerior::u_int currentime = 0;
+		Empaerior::u_int acumulator = 0;
 
 		while (Empaerior::Application::is_running)
 		{

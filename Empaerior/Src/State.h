@@ -23,7 +23,7 @@ namespace Empaerior {
 
 		};
 
-		virtual void Update(const Empaerior::u_s_int& dt) = 0;
+		virtual void Update(const Empaerior::u_int& dt) = 0;
 		virtual void Render() = 0 ;//renders the state
 		virtual void handleevents(Empaerior::Event& event) = 0;
 

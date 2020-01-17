@@ -10,7 +10,7 @@ namespace Empaerior
 
 	public:
 		Window();
-		Window(const Empaerior::string& name, const Empaerior::u_s_int& width, const Empaerior::u_s_int& height);
+		Window(const Empaerior::string& name, const Empaerior::u_int& width, const Empaerior::u_int& height);
 
 
 
@@ -21,19 +21,19 @@ namespace Empaerior
 			if (renderer != nullptr)SDL_DestroyRenderer(renderer);
 
 		}
-		int Init(const Empaerior::string& name, const Empaerior::u_s_int& width, const Empaerior::u_s_int& height);
+		int Init(const Empaerior::string& name, const Empaerior::u_int& width, const Empaerior::u_int& height);
 		void render();
 		void clear();
 
 		void reset();
 		void toggle_fullscreen();
 
-		Empaerior::u_s_int get_width()
+		Empaerior::u_int get_width()
 		{
 			return width;
 		}
 
-		Empaerior::u_s_int get_heigth()
+		Empaerior::u_int get_heigth()
 		{
 			return height;
 		}
@@ -43,7 +43,7 @@ namespace Empaerior
 		//lisens for window events
 		Event_Listener window_listener;
 	private:
-		Empaerior::u_s_int width = 0;
-		Empaerior::u_s_int height = 0;
+		Empaerior::u_int width = 0;
+		Empaerior::u_int height = 0;
 	};
 }

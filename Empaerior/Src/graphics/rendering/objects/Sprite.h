@@ -24,7 +24,7 @@ namespace Empaerior {
 
 		}
 		virtual void draw(const Camera& camera) { };
-		virtual void update(const Empaerior::u_s_int& dt) {
+		virtual void update(const Empaerior::u_int& dt) {
 		
 		};
 		
@@ -69,7 +69,7 @@ namespace Empaerior {
 
 		// the size of the rect is only for one frame of the sprite
 		// so the length of the texture should be frames * tex_rect.w
-		void Init(const Empaerior::Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames);
+		void Init(const Empaerior::Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const Empaerior::byte& m_frames);
 		//sets a new texture instead of the old one
 		//rect , animation  and position doesn't change
 		void set_texture(const Empaerior::string& tex_path)
@@ -94,7 +94,7 @@ namespace Empaerior {
 
 		void draw(const Camera& camera) override;
 
-		void update(const Empaerior::u_s_int& dt)
+		void update(const Empaerior::u_int& dt)
 		{
 			time += dt; // add the time passed
 
@@ -135,10 +135,10 @@ namespace Empaerior {
 
 
 		Empaerior::Int_Rect tex_rect;// the portion of the texture the sprite represents
-		Empaerior::u_s_int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
+		Empaerior::u_int anim_x = 0, anim_y = 0;//the unaltered positions of the texture with the initial position 
 		
-		Empaerior::u_s_int time = 0;
-		static constexpr Empaerior::u_s_int holdTime = 250; //time between animations currently 0.25 seconds
+		Empaerior::u_int time = 0;
+		static constexpr Empaerior::u_int holdTime = 250; //time between animations currently 0.25 seconds
 
 		Empaerior::byte frames = 1; //each animation must have at least one frame
 		Empaerior::byte cur_frame = 0;
@@ -154,7 +154,7 @@ namespace Empaerior {
 
 	};
 
-
+	//TODO : ANGLE THE WHOLE TEXTURE
 	class Text_Sprite : public Graphic_element
 	{
 	public:
@@ -179,7 +179,7 @@ namespace Empaerior {
 
 
 		void draw(const Camera& camera);
-		void update(const Empaerior::u_s_int& dt) {};
+		void update(const Empaerior::u_int& dt) {};
 
 
 	public:

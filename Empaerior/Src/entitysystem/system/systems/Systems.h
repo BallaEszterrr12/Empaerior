@@ -15,7 +15,7 @@ namespace Empaerior
 	{
 	public:
 
-		void add_event_to_entity(Empaerior::ECS& ecs, const uint64_t& entity_id, const Empaerior::u_s_int& event_type, std::function<void(Empaerior::Event&)> function)
+		void add_event_to_entity(Empaerior::ECS& ecs, const uint64_t& entity_id, const Empaerior::u_int& event_type, std::function<void(Empaerior::Event&)> function)
 		{
 #define EVENTLISTENER  ecs.get_component<Empaerior::Event_Listener_Component>(entity_id).event_listener
 
@@ -224,7 +224,7 @@ namespace Empaerior
 
 		}
 
-		void update(Empaerior::ECS& ecs, const Empaerior::u_s_int& dt)
+		void update(Empaerior::ECS& ecs, const Empaerior::u_int& dt)
 		{
 			for (auto& id : entities_id)
 			{
@@ -312,7 +312,7 @@ namespace Empaerior
 
 	//iterates throught the container and executes the functions for which enough time has passed
 #define component ecs.get_component<T_E_Component>(id)
-		void Update(Empaerior::ECS& ecs, const Empaerior::u_s_int& dt)
+		void Update(Empaerior::ECS& ecs, const Empaerior::u_int& dt)
 		{
 			for (auto& id : entities_id)
 			{

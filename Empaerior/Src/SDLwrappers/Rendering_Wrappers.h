@@ -13,8 +13,8 @@ namespace Empaerior
 			SDL_Texture* texture,
 			const Empaerior::Int_Rect* srcrect,
 			const Empaerior::Float_Rect* dstrect,
-			const SDL_Point* center,
 			const double& angle,
+			const SDL_Point* center,	
 			const SDL_RendererFlip flip)
 		{
 			SDL_Rect i_dstrect = { int(dstrect->x) , int(dstrect->y)  ,  int(dstrect->w) , int(dstrect->h) };

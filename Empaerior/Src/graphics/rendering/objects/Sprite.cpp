@@ -3,9 +3,9 @@
 #include "../../../Application.h"
 #include "../../glyphs/Glyphs.h"
 #include "../Window.h"
+#include "SDLwrappers/Rendering_Wrappers.h"
 
-
-void Empaerior::Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const unsigned int& m_frames)
+void Empaerior::Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::Int_Rect& m_tex_rect, const Empaerior::string& tex_path, const  Empaerior::byte& m_frames)
 {
 	rect = m_rect;
 	tex_rect = m_tex_rect;
@@ -14,21 +14,23 @@ void Empaerior::Sprite::Init(const Empaerior::Rect& m_rect, const Empaerior::Int
 	frames = m_frames;
 
 }
+
+
 //TODO: change to use float in rendering
 void Empaerior::Sprite::draw(const Camera& camera)
 {
-	Empaerior::Int_Rect position_rect = {rect.dimensions.x - camera.rect.x,rect.dimensions.y - camera.rect.y,rect.dimensions.w,rect.dimensions.h };
+	Empaerior::Float_Rect position_rect = {rect.dimensions.x - camera.rect.x,rect.dimensions.y - camera.rect.y,rect.dimensions.w,rect.dimensions.h };
 	if (texture != nullptr)
 	{
 		//setting the texture's color, because each sprite that uses the texture uses it differently (or not)
 		SDL_SetTextureColorMod(texture.get(), r, g, b);//Safe/acceptable to call SDL_SetTextureColorMod a lot?
 		//render it
-		SDL_RenderCopyEx(Application::window.renderer, &(*texture), &tex_rect, &position_rect, rect.angle, NULL, SDL_FLIP_NONE);
+		Empaerior::Render::RenderEx(Application::window.renderer, &(*texture), &tex_rect, &position_rect, rect.angle, NULL, SDL_FLIP_NONE);
 	}
 	
 }
 Empaerior::Rect const& Empaerior::Sprite::get_rect()
-{
+{  
 	return rect;
 }
 void Empaerior::Text_Sprite::draw(const Camera& camera)

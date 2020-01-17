@@ -3,7 +3,7 @@
 #include "../../Application.h"
 
 
-Empaerior::Window::Window(const Empaerior::string& name, const Empaerior::u_s_int& width, const Empaerior::u_s_int& height)
+Empaerior::Window::Window(const Empaerior::string& name, const Empaerior::u_int& width, const Empaerior::u_int& height)
 : width(width),height(height)
 {
 	window = SDL_CreateWindow(name.c_str(),
@@ -35,7 +35,7 @@ Empaerior::Window::Window()
 
 }
 
-int Empaerior::Window::Init(const Empaerior::string& name, const Empaerior::u_s_int& m_width, const Empaerior::u_s_int& m_height)
+int Empaerior::Window::Init(const Empaerior::string& name, const Empaerior::u_int& m_width, const Empaerior::u_int& m_height)
 {
 	width = m_width;
 	height = m_height;
@@ -80,7 +80,7 @@ void Empaerior::Window::reset()
 
 void Empaerior::Window::toggle_fullscreen()
 {
-	Empaerior::u_s_int FullscreenFlag = SDL_WINDOW_FULLSCREEN;
+	Empaerior::u_int FullscreenFlag = SDL_WINDOW_FULLSCREEN;
 	bool IsFullscreen = SDL_GetWindowFlags(window) & FullscreenFlag;
 	SDL_SetWindowFullscreen(window, IsFullscreen ? 0 : FullscreenFlag);
 }

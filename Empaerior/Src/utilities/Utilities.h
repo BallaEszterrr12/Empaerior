@@ -16,16 +16,34 @@ namespace Empaerior
 
 
 		//system functions
-		Empaerior::string get_platform();//gets the current platform
+		inline Empaerior::string get_platform()//gets the current platform
+		{
+			const char* sdl_platform = SDL_GetPlatform();
+			Empaerior::string e_platform = sdl_platform;
+			SDL_free((void*)sdl_platform);
+			return e_platform;
 
+		}
 
-		int cpu_cache_size();//returns the size of the cpu  cache in bytes
-		int get_core_number();// get the number of CPU cores available
-		int get_system_ram();//get the amount of RAM configured in the system.
+		inline int cpu_cache_size()// returns the size of the cpu  cache in bytes
+		{
+			return SDL_GetCPUCacheLineSize();
+		}
+		
+		inline int get_core_number()// get the number of CPU cores available
+		{
+			return SDL_GetCPUCount();
+		}
+		inline int get_system_ram()//get the amount of RAM configured in the system.
+		{
+			return SDL_GetSystemRAM();
+		}
 
 
 		
-		
+
+	
+
 	
 
 

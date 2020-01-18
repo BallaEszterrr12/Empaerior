@@ -29,29 +29,6 @@ void Empaerior::Utilities::set_clipboard_text(const char* text)
 	}
 }
 
-Empaerior::string Empaerior::Utilities::get_platform()
-{
-	const char* sdl_platform = SDL_GetPlatform();
-	Empaerior::string e_platform = sdl_platform;
-	SDL_free((void*)sdl_platform);
-	return e_platform;
-
-}
-
-int Empaerior::Utilities::cpu_cache_size()
-{
-	return SDL_GetCPUCacheLineSize();
-}
-
-int Empaerior::Utilities::get_core_number()
-{
-	return SDL_GetCPUCount();
-}
-
-int Empaerior::Utilities::get_system_ram()
-{
-	return SDL_GetSystemRAM();
-}
 
 //TODO: CHANGE TO USE F_POINT
 Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities::get_screen_mouse_coords()

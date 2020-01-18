@@ -110,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\utilities\Math.h">
+      <Filter>utilities</Filter>
+    </ClInclude>
     <ClInclude Include="src\utilities\Timer.h">
       <Filter>utilities</Filter>
     </ClInclude>
@@ -142,6 +145,9 @@
       <Filter>graphics\rendering\objects</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\utilities\Math.cpp">
+      <Filter>utilities</Filter>
+    </ClCompile>
     <ClCompile Include="src\utilities\Timer.cpp">
       <Filter>utilities</Filter>
     </ClCompile>

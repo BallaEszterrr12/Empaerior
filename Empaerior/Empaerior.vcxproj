@@ -297,6 +297,7 @@
     <ClInclude Include="src\graphics\rendering\objects\Sprite.h" />
     <ClInclude Include="src\main.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\utilities\Math.h" />
     <ClInclude Include="src\utilities\Timer.h" />
     <ClInclude Include="src\utilities\Utilities.h" />
   </ItemGroup>
@@ -313,6 +314,7 @@
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\utilities\Math.cpp" />
     <ClCompile Include="src\utilities\Timer.cpp" />
     <ClCompile Include="src\utilities\Utilities.cpp" />
   </ItemGroup>

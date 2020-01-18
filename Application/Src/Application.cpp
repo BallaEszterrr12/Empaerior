@@ -50,14 +50,28 @@ public:
 		Empaerior::Timer timy;
 		timy.start();
 		//Add a tile map worth of sprites
-		for (float i = 0; i < 10; i+=1)
-		{
+		
 			
-				//std::cout << i << ' ' << j << '\n';
-				auto index = spr_system->add_text_sprite(ecs, morge.id, { { 0,100.0f * i,320,32 } ,0 }, "assets/font.ttf", 32, " The quick blue fuck fdwsiousdfojsdf husdfhu9dfshu8fsdhu8fsdhsdfhuisdfhusfhdu9sfdhu9sdfh9u8sfhd89hsfd9hsdf89", {0,0,255,255});
-				spr_system->set_color(ecs, morge.id, index, 255, 0, 0);
+		
+		auto index = spr_system->add_text_sprite(ecs, morge.id, { { 0,100.0f,320,32 } ,0 }, "assets/font.ttf", 32, " The quick blue fuck fdwsiousdfojsdf husdfhu9dfshu8fsdhu8fsdhsdfhuisdfhusfhdu9sfdhu9sdfh9u8sfhd89hsfd9hsdf89", {0,0,255,255});
+		spr_system->set_color(ecs, morge.id, index, 255, 0, 0);
 
-		}
+
+
+		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN,
+			[&Ecs = ecs, &Camera =camera, &Spr_system =spr_system,&ID =morge.id](Empaerior::Event& event) 
+			
+			{
+				auto m_pos = Empaerior::Utilities::get_world_mouse_coords(Camera);
+				auto index = Spr_system->add_sprite(Ecs, ID, { { m_pos.first,m_pos.second,10,10},0 }, {0,0,1000,1000}, "assets/img.png", 1);
+			
+			
+			}
+
+
+		);
+	
+
 		std::cout << timy.getTicks();
 	
 

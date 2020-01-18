@@ -56,21 +56,52 @@ int Empaerior::Utilities::get_system_ram()
 //TODO: CHANGE TO USE F_POINT
 Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities::get_screen_mouse_coords()
 {
-	Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> pos;
-	SDL_GetMouseState(&pos.first, &pos.second);
 
 //Transform for the position of the renderer
 //This is in case the viewport  doesn't match the camera (blackboxing)
 
-	Empaerior::Int_Rect renderer_viewport;
-	SDL_RenderGetViewport(Empaerior::Application::window.renderer, &renderer_viewport);
-
-	pos.first -= renderer_viewport.x;
-	pos.second -= renderer_viewport.y;
-
+//get the positions
+	Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> pos;
 	Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> f_pos;
-	f_pos.first = Empaerior::fl_point(pos.first);
-	f_pos.second = Empaerior::fl_point(pos.second);
+
+
+	SDL_GetMouseState(&pos.first, &pos.second);
+
+
+
+	f_pos.first = float(pos.first);
+	f_pos.second = float(pos.second);
+
+
+
+	//Scale down the positions to match the world
+	float sx = 0;
+	float sy = 0;
+	SDL_RenderGetScale(Application::window.renderer, &sx, &sy);
+
+	f_pos.first /= sx;
+	f_pos.second /= sy;
+
+
+
+
+	//Transform for the position of the renderer
+	Empaerior::Int_Rect renderer_viewport;
+
+	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
+	f_pos.first -= renderer_viewport.x;
+	f_pos.second -= renderer_viewport.y;
+
+
+
+
+
+	f_pos.first /= renderer_viewport.w;
+	f_pos.second /= renderer_viewport.h;
+
+
+
+
 
 	return f_pos;
 }
@@ -79,41 +110,53 @@ Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> Empaerior::Utilities
 {
 	//get the positions
 	Empaerior::v_pair<Empaerior::s_int, Empaerior::s_int> pos;
+	Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> f_pos;
+
+
 	SDL_GetMouseState(&pos.first, &pos.second);
 
 
-	//Transform the position relative to the camera
-	pos.first *= camera.rect.w;
-	pos.second *= camera.rect.h;
+
+	f_pos.first = float(pos.first);
+	f_pos.second = float(pos.second);
 
 
 
-	pos.first /= Application::window.get_width();
-	pos.second /= Application::window.get_heigth();
+	//Scale down the positions to match the world
+	float sx = 0;
+	float sy = 0;
+	SDL_RenderGetScale(Application::window.renderer, &sx,&sy);
+
+	f_pos.first /= sx;
+	f_pos.second /= sy;
 
 
-
-	//Tranform for position
-	pos.first += camera.rect.x;
-	pos.second += camera.rect.y;
 
 
 	//Transform for the position of the renderer
-//This is in case the viewport  doesn't match the camera (blackboxing)
-
 	Empaerior::Int_Rect renderer_viewport;
+
 	SDL_RenderGetViewport(Application::window.renderer, &renderer_viewport);
+	f_pos.first -=renderer_viewport.x;
+	f_pos.second -= renderer_viewport.y;
 
-	pos.first -= renderer_viewport.x;
-	pos.second -= renderer_viewport.y;
+	//Transform the position relative to the camera dimesnions
+	f_pos.first *= camera.rect.w;
+	f_pos.second *= camera.rect.h;
+
+
+
+	f_pos.first /= renderer_viewport.w;
+	f_pos.second /= renderer_viewport.h;
+
 	
+	
+	//Tranform for position
+	f_pos.first += camera.rect.x;
+	f_pos.second += camera.rect.y;
 
 
 
-
-	 Empaerior::v_pair<Empaerior::fl_point, Empaerior::fl_point> f_pos;
-	 f_pos.first = Empaerior::fl_point(pos.first);
-	 f_pos.second = Empaerior::fl_point(pos.second);
 
 	 return f_pos;
 

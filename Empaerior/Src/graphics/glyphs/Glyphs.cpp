@@ -22,7 +22,7 @@ namespace Empaerior {
 			tempSurface = TTF_RenderText_Solid(font, shortString, color);
 			temp.image = SDL_CreateTextureFromSurface(renderer, tempSurface);
 			SDL_QueryTexture(&(*temp.image), NULL, NULL, &w, &h);
-			temp.h = h; temp.w = w;
+			temp.h = h; temp.w = w;//conversion from int to float
 			glyphs.push_back(std::move(temp));
 			SDL_FreeSurface(tempSurface);// delete surface
 		}
@@ -66,7 +66,7 @@ namespace Empaerior {
 			}
 			else { cnt = lastSpace; x = margin; y = y + glyphs[lValue].h; safe = true; }
 		}
-	//	std::cout << '\n';
+
 	
 	}
 	//slower,as  it doesn't preload the values but simpler

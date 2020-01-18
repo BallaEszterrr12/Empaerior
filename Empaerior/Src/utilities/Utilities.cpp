@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Utilities.h"
 #include <SDL.h>
+#include "Math.h"
 Empaerior::string Empaerior::Utilities::get_clipboard_text()
 {
 	if (SDL_HasClipboardText())//if there's text
@@ -149,8 +150,8 @@ Empaerior::boole Empaerior::Utilities::rect_contains_point(const Empaerior::Rect
 
 	
 	//rotating the point counter-clockwise
-	Empaerior::fl_point c_x = o_x +  (x - o_x) * cosd(rect.angle) - (y - o_y) *sind(rect.angle);
-	Empaerior::fl_point c_y = o_y +	(y - o_y) * cosd(rect.angle) + (x - o_x) *sind(rect.angle);
+	Empaerior::fl_point c_x = o_x +  (x - o_x) * Empaerior::Math::cosd(rect.angle) - (y - o_y) * Empaerior::Math::sind(rect.angle);
+	Empaerior::fl_point c_y = o_y +	(y - o_y) * Empaerior::Math::cosd(rect.angle) + (x - o_x) * Empaerior::Math::sind(rect.angle);
 	
 	//
 	

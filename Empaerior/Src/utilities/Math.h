@@ -1,6 +1,9 @@
 #pragma once
 #include "defines/Defines.h"
 
+
+#define PI    3.1415926535897932384626433832795028
+
 namespace Empaerior
 {
 	namespace Math {
@@ -8,7 +11,7 @@ namespace Empaerior
 		//dergrees to radians
 		inline Empaerior::fl_point d2r(Empaerior::fl_point d)
 		{
-			return (d / 180.0f) * Empaerior::fl_point(M_PI);
+			return (d / 180.0f) * Empaerior::fl_point(PI);
 		}
 
 		//sin & cos in degress
@@ -23,6 +26,11 @@ namespace Empaerior
 		{
 			return std::cos(d2r(x));
 		}
+
+
+
+
+
 
 
 	}

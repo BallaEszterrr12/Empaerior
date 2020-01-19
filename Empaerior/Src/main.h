@@ -18,7 +18,7 @@
 
 
 std::unordered_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
-std::unordered_map<Empaerior::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
+std::unordered_map<Empaerior::string, std::unordered_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
 std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
 
@@ -27,8 +27,8 @@ Empaerior::State* Empaerior::Application::cur_state;
 std::vector <Empaerior::State*> Empaerior::Application::states;
 //time between frames
 const Empaerior::u_int Empaerior::Application::dt = 1000 / 60;
-bool Empaerior::Application::is_paused = 0;
-bool Empaerior::Application::is_running = 1;
+Empaerior::boole Empaerior::Application::is_paused = 0;
+Empaerior::boole Empaerior::Application::is_running = 1;
 Empaerior::Event Empaerior::Application::event;
 Empaerior::Window Empaerior::Application::window;
 

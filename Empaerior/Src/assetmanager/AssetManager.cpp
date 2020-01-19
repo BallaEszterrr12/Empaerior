@@ -6,7 +6,7 @@
 
 
 extern std::unordered_map<Empaerior::string, std::shared_ptr<SDL_Texture>> Textures;
-extern std::unordered_map<Empaerior::string, std::unordered_map<int, std::unique_ptr<TTF_Font>>> Fonts;
+extern std::unordered_map<Empaerior::string, std::unordered_map<Empaerior::s_int, std::unique_ptr<TTF_Font>>> Fonts;
 extern std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 
 namespace Empaerior::Asset_Loading
@@ -74,7 +74,7 @@ namespace Empaerior::Asset_Loading
 
 	}
 
-	TTF_Font* load_font(const Empaerior::string& font_path, const int& size)
+	TTF_Font* load_font(const Empaerior::string& font_path, const Empaerior::s_int& size)
 	{
 		//this was a fucking rollercoaster
 		//I hope I never have to do this ever again
@@ -133,7 +133,6 @@ namespace Empaerior::Asset_Loading
 				else
 				{
 					//if there's a font found
-					//std::cout << "found a font" << '\n';
 					return &(*size_find->second);
 				}
 
@@ -181,7 +180,7 @@ namespace Empaerior::Asset_Loading
 		}
 	}
 
-	void set_volume(const int n_volume)
+	void set_volume(const Empaerior::s_int n_volume)
 	{
 		Mix_Volume(-1, n_volume);
 	}

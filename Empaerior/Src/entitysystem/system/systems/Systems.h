@@ -145,7 +145,6 @@ namespace Empaerior
 					TEXT_SPRITES[index].clean();
 					//delete from veectors
 					TEXT_SPRITES.erase(TEXT_SPRITES.begin() + index);
-					std::cout << TEXT_POS_SPRITES[index] << '\n';
 					ORDER.erase(ORDER.begin() + TEXT_POS_SPRITES[index]);
 					TEXT_POS_SPRITES.erase(TEXT_POS_SPRITES.begin() + index);
 

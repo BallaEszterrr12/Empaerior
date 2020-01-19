@@ -18,11 +18,11 @@ namespace Empaerior::Asset_Loading
 	//texture
 	 std::shared_ptr<SDL_Texture>  load_texture(const Empaerior::string& tex_path);
 	//font
-	 TTF_Font* load_font(const Empaerior::string& font_path, const int& size);
+	 TTF_Font* load_font(const Empaerior::string& font_path, const Empaerior::s_int& size);
 
 	//sound   
 	 void play_sound(const Empaerior::string& sound_path);
-	 void set_volume(const int n_volume);
+	 void set_volume(const Empaerior::s_int n_volume);
 
 
 

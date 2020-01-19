@@ -11,6 +11,7 @@ public:
 	
 	APP_State()
 	{
+		
 		//INITIALIZE THE ECS
 		ecs.Init();
 
@@ -73,7 +74,7 @@ public:
 		);
 	
 
-		std::cout << timy.getTicks();
+	
 	
 
 	}

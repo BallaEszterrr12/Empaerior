@@ -21,13 +21,13 @@ namespace Empaerior
 		{
 
 		}
-		Camera(const int& x, const int& y, const int& w, const int& h)
+		Camera(const Empaerior::s_int& x, const Empaerior::s_int& y, const Empaerior::s_int& w, const Empaerior::s_int& h)
 			:rect({ x,y,w,h })
 
 		{
 
 		}
-		void set_position(const int& x, const int& y)
+		void set_position(const Empaerior::s_int& x, const Empaerior::s_int& y)
 		{
 			rect.x = x;
 			rect.y = y;

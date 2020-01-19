@@ -50,8 +50,8 @@ public:
 
 	static const Empaerior::u_int dt;
 	
-	static bool is_paused;
-	static bool is_running;
+	static Empaerior::boole is_paused;
+	static Empaerior::boole is_running;
 	static Empaerior::Event event;
 
 private:

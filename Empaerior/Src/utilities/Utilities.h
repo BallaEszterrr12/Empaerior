@@ -41,6 +41,14 @@ namespace Empaerior
 
 
 
+		//Toggle the cursor
+		//0 - no
+		//1 - yes
+		inline void show_cursor(Empaerior::boole toogle)
+		{
+			SDL_ShowCursor(toogle);
+		}
+
 	
 
 

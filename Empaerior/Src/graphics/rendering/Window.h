@@ -46,4 +46,19 @@ namespace Empaerior
 		Empaerior::u_int width = 0;
 		Empaerior::u_int height = 0;
 	};
+
+
+	namespace Window_Functions
+	{
+		
+		inline void change_window_name(const Empaerior::Window& window,const Empaerior::string& new_name)
+		{
+		
+		}
+
+
+
+	}
+
+
 }

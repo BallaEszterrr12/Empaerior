@@ -77,10 +77,3 @@ void Empaerior::Window::reset()
 	if (window != nullptr)	SDL_DestroyWindow(window);
 	if (renderer != nullptr)SDL_DestroyRenderer(renderer);
 }
-
-void Empaerior::Window::toggle_fullscreen()
-{
-	Empaerior::u_int FullscreenFlag = SDL_WINDOW_FULLSCREEN;
-	bool IsFullscreen = SDL_GetWindowFlags(window) & FullscreenFlag;
-	SDL_SetWindowFullscreen(window, IsFullscreen ? 0 : FullscreenFlag);
-}

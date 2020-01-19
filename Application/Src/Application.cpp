@@ -12,6 +12,8 @@ public:
 	APP_State()
 	{
 		
+		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Testing stuff");
+		
 		//INITIALIZE THE ECS
 		ecs.Init();
 

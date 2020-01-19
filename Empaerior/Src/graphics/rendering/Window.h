@@ -26,14 +26,14 @@ namespace Empaerior
 		void clear();
 
 		void reset();
-		void toggle_fullscreen();
+		
 
-		Empaerior::u_int get_width()
+		inline Empaerior::u_int get_width()
 		{
 			return width;
 		}
 
-		Empaerior::u_int get_heigth()
+		inline Empaerior::u_int get_heigth()
 		{
 			return height;
 		}
@@ -50,10 +50,21 @@ namespace Empaerior
 
 	namespace Window_Functions
 	{
-		
+		//TODO: ADD MORE WRappers around sdl functions
+
+
+		//Changes the name of the window
 		inline void change_window_name(const Empaerior::Window& window,const Empaerior::string& new_name)
 		{
-		
+			SDL_SetWindowTitle(window.window, new_name.c_str());
+		}
+
+		//Toggles fullscreen
+		inline void toggle_fullscreen(const Empaerior::Window& window)
+		{
+			Empaerior::u_int FullscreenFlag = SDL_WINDOW_FULLSCREEN;
+			bool IsFullscreen = SDL_GetWindowFlags(window.window) & FullscreenFlag;
+			SDL_SetWindowFullscreen(window.window, IsFullscreen ? 0 : FullscreenFlag);
 		}
 
 

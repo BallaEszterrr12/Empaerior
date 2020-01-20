@@ -50,7 +50,7 @@ namespace Empaerior
 
 	namespace Window_Functions
 	{
-		//TODO: ADD MORE WRappers around sdl functions
+	
 
 
 		//Changes the name of the window
@@ -67,6 +67,7 @@ namespace Empaerior
 			SDL_SetWindowFullscreen(window.window, IsFullscreen ? 0 : FullscreenFlag);
 		}
 
+		//TODO : ADD SET ICON FUNCTION
 
 
 	}

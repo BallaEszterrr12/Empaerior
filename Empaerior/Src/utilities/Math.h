@@ -27,7 +27,10 @@ namespace Empaerior
 			return std::cos(d2r(x));
 		}
 
-
+		inline Empaerior::fl_point tand(Empaerior::fl_point x)
+		{
+			return std::tan(d2r(x));
+		}
 
 
 

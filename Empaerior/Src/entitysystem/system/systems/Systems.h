@@ -180,13 +180,13 @@ namespace Empaerior
 			}
 		}
 		//sets the color of the sprite at the specified index
-		void set_color(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index, const Empaerior::byte r, const Empaerior::byte g, const Empaerior::byte b)
+		void set_color_blend(Empaerior::ECS& ecs, const Empaerior::u_inter& id, const Empaerior::u_inter& index, const Empaerior::byte r, const Empaerior::byte g, const Empaerior::byte b)
 		{
 			try {
 				if (index < SPRITES.size())
 				{
 
-					ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_color(r, g, b);
+					ecs.get_component<Empaerior::Sprite_Component>(id).sprites[index].set_color_blend(r, g, b);
 				}
 				else
 				{

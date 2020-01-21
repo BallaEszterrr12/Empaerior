@@ -55,7 +55,7 @@ public:
 		//Add a tile map worth of sprites
 		
 		auto index = spr_system->add_sprite(ecs, morge.id, { { 0,0,960,800},0 }, { 0,0,1000,1000 }, "assets/img.png", 1);
-		spr_system->set_color(ecs, morge.id, index, 255, 0, 0);
+		spr_system->set_color_blend(ecs, morge.id, index, 255, 0, 0);
 
 		 index = spr_system->add_text_sprite(ecs, morge.id, { { 0,100.0f,320,32 } ,0 }, "assets/font.ttf", 32, " The quick blue fuck fdwsiousdfojsdf husdfhu9dfshu8fsdhu8fsdhsdfhuisdfhusfhdu9sfdhu9sdfh9u8sfhd89hsfd9hsdf89", {0,0,255,255});
 		

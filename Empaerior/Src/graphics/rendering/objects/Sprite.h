@@ -79,7 +79,7 @@ namespace Empaerior {
 		}
 		//changes the color of the texture to the rgb value provided
 		//255,255,255 - 
-		void set_color(Empaerior::byte p_r, Empaerior::byte p_g, Empaerior::byte p_b)
+		void set_color_blend(Empaerior::byte p_r, Empaerior::byte p_g, Empaerior::byte p_b)
 		{
 			r = p_r;
 			g = p_g;

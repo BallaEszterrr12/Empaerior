@@ -340,6 +340,10 @@ ASALocalRun/
 healthchecksdb
 
 #Ignore SDL libraries
-External_Libraries/SDL
+External_Libraries/SDL/SDL2/
+External_Libraries/SDL/SDL2_image/
+External_Libraries/SDL/SDL2_ttf/
+External_Libraries/SDL/SDL2_mixer/
 
-
+#Ignore DLLS in the Application project
+Application/*.dll

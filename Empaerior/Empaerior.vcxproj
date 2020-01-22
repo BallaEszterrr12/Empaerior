@@ -278,7 +278,7 @@
     <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h" />
     <ClInclude Include="src\SDLwrappers\Rendering_Wrappers.h" />
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h" />
-    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\State\State.h" />
     <ClInclude Include="src\assetmanager\AssetManager.h" />
     <ClInclude Include="src\debugging\Log.h" />
     <ClInclude Include="src\debugging\v_proffiler.h" />
@@ -303,7 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\State.cpp" />
+    <ClCompile Include="src\State\State.cpp" />
     <ClCompile Include="src\assetmanager\AssetManager.cpp" />
     <ClCompile Include="src\debugging\Log.cpp" />
     <ClCompile Include="src\eventhandler\EventHandler.cpp" />

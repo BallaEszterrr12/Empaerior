@@ -4,6 +4,9 @@
     <Filter Include="SDLwrappers">
       <UniqueIdentifier>{3CECAFD4-A8A1-28CA-3196-22A19D4A1FCE}</UniqueIdentifier>
     </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{E6391E0E-524E-46BF-1BD0-E91E87A342F0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="assetmanager">
       <UniqueIdentifier>{A08EF851-8CF1-87F6-3577-C0AC21B95379}</UniqueIdentifier>
     </Filter>
@@ -59,7 +62,9 @@
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h">
       <Filter>SDLwrappers</Filter>
     </ClInclude>
-    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\State\State.h">
+      <Filter>State</Filter>
+    </ClInclude>
     <ClInclude Include="src\assetmanager\AssetManager.h">
       <Filter>assetmanager</Filter>
     </ClInclude>
@@ -122,7 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\State.cpp" />
+    <ClCompile Include="src\State\State.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
     <ClCompile Include="src\assetmanager\AssetManager.cpp">
       <Filter>assetmanager</Filter>
     </ClCompile>

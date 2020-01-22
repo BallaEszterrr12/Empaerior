@@ -6,7 +6,7 @@
 #include "graphics/rendering/objects/Sprite.h"
 #include "graphics/glyphs/Glyphs.h"
 
-#include "State.h"
+#include "State/State.h"
 #include "graphics/rendering/Window.h"
 #include "eventhandler/EventHandler.h"
 

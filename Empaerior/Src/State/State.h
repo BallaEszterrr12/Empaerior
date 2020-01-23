@@ -7,11 +7,11 @@
 
 #include "entitysystem/ECS.h"
 #include "entitysystem/system/systems/Systems.h"
-
+#include "Layer.h"
 
 #include "defines/Defines.h"
 /*
-	A state of the engine.
+	A state of the engine, which updates the layers contained in it's layers stack
 */
 
 namespace Empaerior {
@@ -32,6 +32,9 @@ namespace Empaerior {
 		Empaerior::Camera& get_camera() { return camera; } // return the camera
 
 	protected:
+
+		std::vector<Empaerior::Layer> layer_stack;
+
 		Empaerior::Camera camera;
 		Empaerior::ECS ecs;
 

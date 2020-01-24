@@ -38,7 +38,10 @@ void Empaerior::Application::Update(const unsigned int& dt )
 
 
 
-	cur_state->Update(Application::dt);
+	for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+	{
+		states[active_states[i]]->Update(dt);
+	}
 
 
 }
@@ -47,7 +50,12 @@ void Empaerior::Application::handlevents(Empaerior::Event& event)
 {
 	
 	Empaerior::Application::window.window_listener.handleEvents(event);
-	cur_state->handleevents(event);
+
+	Empaerior::Application::window.window_listener.handleEvents(event);
+	for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+	{
+		states[active_states[i]]->handleevents(event);
+	}
 
 }
 
@@ -55,7 +63,10 @@ void Empaerior::Application::render()
 {
 	//SDL_RenderClear(Game::renderer);
 
-	cur_state->Render();
+	for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+	{
+		states[active_states[i]]->Render();
+	}
 
 	//SDL_RenderPresent(Game::renderer);
 

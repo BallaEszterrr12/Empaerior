@@ -17,6 +17,9 @@ public:
 		//INITIALIZE THE ECS
 		ecs.Init();
 
+		//set the camera
+		camera = { 0,0,960,800 };
+
 		//REGISTER SOME COMPONENTS
 		ecs.register_component<Empaerior::Camera_Component>();
 		ecs.register_component<Empaerior::Sprite_Component>();
@@ -34,7 +37,7 @@ public:
 		morge.id = ecs.create_entity_ID();
 
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
-
+		spr_system->add_sprite(ecs, morge.id, { 0,0,960,800 }, { 0,0,1,1 }, "assets/img.png", 1);
 		spr_system->add_text_sprite(ecs, morge.id, { 0,0,960,800 }, "assets/font.ttf", 100, "THIS IS THE FIRST STATE", {255,255,0});
 
 	
@@ -44,6 +47,9 @@ public:
 	void Update(const Empaerior::u_int& dt)override
 	{
 		//DEBUG CODE, LETS YOU MOVE AROUND THE MAP
+
+
+
 		unsigned char const* keys = SDL_GetKeyboardState(nullptr);
 		if (keys[SDL_SCANCODE_UP])
 		{
@@ -80,6 +86,7 @@ public:
 	
 	virtual void Render() override//renders the state
 	{
+	
 		SDL_RenderSetLogicalSize(Empaerior::Application::window.renderer, camera.rect.w, camera.rect.h);
 		//RENDER
 		spr_system->render(ecs,camera);
@@ -116,6 +123,10 @@ public:
 
 		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Testing stuff");
 
+
+		//set camera
+		camera = { 0,0,960,800 };
+
 		//INITIALIZE THE ECS
 		ecs.Init();
 
@@ -139,6 +150,8 @@ public:
 
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
 
+
+	
 		spr_system->add_text_sprite(ecs, morge.id, { 0,0,960,800 }, "assets/font.ttf", 100, "THIS IS THE SECOND STATE", { 255,255,0 });
 
 
@@ -159,9 +172,12 @@ public:
 
 	virtual void Render() override//renders the state
 	{
+
+
 		//RENDER
-		
+		SDL_RenderSetLogicalSize(Empaerior::Application::window.renderer, camera.rect.w, camera.rect.h);
 		spr_system->render(ecs, camera);
+
 
 
 	}
@@ -273,13 +289,11 @@ public:
 				//Text_Sprite * norge = new Text_Sprite({ 0,0,200,200 }, "assets/font.ttf", 32 ,s, color);
 
 
-
-
 				Empaerior::Application::window.clear();
 				render();
 
 				Empaerior::Application::window.render();
-
+				
 
 				//refresh the application
 				refresh();

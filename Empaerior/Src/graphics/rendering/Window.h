@@ -6,7 +6,7 @@ namespace Empaerior
 
 	class Window
 	{
-		friend class Application;//Game can edit it's window
+		friend class Application;
 
 	public:
 		Window();
@@ -37,6 +37,13 @@ namespace Empaerior
 		{
 			return height;
 		}
+
+
+		inline void set_render_dimensions(const Empaerior::Int_Rect& rect)
+		{
+			SDL_RenderSetLogicalSize(renderer, rect.w, rect.h);
+		}
+
 
 		SDL_Renderer* renderer;
 		SDL_Window* window;

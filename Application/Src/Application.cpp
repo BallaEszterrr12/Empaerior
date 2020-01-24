@@ -211,7 +211,7 @@ public:
 		//CREATE A NEW STATE
 		main_state = push_state(new APP_State1());
 		//make the state active
-		make_state_active(main_state);
+		activate_state(main_state);
 		//SET THE DIMENSIONS OF THE CAMERA
 		SDL_RenderSetLogicalSize(Application::window.renderer, states[active_states[0]]->get_camera().rect.w, states[active_states[0]]->get_camera().rect.h);
 		//ADD AN OVERLAY STATE
@@ -222,7 +222,7 @@ public:
 
 	
 
-		make_state_active(second_state);
+		activate_state(second_state);
 
 	
 	

@@ -64,7 +64,7 @@ public:
 	//puts the state present at the index in the states vector in the active stack
 
 
-	static void make_state_active(const Empaerior::s_int index)
+	static void activate_state(const Empaerior::s_int index)
 	{
 		try
 		{

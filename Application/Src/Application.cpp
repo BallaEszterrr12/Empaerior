@@ -130,10 +130,12 @@ public:
 		event_system->handle_events(ecs, event);
 	}
 
-private:
-	
+
 	std::shared_ptr<Empaerior::Sprite_System> spr_system;
 	std::shared_ptr<Empaerior::Event_System> event_system;
+private:
+	
+
 	int i = 0;
 	Empaerior::Entity morge;
 	Empaerior::Entity norge;
@@ -157,6 +159,13 @@ public:
 		//ADD AN OVERLAY STATE
 		
 		pause_state(main_state);
+
+		second_state = push_state(new APP_State());
+
+	
+
+		make_state_active(second_state);
+
 
 
 
@@ -270,7 +279,7 @@ public:
 	}
 
 	Empaerior::s_int main_state;
-	Empaerior::s_int second state;
+	Empaerior::s_int second_state;
 
 
 };

@@ -31,12 +31,14 @@ namespace Empaerior {
 		
 		Empaerior::Camera& get_camera() { return camera; } // return the camera
 
+
+
+		Empaerior::ECS ecs;
 	protected:
 
-	
 
 		Empaerior::Camera camera;
-		Empaerior::ECS ecs;
+		
 
 
 	

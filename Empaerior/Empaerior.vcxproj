@@ -278,7 +278,6 @@
     <ClInclude Include="src\SDLwrappers\Ptr_Wrappers.h" />
     <ClInclude Include="src\SDLwrappers\Rendering_Wrappers.h" />
     <ClInclude Include="src\SDLwrappers\SDL_Wrappers.h" />
-    <ClInclude Include="src\State\Layer.h" />
     <ClInclude Include="src\State\State.h" />
     <ClInclude Include="src\assetmanager\AssetManager.h" />
     <ClInclude Include="src\debugging\Log.h" />
@@ -304,7 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\State\Layer.cpp" />
     <ClCompile Include="src\State\State.cpp" />
     <ClCompile Include="src\assetmanager\AssetManager.cpp" />
     <ClCompile Include="src\debugging\Log.cpp" />

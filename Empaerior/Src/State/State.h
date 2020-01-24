@@ -7,7 +7,7 @@
 
 #include "entitysystem/ECS.h"
 #include "entitysystem/system/systems/Systems.h"
-#include "Layer.h"
+
 
 #include "defines/Defines.h"
 /*
@@ -33,7 +33,7 @@ namespace Empaerior {
 
 	protected:
 
-		std::vector<Empaerior::Layer> layer_stack;
+	
 
 		Empaerior::Camera camera;
 		Empaerior::ECS ecs;

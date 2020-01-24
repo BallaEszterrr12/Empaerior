@@ -149,11 +149,16 @@ public:
 		//CREATE A WINDOW
 		window.Init("test", 960, 800);
 		//CREATE A NEW STATE
-		states.emplace_back(new APP_State());//add a new state
-		//SET THE CURRENTLY RUNNING STATE
-		set_state(states[0]);
+		main_state = push_state(new APP_State());
+		//make the state active
+		make_state_active(main_state);
 		//SET THE DIMENSIONS OF THE CAMERA
-		SDL_RenderSetLogicalSize(Application::window.renderer, Application::cur_state->get_camera().rect.w, Application::cur_state->get_camera().rect.h);
+		SDL_RenderSetLogicalSize(Application::window.renderer, states[active_states[0]]->get_camera().rect.w, states[active_states[0]]->get_camera().rect.h);
+		//ADD AN OVERLAY STATE
+		
+		pause_state(main_state);
+
+
 
 	}
 
@@ -225,6 +230,9 @@ public:
 				Empaerior::Application::window.render();
 
 
+				//refresh the application
+				refresh();
+
 			}
 
 			Empaerior::Asset_Loading::clean_textures();
@@ -235,22 +243,34 @@ public:
 
 	void handlevents(Empaerior::Event& event) override
 	{
+
 		Empaerior::Application::window.window_listener.handleEvents(event);
-		cur_state->handleevents(event);
+		for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+		{
+			states[active_states[i]]->handleevents(event);
+		}
 	}
 	void Update(const unsigned int& dt)override
 	{
-		cur_state->Update(Application::dt);
+		
+		for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+		{
+			states[active_states[i]]->Update(dt);
+		}
 	}
 
 
 	void render() override
 	{
-		cur_state->Render();
+	
+		for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+		{
+			states[active_states[i]]->Render();
+		}
 	}
 
-	
-
+	Empaerior::s_int main_state;
+	Empaerior::s_int second state;
 
 
 };

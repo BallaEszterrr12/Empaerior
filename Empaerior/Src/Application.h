@@ -74,7 +74,7 @@ public:
 			if (index >= states.size() || index < 0) throw E_runtime_exception("Invalid Index ", __FILE__, __LINE__,__FUNCTION__);
 			
 
-			ENGINE_INFO("PAUSED STATE: " + std::to_string(index));
+			ENGINE_INFO("ACTIVATED STATE: " + std::to_string(index));
 			active_states.emplace_back(index);
 		}
 		catch (E_runtime_exception & e)

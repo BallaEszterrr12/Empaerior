@@ -4,12 +4,12 @@
 //An example of what a application might look like
 
 //a user defined state
-class APP_State : public Empaerior::State
+class APP_State1 : public Empaerior::State
 {
 
 public:
 	
-	APP_State()
+	APP_State1()
 	{
 
 		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Testing stuff");
@@ -30,51 +30,12 @@ public:
 		ecs.add_component_to_system<Empaerior::Event_Listener_Component, Empaerior::Event_System>();
 
 
-		//CREATE Two ENTITY
+		//Create an entity
 		morge.id = ecs.create_entity_ID();
 
+		ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
 
-
-
-		//ADD SOME COMPONENTS TO Them
-		ecs.add_component<Empaerior::Camera_Component>(morge.id, Empaerior::Camera_Component{ {0,0,960,800} });
-		ecs.add_component<Empaerior::Event_Listener_Component>(morge.id, Empaerior::Event_Listener_Component{});
-		ecs.add_component<Empaerior::Sprite_Component>(morge.id, { {},{}, {},{},{} });
-
-
-		//CREate a Sprite for each
-		
-
-		
-
-		//set the camera
-		camera = ecs.get_component<Empaerior::Camera_Component>(morge.id).camera;
-
-		Empaerior::Timer timy;
-		timy.start();
-		//Add a tile map worth of sprites
-		
-		auto index = spr_system->add_sprite(ecs, morge.id, { { 0,0,960,800},0 }, { 0,0,1000,1000 }, "assets/img.png", 1);
-		spr_system->set_color_blend(ecs, morge.id, index, 255, 0, 0);
-
-		 index = spr_system->add_text_sprite(ecs, morge.id, { { 0,100.0f,320,32 } ,0 }, "assets/font.ttf", 32, " The quick blue fuck fdwsiousdfojsdf husdfhu9dfshu8fsdhu8fsdhsdfhuisdfhusfhdu9sfdhu9sdfh9u8sfhd89hsfd9hsdf89", {0,0,255,255});
-		
-
-
-
-		event_system->add_event_to_entity(ecs, morge.id, SDL_MOUSEBUTTONDOWN,
-			[&Ecs = ecs, &Camera =camera, &Spr_system =spr_system,&ID =morge.id](Empaerior::Event& event) 
-			
-			{
-				auto m_pos = Empaerior::Utilities::get_world_mouse_coords(Camera);
-				auto index = Spr_system->add_sprite(Ecs, ID, { { m_pos.first,m_pos.second,10,10},0 }, {0,0,1000,1000}, "assets/img.png", 1);
-			
-			
-			}
-
-
-		);
-	
+		spr_system->add_text_sprite(ecs, morge.id, { 0,0,960,800 }, "assets/font.ttf", 100, "THIS IS THE FIRST STATE", {255,255,0});
 
 	
 	
@@ -86,27 +47,27 @@ public:
 		unsigned char const* keys = SDL_GetKeyboardState(nullptr);
 		if (keys[SDL_SCANCODE_UP])
 		{
-			Empaerior::Application::cur_state->get_camera().set_dimensions(Empaerior::Application::cur_state->get_camera().rect.w + 12, Empaerior::Application::cur_state->get_camera().rect.h + 10);
+			camera.set_dimensions(camera.rect.w + 12, camera.rect.h + 10);
 		}
 		else if (keys[SDL_SCANCODE_DOWN])
 		{
-			Empaerior::Application::cur_state->get_camera().set_dimensions(Empaerior::Application::cur_state->get_camera().rect.w - 12, Empaerior::Application::cur_state->get_camera().rect.h - 10);
+			camera.set_dimensions(camera.rect.w - 12, camera.rect.h - 10);
 		}
 		else if (keys[SDL_SCANCODE_W])
 		{
-			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x, Empaerior::Application::cur_state->get_camera().rect.y - 10);
+			camera.set_position(camera.rect.x, camera.rect.y - 10);
 		}
 		else if (keys[SDL_SCANCODE_S])
 		{
-			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x, Empaerior::Application::cur_state->get_camera().rect.y + 10);
+			camera.set_position(camera.rect.x, camera.rect.y + 10);
 		}
 		else if (keys[SDL_SCANCODE_A])
 		{
-			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x - 10, Empaerior::Application::cur_state->get_camera().rect.y);
+			camera.set_position(camera.rect.x - 10, camera.rect.y);
 		}
 		else if (keys[SDL_SCANCODE_D])
 		{
-			Empaerior::Application::cur_state->get_camera().set_position(Empaerior::Application::cur_state->get_camera().rect.x + 10, Empaerior::Application::cur_state->get_camera().rect.y);
+			camera.set_position(camera.rect.x + 10, camera.rect.y);
 		}
 
 
@@ -119,6 +80,7 @@ public:
 	
 	virtual void Render() override//renders the state
 	{
+		SDL_RenderSetLogicalSize(Empaerior::Application::window.renderer, camera.rect.w, camera.rect.h);
 		//RENDER
 		spr_system->render(ecs,camera);
 		
@@ -133,6 +95,8 @@ public:
 
 	std::shared_ptr<Empaerior::Sprite_System> spr_system;
 	std::shared_ptr<Empaerior::Event_System> event_system;
+
+
 private:
 	
 
@@ -141,6 +105,84 @@ private:
 	Empaerior::Entity norge;
 
 };
+
+class APP_State2 : public Empaerior::State
+{
+
+public:
+
+	APP_State2()
+	{
+
+		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Testing stuff");
+
+		//INITIALIZE THE ECS
+		ecs.Init();
+
+		//REGISTER SOME COMPONENTS
+		ecs.register_component<Empaerior::Camera_Component>();
+		ecs.register_component<Empaerior::Sprite_Component>();
+		ecs.register_component<Empaerior::Event_Listener_Component>();
+
+		//CREATE SOME SYSTEMS TO USE THE COMPONENTS
+		spr_system = ecs.register_system <Empaerior::Sprite_System>();
+		event_system = ecs.register_system<Empaerior::Event_System>();
+		//SPECIFIY WHAT TYPES OF COMPONENT EACH SYSTEM NEEDS
+		ecs.add_component_to_system<Empaerior::Sprite_Component, Empaerior::Sprite_System>();
+		ecs.add_component_to_system<Empaerior::Event_Listener_Component, Empaerior::Event_System>();
+
+
+
+
+		//Create an entity
+		morge.id = ecs.create_entity_ID();
+
+		ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
+
+		spr_system->add_text_sprite(ecs, morge.id, { 0,0,960,800 }, "assets/font.ttf", 100, "THIS IS THE SECOND STATE", { 255,255,0 });
+
+
+
+
+	}
+	void Update(const Empaerior::u_int& dt)override
+	{
+		
+
+
+		//i++;
+		//spr_system->set_angle(ecs, norge.id, 0, i);
+
+		//UPDATE 
+		spr_system->update(ecs, dt);
+	}
+
+	virtual void Render() override//renders the state
+	{
+		//RENDER
+		
+		spr_system->render(ecs, camera);
+
+
+	}
+	virtual void handleevents(Empaerior::Event& event) override
+	{
+		//HANDLE EVENTS
+		event_system->handle_events(ecs, event);
+	}
+
+
+	std::shared_ptr<Empaerior::Sprite_System> spr_system;
+	std::shared_ptr<Empaerior::Event_System> event_system;
+private:
+
+
+	int i = 0;
+	Empaerior::Entity morge;
+	Empaerior::Entity norge;
+
+};
+
 
 //a user defined application
 class Test_Aplication : public Empaerior::Application
@@ -151,23 +193,23 @@ public:
 		//CREATE A WINDOW
 		window.Init("test", 960, 800);
 		//CREATE A NEW STATE
-		main_state = push_state(new APP_State());
+		main_state = push_state(new APP_State1());
 		//make the state active
 		make_state_active(main_state);
 		//SET THE DIMENSIONS OF THE CAMERA
 		SDL_RenderSetLogicalSize(Application::window.renderer, states[active_states[0]]->get_camera().rect.w, states[active_states[0]]->get_camera().rect.h);
 		//ADD AN OVERLAY STATE
 		
-		pause_state(main_state);
+	//	pause_state(main_state);
 
-		second_state = push_state(new APP_State());
+		second_state = push_state(new APP_State2());
 
 	
 
 		make_state_active(second_state);
 
-
-
+	
+	
 
 	}
 

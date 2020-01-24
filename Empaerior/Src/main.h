@@ -23,7 +23,6 @@ std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 #pragma endregion
 
 #pragma region app_statics
-Empaerior::State* Empaerior::Application::cur_state;
 std::vector <Empaerior::State*> Empaerior::Application::states;
 std::vector <Empaerior::s_inter> Empaerior::Application::active_states;
 std::vector <Empaerior::s_inter> Empaerior::Application::to_be_paused;

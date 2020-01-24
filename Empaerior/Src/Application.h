@@ -24,7 +24,6 @@ public:
 
 	void Init();
 
-    void set_state(Empaerior::State* new_state); // sets a new state to be updated  & rendered 
 
 	//the running function
 	virtual void run() = 0;
@@ -156,8 +155,6 @@ private:
 
 
 public:
-	static Empaerior::State* cur_state;//current state
-
 
 
 	//the index of the states that will be updated

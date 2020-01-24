@@ -334,8 +334,8 @@ public:
 		}
 	}
 
-	Empaerior::s_int main_state;
-	Empaerior::s_int second_state;
+	Empaerior::s_inter main_state;
+	Empaerior::s_inter second_state;
 
 
 };

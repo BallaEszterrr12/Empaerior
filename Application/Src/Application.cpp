@@ -210,20 +210,27 @@ public:
 		window.Init("test", 960, 800);
 		//CREATE A NEW STATE
 		main_state = push_state(new APP_State1());
+		second_state = push_state(new APP_State2());
+
+		
 		//make the state active
+
+
 		activate_state(main_state);
+
+		activate_state(second_state);
+
+
 		//SET THE DIMENSIONS OF THE CAMERA
 		SDL_RenderSetLogicalSize(Application::window.renderer, states[active_states[0]]->get_camera().rect.w, states[active_states[0]]->get_camera().rect.h);
 		//ADD AN OVERLAY STATE
 		
 	//	pause_state(main_state);
 
-		second_state = push_state(new APP_State2());
+		
 
 	
-
-		activate_state(second_state);
-
+		
 	
 	
 
@@ -318,7 +325,7 @@ public:
 	void Update(const unsigned int& dt)override
 	{
 		
-		for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+		for (Empaerior::s_inter i = 0; i < active_states.size(); i++)
 		{
 			states[active_states[i]]->Update(dt);
 		}
@@ -327,8 +334,8 @@ public:
 
 	void render() override
 	{
-	
-		for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+
+		for (Empaerior::s_inter i = 0; i < active_states.size(); i++)
 		{
 			states[active_states[i]]->Render();
 		}

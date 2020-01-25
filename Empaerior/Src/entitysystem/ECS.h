@@ -18,6 +18,15 @@ namespace Empaerior
 			system_manager = std::make_unique<Empaerior::SystemManager>();
 
 		}
+		void Destroy()
+		{
+			component_manager.reset();
+			entity_manager.reset();
+			system_manager.reset();
+		}
+
+
+
 		//assigns a new id for an entity
 		uint64_t create_entity_ID()
 		{

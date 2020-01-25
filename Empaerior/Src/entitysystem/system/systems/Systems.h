@@ -15,6 +15,11 @@ namespace Empaerior
 	{
 	public:
 
+		~Event_System()
+		{
+
+		}
+
 		void add_event_to_entity(Empaerior::ECS& ecs, const uint64_t& entity_id, const Empaerior::u_int& event_type, std::function<void(Empaerior::Event&)> function)
 		{
 #define EVENTLISTENER  ecs.get_component<Empaerior::Event_Listener_Component>(entity_id).event_listener
@@ -59,6 +64,12 @@ namespace Empaerior
 	class Sprite_System : public Empaerior::System
 	{
 	public:
+
+
+		~Sprite_System()
+		{
+
+		}
 
 		//CREATES A SPRITE WITH THE GIVEN PROPERTIES
 		//doesn't need to be efficient
@@ -297,6 +308,12 @@ namespace Empaerior
 	class T_E_System : public Empaerior::System
 	{
 	public:
+
+		~T_E_System()
+		{
+
+		}
+
 		using Timed_Function = std::function<void()>;
 
 		//Adds a function to the container

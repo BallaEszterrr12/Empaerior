@@ -47,10 +47,24 @@ public:
 			std::vector<Empaerior::State*>::iterator itr = std::find(states.begin(), states.end(), n_state);
 			if (itr != states.cend()) throw E_runtime_exception("State is already present in the application", __FILE__, __LINE__, __FUNCTION__);
 		
+			
+			//check if there's any free index
+			if (freed_indexes.empty())
+			{
+				states.emplace_back(n_state);
+				return states.size() - 1;
+			}
+			else
+			{
+				
+				Empaerior::s_inter index = freed_indexes[freed_indexes.size()-1];
+				states[index] = n_state;
+				//remove the index from the freed queue
+				freed_indexes.pop_back();
+				return index;
+			}
 
-			states.emplace_back(n_state);
-
-			return states.size() - 1;
+			
 		}
 		catch (E_runtime_exception & e)
 		{
@@ -71,9 +85,13 @@ public:
 			//check if the index is valid
 			//because the index is signed, check if it's negative
 			if (index >= states.size() || index < 0) throw E_runtime_exception("Invalid Index ", __FILE__, __LINE__,__FUNCTION__);
-			
 
-			ENGINE_INFO("ACTIVATED STATE: " + std::to_string(index));
+			std::vector<Empaerior::s_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
+
+			if (itr != active_states.cend()) throw E_runtime_exception("State at the provided index is already active ", __FILE__, __LINE__, __FUNCTION__);
+
+
+			//ENGINE_INFO("ACTIVATED STATE: " + std::to_string(index));
 			active_states.emplace_back(index);
 		}
 		catch (E_runtime_exception & e)
@@ -102,7 +120,7 @@ public:
 		
 			
 			//put it in to be paused 
-			to_be_paused.emplace_back(active_states[std::distance(active_states.begin(), itr)]);
+			to_be_paused.emplace_back(std::distance(active_states.begin(), itr));
 
 		}
 		catch (E_runtime_exception& e)
@@ -120,28 +138,64 @@ public:
 	//deletes state at index
 	//To be implemented later
 
-	static void delete_state()
+	static void delete_state(const Empaerior::s_int index)
 	{
+		
+		try {
+			//if it active remove it in order to make sure it's not active when it's deleted
+			if (index >= states.size() || index < 0) throw E_runtime_exception("Invalid Index ", __FILE__, __LINE__, __FUNCTION__);
+			std::vector<Empaerior::s_inter>::iterator itr = std::find(active_states.begin(), active_states.end(), index);
+			//put it in to be pause
+			if (itr != active_states.cend()) 	to_be_paused.emplace_back(std::distance(active_states.begin(), itr));
+			//put it to_be_deleted
+			to_be_deleted.emplace_back(index);
+		
 
+
+		}
+		catch (E_runtime_exception & e)
+		{
+			e.print_message();
+			return;
+
+		}
+	
 	}
 	
 	//Clear things up after an cycle
 	static void refresh()
 	{
-		if (to_be_paused.empty()) return;
-		//removed paused states
-	
-		for (Empaerior::s_inter i = to_be_paused.size() - 1; i >=0 ; i--)
+		if (!to_be_paused.empty())
 		{
-			//erase from active
-			active_states.erase(active_states.begin() + to_be_paused[i]);
-			//remove the paused
-			to_be_paused.pop_back();
+			//removed paused states
+
+			for (Empaerior::s_inter i = to_be_paused.size() - 1; i >= 0; i--)
+			{
+				//erase from active
+				active_states.erase(active_states.begin() + to_be_paused[i]);
+				//remove the paused
+				to_be_paused.pop_back();
+			}
 		}
 
+		if (to_be_deleted.empty()) return;
 
+		for (Empaerior::s_inter i = to_be_deleted.size() - 1; i >= 0; i--)
+		{
+			//delete 
+			
+			
+			//delete the state
+			delete states[to_be_deleted[i]];
+			states[to_be_deleted[i]] = nullptr;
 
+			//add it the freed queue
+			freed_indexes.emplace_back(to_be_deleted[i]);
 
+			//remove from stack
+			to_be_deleted.pop_back();
+		}
+	
 
 
 	}
@@ -181,8 +235,10 @@ private:
 	//this is used by make_pause
 	//it puts the index if the states which it want paused in this vector and it is removed from active_states when refresh is called
 	static std::vector<Empaerior::s_inter> to_be_paused;
-	
-
+	//the same ,but for state-deleteion
+	static std::vector<Empaerior::s_inter> to_be_deleted;
+	//indexes freed to be replaces by new states
+	static std::vector<Empaerior::s_inter> freed_indexes;
 
 };
 	//defined in the application *Thanks to cherno* , 

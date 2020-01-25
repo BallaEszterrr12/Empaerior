@@ -26,8 +26,8 @@ std::unordered_map<Empaerior::string, std::unique_ptr<Mix_Chunk>> Sounds;
 std::vector <Empaerior::State*> Empaerior::Application::states;
 std::vector <Empaerior::s_inter> Empaerior::Application::active_states;
 std::vector <Empaerior::s_inter> Empaerior::Application::to_be_paused;
-
-
+std::vector <Empaerior::s_inter> Empaerior::Application::to_be_deleted;
+std::vector <Empaerior::s_inter> Empaerior::Application::freed_indexes;
 //time between frames
 const Empaerior::u_int Empaerior::Application::dt = 1000 / 60;
 Empaerior::boole Empaerior::Application::is_paused = 0;

@@ -11,6 +11,12 @@ namespace Empaerior {
 	class System
 	{
 	public:
+
+		virtual ~System()
+		{
+
+		}
+
 		//the id of the entities the system works on
 		std::set<Empaerior::u_inter> entities_id;
 

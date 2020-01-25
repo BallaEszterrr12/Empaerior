@@ -165,6 +165,16 @@ namespace Empaerior {
 		
 		// load the font and load the texture
 
+		~Text_Sprite()
+		{
+			for (int i = 0; i < glyphs.size(); i++)
+			{
+				glyphs[i].clean();
+			}
+		}
+
+
+
 		//to be used when text_function is destroyed
 		void clean()
 		{

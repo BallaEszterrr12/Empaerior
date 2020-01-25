@@ -12,8 +12,10 @@ public:
 	APP_State1()
 	{
 
+	
+
 		Empaerior::Window_Functions::change_window_name(Empaerior::Application::window, "Testing stuff");
-		
+
 		//INITIALIZE THE ECS
 		ecs.Init();
 
@@ -38,12 +40,16 @@ public:
 
 		ecs.add_component<Empaerior::Sprite_Component>(morge.id, {});
 		spr_system->add_sprite(ecs, morge.id, { 0,0,960,800 }, { 0,0,1,1 }, "assets/img.png", 1);
-		spr_system->add_text_sprite(ecs, morge.id, { 0,0,960,800 }, "assets/font.ttf", 100, "THIS IS THE FIRST STATE", {255,255,0});
-
-	
+		spr_system->add_text_sprite(ecs, morge.id, { 0,0,960,800 }, "assets/font.ttf", 100, "THIS IS THE FIRST STATE", { 255,255,0 });
 	
 
 	}
+	
+	~APP_State1()
+	{
+		ecs.Destroy();
+	}
+
 	void Update(const Empaerior::u_int& dt)override
 	{
 		//DEBUG CODE, LETS YOU MOVE AROUND THE MAP
@@ -153,15 +159,18 @@ public:
 
 	
 		spr_system->add_text_sprite(ecs, morge.id, { 0,0,960,800 }, "assets/font.ttf", 100, "THIS IS THE SECOND STATE", { 255,255,0 });
-
+		
 
 
 
 	}
+	~APP_State2()
+	{
+	
+	}
 	void Update(const Empaerior::u_int& dt)override
 	{
 		
-
 
 		//i++;
 		//spr_system->set_angle(ecs, norge.id, 0, i);
@@ -216,9 +225,11 @@ public:
 		//make the state active
 
 
+		activate_state(second_state);
 		activate_state(main_state);
 
-		activate_state(second_state);
+
+
 
 
 		//SET THE DIMENSIONS OF THE CAMERA
@@ -281,7 +292,7 @@ public:
 				while (acumulator >= Empaerior::Application::dt)
 				{
 
-
+					
 					//update 
 
 					Update(Empaerior::Application::dt);
@@ -302,9 +313,20 @@ public:
 				Empaerior::Application::window.render();
 				
 
+
+
+			
+
+			
+
+				delete_state(main_state);
 				//refresh the application
 				refresh();
+			    main_state = push_state(new APP_State1());
+				activate_state(main_state);
 
+
+			
 			}
 
 			Empaerior::Asset_Loading::clean_textures();

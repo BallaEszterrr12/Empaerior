@@ -229,7 +229,7 @@ public:
 		activate_state(main_state);
 
 
-
+		move_below_by(main_state, 1);
 
 
 		//SET THE DIMENSIONS OF THE CAMERA
@@ -311,19 +311,14 @@ public:
 				render();
 
 				Empaerior::Application::window.render();
-				
+					
 
-
-
-			
+				//CReating and deleting a state every update to test for bugs 
 
 			
-
-				delete_state(main_state);
 				//refresh the application
 				refresh();
-			    main_state = push_state(new APP_State1());
-				activate_state(main_state);
+	
 
 
 			
@@ -339,15 +334,15 @@ public:
 	{
 
 		Empaerior::Application::window.window_listener.handleEvents(event);
-		for (Empaerior::s_inter i = active_states.size() - 1; i >= 0; i--)
+		for (std::vector<Empaerior::u_inter>::iterator it = active_states.end() - 1; it != active_states.begin() ; it-- )
 		{
-			states[active_states[i]]->handleevents(event);
+			states[*it]->handleevents(event);
 		}
 	}
 	void Update(const unsigned int& dt)override
 	{
 		
-		for (Empaerior::s_inter i = 0; i < active_states.size(); i++)
+		for (Empaerior::u_inter i = 0; i < active_states.size(); i++)
 		{
 			states[active_states[i]]->Update(dt);
 		}
@@ -357,14 +352,14 @@ public:
 	void render() override
 	{
 
-		for (Empaerior::s_inter i = 0; i < active_states.size(); i++)
+		for (Empaerior::u_inter i = 0; i < active_states.size(); i++)
 		{
 			states[active_states[i]]->Render();
 		}
 	}
 
-	Empaerior::s_inter main_state;
-	Empaerior::s_inter second_state;
+	Empaerior::u_inter main_state;
+	Empaerior::u_inter second_state;
 
 
 };

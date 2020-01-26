@@ -15,7 +15,7 @@
 
 #include <memory>
 #include <functional>
-
+#include <algorithm>
 
 #include "debugging/v_proffiler.h"
 #include "SDLwrappers/Ptr_Wrappers.h"

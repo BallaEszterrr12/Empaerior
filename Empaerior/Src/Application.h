@@ -291,7 +291,6 @@ public:
 
 			//TODO: SWAPP EACH CONSECUTIVE ELEMENT CORRECTLY
 			//swap the element with the element n positions below
-			std::cout << std::min(n, active_states.size() - 1) << '\n';
 			std::iter_swap(active_states.begin() + in_active_index, active_states.end() - 1 - std::min(n, active_states.size() - 1));
 
 		}
@@ -307,9 +306,17 @@ public:
 	//moves the state to the top
 	static void move_top(const Empaerior::u_inter index)
 	{
-
-
-
+		try
+		{
+			Empaerior::s_inter in_active_index = is_active(index);
+			if (in_active_index == -1) throw E_runtime_exception("State is not active", __FILE__, __LINE__, __FUNCTION__);
+			move_up_by(index, active_states.size() - 1 - in_active_index);
+		}
+		catch (E_runtime_exception & e)
+		{
+			e.print_message();
+			return;
+		}
 
 	}
 
@@ -317,7 +324,17 @@ public:
 	//moves the state to the buttom
 	static void move_buttom(const Empaerior::u_inter index)
 	{
-
+		try
+		{
+			Empaerior::s_inter in_active_index = is_active(index);
+			if (in_active_index == -1) throw E_runtime_exception("State is not active", __FILE__, __LINE__, __FUNCTION__);
+			move_below_by(index, in_active_index);
+		}
+		catch (E_runtime_exception & e)
+		{
+			e.print_message();
+			return;
+		}
 	}
 
 

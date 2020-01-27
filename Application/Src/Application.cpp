@@ -229,7 +229,7 @@ public:
 		activate_state(main_state);
 
 
-		move_below_by(main_state, 1);
+		move_buttom(main_state);
 
 
 		//SET THE DIMENSIONS OF THE CAMERA

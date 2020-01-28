@@ -254,8 +254,11 @@ public:
 
 			//TODO: SWAPP EACH CONSECUTIVE ELEMENT CORRECTLY
 			//swap the element with the n-th element
-			std::iter_swap(active_states.begin() + in_active_index, active_states.begin() + std::min(n,active_states.size() - 1));
-
+			for (Empaerior::u_inter i = 0; i < n ; i++)
+			{
+				active_states[in_active_index + i] = active_states[in_active_index + i + 1];
+			}
+			active_states[in_active_index + n] = index;
 		}
 		catch (E_runtime_exception & e)
 		{

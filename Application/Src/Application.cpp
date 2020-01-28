@@ -228,8 +228,8 @@ public:
 		activate_state(second_state);
 		activate_state(main_state);
 
-
-		move_buttom(main_state);
+		move_up_by(second_state, 1);
+		
 
 
 		//SET THE DIMENSIONS OF THE CAMERA

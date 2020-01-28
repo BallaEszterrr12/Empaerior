@@ -22,11 +22,6 @@ void Empaerior::Application::Init()
 
 
 
-
-
-
-
-
 void Empaerior::Application::Update(const unsigned int& dt )
 {
 

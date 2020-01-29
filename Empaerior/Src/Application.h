@@ -251,6 +251,11 @@ public:
 				ENGINE_WARN("There are less than " + std::to_string(n) + " states, moving the state to the top instead");
 
 			}
+			for (auto i = 0; i < active_states.size(); i++)
+			{
+				std::cout << active_states[i] << ' ';
+			}
+			std::cout << '\n';
 
 			//TODO: SWAPP EACH CONSECUTIVE ELEMENT CORRECTLY
 			//swap the element with the n-th element
@@ -259,6 +264,13 @@ public:
 				active_states[in_active_index + i] = active_states[in_active_index + i + 1];
 			}
 			active_states[in_active_index + n] = index;
+
+
+			for (auto i = 0; i < active_states.size(); i++)
+			{
+				std::cout << active_states[i] << ' ';
+			}
+			std::cout << '\n';
 		}
 		catch (E_runtime_exception & e)
 		{
@@ -293,9 +305,28 @@ public:
 			}
 
 			//TODO: SWAPP EACH CONSECUTIVE ELEMENT CORRECTLY
-			//swap the element with the element n positions below
-			std::iter_swap(active_states.begin() + in_active_index, active_states.end() - 1 - std::min(n, active_states.size() - 1));
 
+			for (auto i = 0; i < active_states.size(); i++)
+			{
+				std::cout << active_states[i] << ' ';
+			}
+			std::cout << '\n';
+
+			Empaerior::u_inter value = active_states[in_active_index - n];
+			for (Empaerior::u_inter i = std::min(n, active_states.size() - 1) + 1; i > 1 ; i--)
+			{
+				
+				active_states[in_active_index - i + 1] = active_states[in_active_index - i + 2];
+			}
+			active_states[in_active_index] = value;
+
+
+			for (auto i = 0; i < active_states.size(); i++)
+			{
+				std::cout << active_states[i] << ' ';
+			}
+			std::cout << '\n';
+		
 		}
 		catch (E_runtime_exception & e)
 		{

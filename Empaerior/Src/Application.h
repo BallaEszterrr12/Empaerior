@@ -304,15 +304,7 @@ public:
 
 			}
 
-			//TODO: SWAPP EACH CONSECUTIVE ELEMENT CORRECTLY
-
-			for (auto i = 0; i < active_states.size(); i++)
-			{
-				std::cout << active_states[i] << ' ';
-			}
-			std::cout << '\n';
-
-		
+			//Swap elements
 			for (Empaerior::u_inter i = 2; i < std::min(n, active_states.size() - 1) + 2;  i++)
 			{
 				Empaerior::u_inter aux = active_states[in_active_index - i + 2];
@@ -320,21 +312,10 @@ public:
 				active_states[in_active_index - i + 1] = aux;
 
 
-				for (auto j = 0; j < active_states.size(); j++)
-				{
-					std::cout << active_states[j] << ' ';
-				}
-				std::cout << '\n';
-
 			}
 		
 
 
-			for (auto i = 0; i < active_states.size(); i++)
-			{
-				std::cout << active_states[i] << ' ';
-			}
-			std::cout << '\n';
 		
 		}
 		catch (E_runtime_exception & e)

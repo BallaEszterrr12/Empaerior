@@ -232,6 +232,18 @@ public:
 		activate_state(forth);
 
 		move_below_by(forth, 3);
+		 
+		move_top(main_state);
+
+		move_bottom(second_state);
+
+
+		for (int i = 0; i < active_states.size(); i++)
+		{
+			std::cout << active_states[i] << ' ';
+		}
+		
+
 
 		//SET THE DIMENSIONS OF THE CAMERA
 		SDL_RenderSetLogicalSize(Application::window.renderer, states[active_states[0]]->get_camera().rect.w, states[active_states[0]]->get_camera().rect.h);

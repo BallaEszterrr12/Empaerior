@@ -251,12 +251,7 @@ public:
 				ENGINE_WARN("There are less than " + std::to_string(n) + " states, moving the state to the top instead");
 
 			}
-			for (auto i = 0; i < active_states.size(); i++)
-			{
-				std::cout << active_states[i] << ' ';
-			}
-			std::cout << '\n';
-
+	
 			//TODO: SWAPP EACH CONSECUTIVE ELEMENT CORRECTLY
 			//swap the element with the n-th element
 			for (Empaerior::u_inter i = 0; i < n ; i++)
@@ -266,11 +261,7 @@ public:
 			active_states[in_active_index + n] = index;
 
 
-			for (auto i = 0; i < active_states.size(); i++)
-			{
-				std::cout << active_states[i] << ' ';
-			}
-			std::cout << '\n';
+			
 		}
 		catch (E_runtime_exception & e)
 		{
@@ -346,7 +337,7 @@ public:
 
 
 	//moves the state to the buttom
-	static void move_buttom(const Empaerior::u_inter index)
+	static void move_bottom(const Empaerior::u_inter index)
 	{
 		try
 		{

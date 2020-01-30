@@ -312,13 +312,22 @@ public:
 			}
 			std::cout << '\n';
 
-			Empaerior::u_inter value = active_states[in_active_index - n];
-			for (Empaerior::u_inter i = std::min(n, active_states.size() - 1) + 1; i > 1 ; i--)
+		
+			for (Empaerior::u_inter i = 2; i < std::min(n, active_states.size() - 1) + 2;  i++)
 			{
-				
-				active_states[in_active_index - i + 1] = active_states[in_active_index - i + 2];
+				Empaerior::u_inter aux = active_states[in_active_index - i + 2];
+				active_states[in_active_index - i + 2] = active_states[in_active_index - i + 1];
+				active_states[in_active_index - i + 1] = aux;
+
+
+				for (auto j = 0; j < active_states.size(); j++)
+				{
+					std::cout << active_states[j] << ' ';
+				}
+				std::cout << '\n';
+
 			}
-			active_states[in_active_index] = value;
+		
 
 
 			for (auto i = 0; i < active_states.size(); i++)

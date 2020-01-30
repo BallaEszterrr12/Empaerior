@@ -222,19 +222,16 @@ public:
 		second_state = push_state(new APP_State2());
 
 		Empaerior::u_inter third_state = push_state(new APP_State1());
-		
+		Empaerior::u_inter forth = push_state(new APP_State1());
 		//make the state active
 
 
-		activate_state(second_state);
 		activate_state(main_state);
-		
-		
+		activate_state(second_state);
+		activate_state(third_state);
+		activate_state(forth);
 
-
-		move_below_by(main_state, 1);
-		
-
+		move_below_by(forth, 3);
 
 		//SET THE DIMENSIONS OF THE CAMERA
 		SDL_RenderSetLogicalSize(Application::window.renderer, states[active_states[0]]->get_camera().rect.w, states[active_states[0]]->get_camera().rect.h);
